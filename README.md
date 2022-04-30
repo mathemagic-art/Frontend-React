@@ -17,7 +17,8 @@
 
 1. Nodejs
 2. npm
-   You can check if you have these tools installed by going to your terminal and running the following commands:
+
+-You can check if you have these tools installed by going to your terminal and running the following commands:
 
 - Nodejs: node -v or node --version
 - npm: npm -v or npm --version
