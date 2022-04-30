@@ -47,7 +47,7 @@
 
 - you can work on the assigned component or feature and use the following steps to push your code to the repo
 
-* git add "name of the file or all" 
+* git add "name of the file or all"
 * git commit -m "message of commit: please read the guidelines for commit message"
 * git push
 

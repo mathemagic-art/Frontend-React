@@ -1,5 +1,5 @@
 // install django-cors-headers==3.4.0
-// • add corsheaders to the INSTALLED_APPS    'corsheaders', # new
+// • add corsheaders to the INSTALLED_APPS 'corsheaders', # new
 // • add CorsMiddleware above CommonMiddleWare in MIDDLEWARE
 // 'django.contrib.sessions.middleware.SessionMiddleware',
 // 'corsheaders.middleware.CorsMiddleware', # new
@@ -11,20 +11,9 @@
 // 'http://localhost:8000',
 // )
 
+// npm install axios
 
-
-
-
-
-
-
-//  npm install axios
-
-
-
-
-
-//  import React, { Component } from 'react';
+// import React, { Component } from 'react';
 // import axios from 'axios'; // new
 // class App extends Component {
 // state = {
@@ -43,11 +32,6 @@
 // })
 // .catch(err => {
 // console.log(err);
-
-
-
-
-
 
 // });
 // }
