@@ -57,7 +57,7 @@
 1. use the following keywords in each case for better readability
 
 - "added: if you have created a new component or layout or page write the name here"
-- "updated: if you have added some more features to a component write the name of comp here"
+- "updated: if you have added or removed features to a component write the name of comp"
 - "fixed: if you have fixed a bug, write the name of comp and bug type here"
 - "deleted: if you have deleted any comp or feature or page write the name here"
 
