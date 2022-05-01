@@ -8,7 +8,7 @@ import {ReactComponent as X2} from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 
 const IntegralCalc = () => {
-  const [data, setData] = useState({argument_0: "type", argument_1: "", argument_2: "x", argument_3: "", argument_4: ""})
+  const [data, setData] = useState({argument_1: "type1", argument_2: "", argument_3: "x", argument_4: "", argument_5: ""})
   const [answer, setAnswer] = useState("")
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,7 +44,7 @@ const IntegralCalc = () => {
 
   const handleReset = (event) => {
     event.preventDefault()
-    setData({argument_0:"type", argument_1: "", argument_2:"x", argument_3: "", argument_4: ""})
+    setData({argument_1:"type1", argument_2: "", argument_3:"x", argument_4: "", argument_5: ""})
     setAnswer("")
   }
 
@@ -52,7 +52,7 @@ const IntegralCalc = () => {
   let style_for_content_div = ""
   let url = ""
 
-  if (data.argument_0 === "type") {
+  if (data.argument_1 === "type1") {
     style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-white"
     style_for_main_div = "ml-52 mt-12 border-2 w-[60%] h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30"
     url = "indefinite-integral/"
@@ -73,7 +73,7 @@ const IntegralCalc = () => {
   };
   
   const handleSubmit = (event) => {
-    axios.post(url, data).then((res)=>{setAnswer(res.data)})
+    axios.post("http://127.0.0.1:8000/universal_integral/", data).then((res)=>{setAnswer(res.data)})
     console.log(data)
     console.log(answer)
     event.preventDefault()
@@ -87,7 +87,7 @@ const IntegralCalc = () => {
         <form onSubmit={handleSubmit}>
         <div className= {style_for_main_div}>
           <h2 className="text-center text-3xl font-primary text-primary">
-             {data.argument_0 === "type" ? "Indefinite Integral Calculator" : "Definite Integral Calculator"}
+             {data.argument_1 === "type1" ? "Indefinite Integral Calculator" : "Definite Integral Calculator"}
           </h2>
           <p className="text-center text-text mb-10">
             Find areas and volumes by adding the slices to find the whole.{" "}
@@ -96,9 +96,9 @@ const IntegralCalc = () => {
               <label htmlFor="list" className="ml-2 text-bright text-xl">
                 Integral type
               </label>
-              <select id = "list" name="argument_0" defaultValue="type" value={data.argument_0} onChange = {handleInput} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10">
-                <option value = "type">Indefinite Integral</option>
-                <option value = "type1">Definite Integral</option>
+              <select id = "list" name="argument_1" defaultValue="type1" value={data.argument_1} onChange = {handleInput} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10">
+                <option value = "type1">Indefinite Integral</option>
+                <option value = "type2">Definite Integral</option>
               </select>
 
               <label htmlFor="function" className="ml-2 text-bright text-xl">
@@ -110,8 +110,8 @@ const IntegralCalc = () => {
                 className="w-full p-4 border-2  border-primary rounded-l-xl text-xl"
                 type="text"
                 id="function"
-                name="argument_1"
-                value={data.argument_1}
+                name="argument_2"
+                value={data.argument_2}
                 onChange={handleInput}
                 
                 />{" "}
@@ -127,13 +127,13 @@ const IntegralCalc = () => {
               required
               type="text"
               id="variable"
-              value={data.argument_2}
-              name="argument_2"
+              value={data.argument_3}
+              name="argument_3"
               onChange={handleInput}
               className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
               />
 
-            {data.argument_0 === "type" ? "" : 
+            {data.argument_1 === "type1" ? "" : 
             <div className="">
               <label htmlFor="third" className="ml-2 text-bright text-xl">
                 Lower Limit
@@ -141,8 +141,8 @@ const IntegralCalc = () => {
               <input 
               required 
               type="text" 
-              value={data.argument_3} 
-              name="argument_3" 
+              value={data.argument_4} 
+              name="argument_4" 
               onChange={handleInput} 
               className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl" 
               defaultValue="oo"/>
@@ -153,8 +153,8 @@ const IntegralCalc = () => {
               <input 
               required 
               type="text" 
-              value={data.argument_4} 
-              name="argument_4" 
+              value={data.argument_5} 
+              name="argument_5" 
               onChange={handleInput} 
               className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl" 
               defaultValue="oo"/>
@@ -174,7 +174,7 @@ const IntegralCalc = () => {
         <div className={style_for_content_div}>
           <p className="mt-24 ml-10 font-normal text-2xl flex">Based on Integral Rule's:<Newton className="ml-10 -mt-5"/></p>
           <div className="flex mt-10 pl-10 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-          <p>The answer for {!data.argument_1 ? "f(x)": ("f(x) = " + data.argument_1)} is: </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{answer !=="" ? answer:"_____________" }</div>
+          <p>The answer for {!data.argument_2 ? "f(x)": ("f(x) = " + data.argument_2)} is: </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{answer !=="" ? answer:"_____________" }</div>
           </div>
         </div>
       </div>
