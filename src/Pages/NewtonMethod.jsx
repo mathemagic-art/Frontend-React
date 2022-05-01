@@ -100,11 +100,8 @@ const NewtonMethod = () => {
             <label htmlFor="respect" className="ml-2 text-bright">
               With Respect to
             </label>
-            <select name="argument_2" id="respect" value={data.argument_2} onChange={handleInput} className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl">
-                <option   value = "x" className="text-2xl">x</option>
-                <option  value = "y">y</option>
-                <option  value = "z">z</option>
-            </select>
+            <input name="argument_2" id="respect" value={data.argument_2} onChange={handleInput} className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"/>
+              
             <label htmlFor="iterations" className="ml-2 text-bright">
               Number of Iterations
             </label>

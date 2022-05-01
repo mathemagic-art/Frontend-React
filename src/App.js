@@ -15,7 +15,6 @@ import TaylorCalc from "./Pages/TaylorCalc";
 import SimpsonCalc from "./Pages/SimpsonCalc";
 import TrapezoidCalc from "./Pages/TrapezoidCalc";
 import RectangleCalc from "./Pages/RectangleCalc";
-import DefIntegralCalc from "./Pages/DefIntegralCalc";
 import IntegralCalc from "./Pages/IntegralCalc";
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +40,6 @@ const App = () => {
       <Route path="/simpson" element={<SimpsonCalc />}></Route>
       <Route path="/trapezoid" element={<TrapezoidCalc />}></Route>
       <Route path="/rectangle" element={<RectangleCalc />}></Route>
-      <Route path="/definite-integral" element={<DefIntegralCalc />}></Route>
       <Route path="/integral" element={<IntegralCalc/>}></Route>
       <Route
         path="/CHEATSHEETS"

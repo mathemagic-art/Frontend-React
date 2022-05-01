@@ -101,11 +101,8 @@ const DiffCalculator = () => {
             <label htmlFor="first" className="ml-2 text-bright">
                 With respect to variable
             </label>
-            <select name="argument_2" id="first" value={data.argument_2} onChange={(e) => setData((prev) => ({ ...prev, argument_2: e.target.value }))} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10">
-                <option   value = "x" className="text-2xl">x</option>
-                <option  value = "y">y</option>
-                <option  value = "z">z</option>
-            </select>
+            <input name="argument_2" id="first" value={data.argument_2} onChange={(e) => setData((prev) => ({ ...prev, argument_2: e.target.value }))} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10"/>
+                
             <label htmlFor="second" className="ml-2 text-bright">
                 Order of derivative
             </label>
