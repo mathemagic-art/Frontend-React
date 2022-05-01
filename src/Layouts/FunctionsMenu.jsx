@@ -13,7 +13,7 @@ const FunctionsMenu = () => {
         <RouteItem text="Trapezoidal Rule Calculator" path="trapezoid"/>
         <RouteItem text="Midpoint Rule Calculator" path="rectangle"/>
         <RouteItem text="Definite Integral Calculator" path="definite-integral"/>
-        <RouteItem text="Indefinite Integral Calculator" path="indefinite-integral"/>
+        <RouteItem text="Integral Calculator" path="integral"/>
 
       </ul>
     </>

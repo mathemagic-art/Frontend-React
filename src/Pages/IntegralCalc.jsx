@@ -7,7 +7,7 @@ import {ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import {ReactComponent as X2} from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 
-const IndefIntegralCalc = () => {
+const IntegralCalc = () => {
   const [data, setData] = useState({argument_0: "type", argument_1: "", argument_2: "x", argument_3: "", argument_4: ""})
   const [answer, setAnswer] = useState("")
   const [isOpen, setIsOpen] = useState(false);
@@ -182,4 +182,4 @@ const IndefIntegralCalc = () => {
   );
 };
 
-export default IndefIntegralCalc;
+export default IntegralCalc;
