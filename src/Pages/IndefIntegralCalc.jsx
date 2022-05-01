@@ -8,7 +8,7 @@ import {ReactComponent as X2} from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 
 const IndefIntegralCalc = () => {
-  const [data, setData] = useState({argument_1: "", argument_2: "x"})
+  const [data, setData] = useState({argument_0: "type", argument_1: "", argument_2: "x", argument_3: "", argument_4: ""})
   const [answer, setAnswer] = useState("")
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,10 +44,23 @@ const IndefIntegralCalc = () => {
 
   const handleReset = (event) => {
     event.preventDefault()
-    setData({argument_1:"", argument_2:"x"})
+    setData({argument_0:"type", argument_1: "", argument_2:"x", argument_3: "", argument_4: ""})
     setAnswer("")
   }
 
+  let style_for_main_div = ""
+  let style_for_content_div = ""
+  let url = ""
+
+  if (data.argument_0 === "type") {
+    style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-white"
+    style_for_main_div = "ml-52 mt-12 border-2 w-[60%] h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30"
+    url = "indefinite-integral/"
+  }else {
+    style_for_content_div = " w-1/2 ml-60 mt-12 mr-20 flex flex-col text-white"
+    style_for_main_div = "ml-32 mt-12 border-2 w-[80%] h-[95%] rounded-3xl text-white p-10  bg-dark bg-opacity-30"
+    url = "definite-integral/"
+  }
   // useEffect(() => {
     
   // }, [data, setData])
@@ -60,7 +73,7 @@ const IndefIntegralCalc = () => {
   };
   
   const handleSubmit = (event) => {
-    axios.post("indefinite-integral/", data).then((res)=>{setAnswer(res.data)})
+    axios.post(url, data).then((res)=>{setAnswer(res.data)})
     console.log(data)
     console.log(answer)
     event.preventDefault()
@@ -72,17 +85,25 @@ const IndefIntegralCalc = () => {
       {isOpen ? <FunctionsMenu /> : ""}
       <div className="flex">
         <form onSubmit={handleSubmit}>
-        <div className="ml-32 mt-12 border-2 w-[50%] h-[95%] rounded-3xl text-white p-10 bg-dark bg-opacity-30">
+        <div className= {style_for_main_div}>
           <h2 className="text-center text-3xl font-primary text-primary">
-            Indefinite Integral Calculator
+             {data.argument_0 === "type" ? "Indefinite Integral Calculator" : "Definite Integral Calculator"}
           </h2>
           <p className="text-center text-text mb-10">
             Find areas and volumes by adding the slices to find the whole.{" "}
           </p>
-          <div>
-            <label htmlFor="function" className="ml-2 text-bright text-xl">
-              Enter a function f(x)
-            </label>
+          <div className="">
+              <label htmlFor="list" className="ml-2 text-bright text-xl">
+                Integral type
+              </label>
+              <select id = "list" name="argument_0" defaultValue="type" value={data.argument_0} onChange = {handleInput} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10">
+                <option value = "type">Indefinite Integral</option>
+                <option value = "type1">Definite Integral</option>
+              </select>
+
+              <label htmlFor="function" className="ml-2 text-bright text-xl">
+                Enter a function f(x)
+              </label>
             <div className="flex rounded-xl text-black mb-10 " id="searchbox">
               <input
               required
@@ -98,15 +119,7 @@ const IndefIntegralCalc = () => {
                 <Fx />
               </button>
             </div>
-            <label htmlFor="list" className="ml-2 text-bright text-xl">
-              Integral type
-            </label>
-            <select id = "list" name="" value='' onChange = '' className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10">
-                <option value = "type">Indefinite Integral</option>
-                <option value = "type1">Definite Integral</option>
-                
-            </select>
-            
+
             <label htmlFor="variable" className="ml-2 text-bright text-xl">
               With respect to variable
             </label>
@@ -119,7 +132,34 @@ const IndefIntegralCalc = () => {
               onChange={handleInput}
               className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
               />
-             
+
+            {data.argument_0 === "type" ? "" : 
+            <div className="">
+              <label htmlFor="third" className="ml-2 text-bright text-xl">
+                Lower Limit
+              </label>
+              <input 
+              required 
+              type="text" 
+              value={data.argument_3} 
+              name="argument_3" 
+              onChange={handleInput} 
+              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl" 
+              defaultValue="oo"/>
+
+              <label htmlFor="third" className="ml-2 text-bright text-xl">
+                Upper Limit
+              </label>
+              <input 
+              required 
+              type="text" 
+              value={data.argument_4} 
+              name="argument_4" 
+              onChange={handleInput} 
+              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl" 
+              defaultValue="oo"/>
+
+            </div>} 
           </div>
           <div className=" flex justify-evenly">
             <button className="bg-primary text-white px-6 py-2 text-center text-lg rounded-md" type="submit" >
@@ -131,10 +171,10 @@ const IndefIntegralCalc = () => {
           </div>
         </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-white">
+        <div className={style_for_content_div}>
           <p className="mt-24 ml-10 font-normal text-2xl flex">Based on Integral Rule's:<Newton className="ml-10 -mt-5"/></p>
           <div className="flex mt-10 pl-10 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-          <p>The answer for {!data.argument_1? "f(x)": ("f(x) = " + data.argument_1)} is: </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{answer !=="" ? answer:"_____________" }</div>
+          <p>The answer for {!data.argument_1 ? "f(x)": ("f(x) = " + data.argument_1)} is: </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{answer !=="" ? answer:"_____________" }</div>
           </div>
         </div>
       </div>
