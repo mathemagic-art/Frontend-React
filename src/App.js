@@ -7,8 +7,8 @@ import TEST_YOURSELF from "./Pages/TEST_YOURSELF";
 import { Route, Routes } from "react-router-dom";
 import NewtonMethod from "./Pages/NewtonMethod";
 import CHEATSHEETS from "./Pages/CHEATSHEETS";
-import LEARNING_MATERIALS from "./Pages/LEARNING_MATERIALS";
-import ABOUT from "./Pages/About";
+import AboutUs from "./Pages/AboutUs";
+import ContactUs from "./Pages/ContactUs";
 import DiffCalculator from "./Pages/DiffCalculator";
 import LimitCalc from "./Pages/LimitCalc";
 import TaylorCalc from "./Pages/TaylorCalc";
@@ -46,12 +46,12 @@ const App = () => {
         element={<CHEATSHEETS toggle={toggle} isOpen={isOpen} />}
       ></Route>
       <Route
-        path="/LEARNINGMATERIALS"
-        element={<LEARNING_MATERIALS toggle={toggle} isOpen={isOpen} />}
+        path="/AboutUs"
+        element={<AboutUs toggle={toggle} isOpen={isOpen} />}
       ></Route>
       <Route
-        path="/ABOUT"
-        element={<ABOUT toggle={toggle} isOpen={isOpen} />}
+        path="/CONTACTUS"
+        element={<ContactUs toggle={toggle} isOpen={isOpen} />}
       ></Route>
       
     </Routes>

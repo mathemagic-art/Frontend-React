@@ -12,4 +12,4 @@ const Cheatsheets = ({toggle, isOpen}) => {
     )
 };
 
-export default Cheatsheets
+export default Cheatsheets;

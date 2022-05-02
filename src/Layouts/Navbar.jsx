@@ -23,7 +23,7 @@ const Navbar = ({ toggle }) => {
     autoMatchOsTheme: false, // default: true
   };
   const darkmode = new Darkmode(options);
-
+  
   return (
     <div className="flex flex-row items-center text-white text-2xl tablet:text-lg ">
       <div className="flex mx-10 tablet:mx-2">
@@ -40,8 +40,8 @@ const Navbar = ({ toggle }) => {
             MATHEMAGICS
           </h1>
         </Link>
-        <NavLink text={"LEARNING MATERIALS"} className="flex"/>
-        <NavLink text={"ABOUT"} className="flex" />
+        <NavLink text={"ABOUT US"} className="flex"/>
+        <NavLink text={"CONTACT US"} className="flex" />
         <Search className="flex"/>
         <span>{darkmode.showWidget()}</span>
       </div>
