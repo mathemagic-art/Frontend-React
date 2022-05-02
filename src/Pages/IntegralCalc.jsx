@@ -51,15 +51,18 @@ const IntegralCalc = () => {
   let style_for_main_div = ""
   let style_for_content_div = ""
   let url = ""
+  let variable = ""
 
   if (data.argument_1 === "type1") {
-    style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-white"
+    style_for_content_div = " w-1/2 ml-60 mt-12 mr-20 flex flex-col text-white"
     style_for_main_div = "ml-52 mt-12 border-2 w-[60%] h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30"
     url = "indefinite-integral/"
+    variable = "w-full h-[50px] p-4 border-2 mt-7 -ml-[85px] text-black border-primary rounded-xl mb-10 text-xl"
   }else {
     style_for_content_div = " w-1/2 ml-60 mt-12 mr-20 flex flex-col text-white"
-    style_for_main_div = "ml-32 mt-12 border-2 w-[80%] h-[95%] rounded-3xl text-white p-10  bg-dark bg-opacity-30"
+    style_for_main_div = "ml-52 mt-12 border-2 w-[50%] h-full rounded-3xl text-white p-10  bg-dark bg-opacity-30"
     url = "definite-integral/"
+    variable = "w-[25%] h-[50px] p-4 border-2 mt-7 -ml-[85px] text-black border-primary rounded-xl mb-10 text-xl"
   }
   // useEffect(() => {
     
@@ -96,7 +99,7 @@ const IntegralCalc = () => {
               <label htmlFor="list" className="ml-2 text-bright text-xl">
                 Integral type
               </label>
-              <select id = "list" name="argument_1" defaultValue="type1" value={data.argument_1} onChange = {handleInput} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10">
+              <select id = "list" name="argument_1" defaultValue="type1" value={data.argument_1} onChange = {handleInput} className="w-full h-[50px] p-2 border-2 text-black text-lg border-primary rounded-xl mb-10">
                 <option value = "type1">Indefinite Integral</option>
                 <option value = "type2">Definite Integral</option>
               </select>
@@ -107,7 +110,7 @@ const IntegralCalc = () => {
             <div className="flex rounded-xl text-black mb-10 " id="searchbox">
               <input
               required
-                className="w-full p-4 border-2  border-primary rounded-l-xl text-xl"
+                className="w-full h-[50px] p-4 border-2  border-primary rounded-l-xl text-lg"
                 type="text"
                 id="function"
                 name="argument_2"
@@ -119,47 +122,49 @@ const IntegralCalc = () => {
                 <Fx />
               </button>
             </div>
+            <div className="flex flex-row gap-5 w-full">
 
-            <label htmlFor="variable" className="ml-2 text-bright text-xl">
-              With respect to variable
-            </label>
-            <input
-              required
-              type="text"
-              id="variable"
-              value={data.argument_3}
-              name="argument_3"
-              onChange={handleInput}
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
-              />
-
-            {data.argument_1 === "type1" ? "" : 
-            <div className="">
-              <label htmlFor="third" className="ml-2 text-bright text-xl">
-                Lower Limit
+              <label htmlFor="variable" className=" text-bright text-lg">
+                Variable
               </label>
-              <input 
-              required 
-              type="text" 
-              value={data.argument_4} 
-              name="argument_4" 
-              onChange={handleInput} 
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl" 
-              defaultValue="oo"/>
+              <input
+                required
+                type="text"
+                id="variable"
+                value={data.argument_3}
+                name="argument_3"
+                onChange={handleInput}
+                className= {variable}
+                />
 
-              <label htmlFor="third" className="ml-2 text-bright text-xl">
-                Upper Limit
-              </label>
-              <input 
-              required 
-              type="text" 
-              value={data.argument_5} 
-              name="argument_5" 
-              onChange={handleInput} 
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl" 
-              defaultValue="oo"/>
+              {data.argument_1 === "type1" ? "" : 
+              <div className="flex flex-row">
+                <label htmlFor="third" className=" ml-6 text-center flex flex-row text-bright w-auto h-auto text-lg">
+                  Lower
+                </label>
+                <input 
+                required 
+                type="text" 
+                value={data.argument_4} 
+                name="argument_4" 
+                onChange={handleInput} 
+                className="w-[100%] h-[50px] p-4 border-2 mt-7 -ml-16  text-black border-primary rounded-xl mb-10 text-xl" 
+                defaultValue="oo"/>
 
-            </div>} 
+                <label htmlFor="third" className="ml-2 pl-8 pr-auto text-bright text-lg">
+                  Upper
+                </label>
+                <input 
+                required 
+                type="text" 
+                value={data.argument_5} 
+                name="argument_5" 
+                onChange={handleInput} 
+                className="w-[100%] h-[50px] p-4 mt-7 -ml-16 border-2 text-black border-primary rounded-xl mb-10 text-xl" 
+                defaultValue="oo"/>
+
+              </div>} 
+            </div>
           </div>
           <div className=" flex justify-evenly">
             <button className="bg-primary text-white px-6 py-2 text-center text-lg rounded-md" type="submit" >
