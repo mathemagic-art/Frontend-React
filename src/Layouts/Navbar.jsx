@@ -7,7 +7,7 @@ import Toggle from "../Components/toggle";
 
 const Navbar = ({ toggle }) => {
   return (
-    <div className="flex flex-row items-center  text-2xl tablet:text-lg text-dark bg-white dark:bg-dark dark:text-white shadow-md ">
+    <div className="flex flex-row items-center  text-2xl tablet:text-lg text-dark bg-white dark:bg-dark dark:text-white shadow-md h-[13%]">
       <div className="flex mx-10 tablet:mx-2">
         <button onClick={toggle}>
           <Bucket className="dark:fill-white fill-black" />
