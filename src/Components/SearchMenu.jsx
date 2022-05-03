@@ -13,9 +13,6 @@ const SearchMenu = () => {
   };
 
   const showMenu = () => {
-    setShow(!show);
-  };
-  const notShow = () => {
     // setShow(false);
   };
 
@@ -29,8 +26,8 @@ const SearchMenu = () => {
             setSearchTerm(e.target.value);
           }}
           placeholder="Search for a method..."
-          onFocus={showMenu}
-          onBlur={notShow}
+          onFocus={toggleFunctions}
+          onBlur={showMenu}
         />
         {show ? (
           <ul className="absolute top-40  w-full h-full rounded-md z-10">
@@ -56,14 +53,11 @@ const SearchMenu = () => {
         ) : (
           ""
         )}
-        <button
-          onClick={toggleFunctions}
-          className="border-l-2 border-r-2 border-blue-500 p-4 "
-        >
-          <Fx className="dark:fill-dark fill-white" />
+        <button className="border-l-2 border-r-2 border-blue-500 p-4 ">
+          <Fx className="dark:fill-white fill-black" />
         </button>
-        <button className="px-4 py-4">
-          <Search />
+        <button className="px-4 py-4" onClick={toggleFunctions}>
+          <Search className="dark:fill-white fill-black" />
         </button>
       </div>
     </div>
