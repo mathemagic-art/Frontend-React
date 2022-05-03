@@ -18,9 +18,9 @@ function Cheatsheets() {
                </div>
                <div className='flex flex-col'>
                <h2 className="text-center mt-10 mb-4 text-3xl font-primary text-primary">Basic Integration Rules</h2>
-                <div className="flex border-2 w-[647px] mb-20 h-[463px] rounded-3xl text-white px-10 bg-dark bg-opacity-30 relative object-right-top"></div>
+                <div className="flex border-2 w-[647px] mb-20 h-[463px] rounded-3xl text-white px-10 bg-dark bg-opacity-30"></div>
                 <h2 className="text-center mt-20 mb-4 text-3xl font-primary text-primary">Basic Limit Rules</h2>
-                <div className="flex border-2 w-[647px] h-[463px] rounded-3xl text-white px-10 bg-dark bg-opacity-30 relative object-right-top"></div>
+                <div className="flex border-2 w-[647px] h-[463px] rounded-3xl text-white px-10 bg-dark bg-opacity-30"></div>
                </div>
 
             </div>
