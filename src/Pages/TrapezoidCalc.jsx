@@ -73,7 +73,7 @@ const TrapezoidCalc = () => {
       {isOpen ? <FunctionsMenu /> : ""}
       <div className="flex">
         <form onSubmit={handleSubmit}>
-        <div className="ml-32 mt-12 border-2 w-[50%] h-[95%] rounded-3xl text-white p-10 bg-dark bg-opacity-30">
+        <div className="ml-32 mt-12 border-2 w-[66%] h-[95%] rounded-3xl text-white p-10 bg-dark bg-opacity-30">
           <h2 className="text-center text-3xl font-primary text-primary">
             Trapezoidal Rule Calculator
           </h2>
@@ -99,54 +99,63 @@ const TrapezoidCalc = () => {
                 <Fx />
               </button>
             </div>
-            <label htmlFor="lower-limit" className="ml-2 text-bright text-xl">
-              Respect to
-            </label>
-            <input
-            required
-              type="text"
-              id="lower-limit"
-              name="argument_2"
-              value={data.argument_2}
-              onChange={handleInput}
-              className="w-full p-4 border-2 text-black  border-primary rounded-xl mb-10 text-xl"
-            />
-            <label htmlFor="lower-limit" className="ml-2 text-bright text-xl">
-              Lower Limit = α
-            </label>
-            <input
-            required
-              type="text"
-              id="lower-limit"
-              name="argument_3"
-              value={data.argument_3}
-              onChange={handleInput}
-              className="w-full p-4 border-2 text-black  border-primary rounded-xl mb-10 text-xl"
-            />
-            <label htmlFor="upper-limit" className="ml-2 text-bright text-xl">
-              Upper Limit = β
-            </label>
-            <input
-              required
-              type="text"
-              id="argument_4"
-              value={data.argument_4}
-              name="argument_4"
-              onChange={handleInput}
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
-              />
               <label htmlFor="intervals" className="ml-2 text-bright text-xl">
-              Number of Subintervals = n
-            </label>
-            <input
-              optional
-              type="text"
-              id="argument_5"
-              value={data.argument_5}
-              name="argument_5"
-              onChange={handleInput}
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
-              />
+                Number of Subintervals = n
+              </label>
+              <input
+                optional
+                type="text"
+                id="argument_5"
+                value={data.argument_5}
+                name="argument_5"
+                onChange={handleInput}
+                className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
+                />
+            <div className="flex flex-row gap-5">
+              <div className="flex flex-col">
+                <label htmlFor="lower-limit" className="ml-2 text-bright text-xl">
+                  Respect to
+                </label>
+                <input
+                required
+                type="text"
+                id="lower-limit"
+                name="argument_2"
+                value={data.argument_2}
+                onChange={handleInput}
+                className="w-[100px] p-4 border-2 text-black  border-primary rounded-xl mb-10 text-xl"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="lower-limit" className="ml-2 text-bright text-xl">
+                  Lower Limit
+                </label>
+                <input
+                required
+                type="text"
+                id="lower-limit"
+                name="argument_3"
+                value={data.argument_3}
+                onChange={handleInput}
+                className="w-[120px] p-4 border-2 text-black  border-primary rounded-xl mb-10 text-xl"
+                />
+              </div>
+              <div className="flex flex-col">
+
+                <label htmlFor="upper-limit" className="ml-2 text-bright text-xl">
+                  Upper Limit
+                </label>
+                <input
+                  required
+                  type="text"
+                  id="argument_4"
+                  value={data.argument_4}
+                  name="argument_4"
+                  onChange={handleInput}
+                  className="w-[120px] p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
+                  />
+              </div>
+            </div>
           </div>
           <div className=" flex justify-evenly">
             <button className="bg-primary text-white px-6 py-2 text-center text-lg rounded-md" type="submit" >
