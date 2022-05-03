@@ -4,11 +4,11 @@ import FunctionsMenu from '../Layouts/FunctionsMenu'
 import { ReactComponent as Logo1 } from "../Files/svgs/Logo1.svg";
 import { ReactComponent as Quotemark } from "../Files/svgs/Quotemark.svg";
 
-const AboutUs = ({toggle, isOpen}) => {
+const AboutUs = ({}) => {
   return (
     <div>
-        <Navbar toggle={toggle}/>
-        {isOpen ? <FunctionsMenu /> : ""} 
+        <Navbar />
+        <FunctionsMenu />
         <div className='flex justify-center'>
           <Logo1 className="h-[134px] w-[120px] "/>
         </div>

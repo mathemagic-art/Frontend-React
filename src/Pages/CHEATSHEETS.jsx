@@ -3,11 +3,11 @@ import Navbar from '../Layouts/Navbar'
 import FunctionsMenu from '../Layouts/FunctionsMenu';
 
 
-function Cheatsheets({ toggle, isOpen }) {
+function Cheatsheets() {
     return (
         <div>
-            <Navbar toggle={toggle} />
-            {isOpen ? <FunctionsMenu /> : ""}
+            <Navbar />
+            <FunctionsMenu />
             <div className='flex justify-between mx-32 my-20'>
                 <div className='flex flex-col'>
 

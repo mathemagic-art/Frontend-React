@@ -56,10 +56,6 @@ const DiffCalculator = () => {
 
   console.log(answer);
 
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
-
   const handleSubmit = (event) => {
       axios.post("differentiation/", data).then((res)=>{setAnswer(res.data)})
       console.log(data)
@@ -68,8 +64,8 @@ const DiffCalculator = () => {
   }
   return (
     <>
-      <Navbar toggle={toggle} />
-      {isOpen ? <FunctionsMenu /> : ""}
+      <Navbar />
+      <FunctionsMenu />
       <div className="flex">
         <form onSubmit={handleSubmit}>
           <div className="ml-32 mt-12 border-2 w-[60%] h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30">

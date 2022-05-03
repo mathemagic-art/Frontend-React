@@ -2,11 +2,11 @@ import React from "react";
 import Navbar from "../Layouts/Navbar";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { ReactComponent as HeroBg } from "../Files/svgs/HeroBG.svg";
-const ContactUs = ({ toggle, isOpen }) => {
+const ContactUs = () => {
   return (
     <div className="bg-white text-dark h-full w-full flex flex-col text-center  dark:bg-dark dark:text-white pb-20">
-      <Navbar toggle={toggle} />
-      {isOpen ? <FunctionsMenu /> : ""}
+      <Navbar />
+      <FunctionsMenu />
       <h2 className="font-primary text-5xl tracking-wide leading-tight mt-16 mb-10">
         Send us a message <br /> and we'll get ball rolling
       </h2>

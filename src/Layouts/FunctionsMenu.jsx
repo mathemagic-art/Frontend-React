@@ -1,10 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import RouteItem from "../Components/RouteItem";
 
-const FunctionsMenu = () => {
+const FunctionsMenu = ({ isOpen }) => {
+  
+
+  const onStyle = "w-[30rem] h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 top-[13%] z-10"
+  const offStyle = "-ml-[100%] w-[30rem] h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 top-[13%] z-10"
+
   return (
     <>
-      <ul className="w-[30rem] h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 top-[13%] z-10">
+      <ul className={isOpen ? onStyle : offStyle}>
         <RouteItem text="Newton's Method Calculator" path="newton" />
         <RouteItem text="Derivative Calculator" path="diff" />
         <RouteItem text="Limit Calculator" path="limit" />
