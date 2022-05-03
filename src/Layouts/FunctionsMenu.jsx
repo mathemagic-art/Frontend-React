@@ -4,7 +4,7 @@ import RouteItem from "../Components/RouteItem";
 const FunctionsMenu = () => {
   return (
     <>
-      <ul className="w-[30rem] h-full bg-black font-primary bg-opacity-60 absolute left-0 top-24">
+      <ul className="w-[30rem] h-full dark:bg-black bg-slate-300 text-dark font-primary bg-opacity-60 absolute left-0 top-24 z-10">
         <RouteItem text="Newton's Method Calculator" path="newton" />
         <RouteItem text="Derivative Calculator" path="diff" />
         <RouteItem text="Limit Calculator" path="limit" />

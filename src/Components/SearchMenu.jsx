@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { ReactComponent as Fx } from "../Files/svgs/ButtonFx.svg";
+import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Search } from "../Files/svgs/search.svg";
 import PagesRoute from "./PageRoutes";
 import PagesRoutes from "../Data/Pages.json";
@@ -24,7 +24,7 @@ const SearchMenu = () => {
       <div className="flex justify-center items-center border-2 rounded-lg border-blue-500">
         <input
           type="text"
-          className="bg-black py-4 inline-block w-full pl-5 ml-1 rounded-l-lg"
+          className="dark:bg-black py-4 inline-block w-full pl-5 ml-1 rounded-l-lg"
           onChange={(e) => {
             setSearchTerm(e.target.value);
           }}
@@ -44,7 +44,10 @@ const SearchMenu = () => {
               }
             }).map((value, key) => {
               return (
-                <li className="bg-dark p-5 rounded-md " key={key}>
+                <li
+                  className="dark:bg-dark bg-slate-100 p-5 rounded-md "
+                  key={key}
+                >
                   <PagesRoute text={value.name} route={value.route} />
                 </li>
               );
@@ -53,8 +56,11 @@ const SearchMenu = () => {
         ) : (
           ""
         )}
-        <button onClick={toggleFunctions}>
-          <Fx />
+        <button
+          onClick={toggleFunctions}
+          className="border-l-2 border-r-2 border-blue-500 p-4 "
+        >
+          <Fx className="dark:fill-dark fill-white" />
         </button>
         <button className="px-4 py-4">
           <Search />
