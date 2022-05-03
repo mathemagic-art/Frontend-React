@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 const NavLink = ({ text }) => {
   return (
     <>
-      <Link to={"/" + text.replace(" ", "")} className="font-bold text-head">
+      <Link
+        to={"/" + text.replace(" ", "")}
+        className="font-bold text-head dark:text-white"
+      >
         {text}
       </Link>
     </>

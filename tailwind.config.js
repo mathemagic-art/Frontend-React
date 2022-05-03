@@ -13,6 +13,7 @@ module.exports = {
         bright: "#F1F5FF",
         text: "#757D8A",
         head: "#5F5B80",
+        border: "#5665AF",
       },
     },
     screens: {
