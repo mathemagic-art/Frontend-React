@@ -20,7 +20,7 @@ const SearchMenu = () => {
   };
 
   return (
-    <div className="flex flex-col m-auto justify-center bg-transparent mt-10 laptop:-mt-6 laptop:pt-20 text-white text-xl mb-52 z-10 w-2/3 relative">
+    <div className="flex flex-col m-auto justify-center bg-transparent mt-10 laptop:-mt-6 laptop:pt-20 text-dark dark:text-white text-xl mb-52 z-10 w-2/3 relative">
       <div className="flex justify-center items-center border-2 rounded-lg border-blue-500">
         <input
           type="text"
