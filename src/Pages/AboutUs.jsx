@@ -39,14 +39,14 @@ const AboutUs = () => {
         <h2 className={style.teams}> PRODUCT MANAGERS</h2>
         <div className="flex space-around justify-center mt-[70px] gap-[23px]">
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Elnazar Ulanbek Uluu" />
             <figcaption className={style.name}>
               ELNAZAR <br />
               ULANBEK ULUU
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Umar Nurov" />
             <figcaption className={style.name}>
               UMAR <br />
               NUROV
@@ -58,21 +58,21 @@ const AboutUs = () => {
         <h2 className={style.teams}>UX/UI Design</h2>
         <div className="flex space-around justify-center mt-[70px] gap-[]">
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Umidek Ulmasov" />
             <figcaption className={style.name}>
               UMIDBEK <br />
               ULMASOV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Benazir Temiralieva" />
             <figcaption className={style.name}>
               BENAZIR <br />
               TEMIRALIEVA
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Munis Saidrahmonov" />
             <figcaption className={style.name}>
               MUNIS <br />
               SAIDRAHMONOV
@@ -84,21 +84,21 @@ const AboutUs = () => {
         <h2 className={style.teams}>Frontend Development</h2>
         <div className="flex space-around justify-center mt-[70px] gap-[]">
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Umar Nurov" />
             <figcaption className={style.name}>
               UMAR <br />
               NUROV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Umidbek Ulmasov" />
             <figcaption className={style.name}>
               UMIDBEK <br />
               ULMASOV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Abdullah Nazari" />
             <figcaption className={style.name}>
               ABDULLAH
               <br />
@@ -106,7 +106,7 @@ const AboutUs = () => {
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Marzia Taban Jafari" />
             <figcaption className={style.name}>
               MARZIA
               <br />
@@ -114,7 +114,7 @@ const AboutUs = () => {
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Jasurbek Sadiev" />
             <figcaption className={style.name}>
               JASURBEK
               <br />
@@ -127,42 +127,42 @@ const AboutUs = () => {
         <h2 className={style.teams}>Backend Development</h2>
         <div className="flex space-around justify-center mt-[70px] gap-[]">
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Eldar Ulanov" />
             <figcaption className={style.name}>
               ELDAR <br />
               ULANOV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Aizada Berdibekova" />
             <figcaption className={style.name}>
               AIZADA <br />
               BERDIBEKOVA
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Abbosjon Madiev" />
             <figcaption className={style.name}>
               ABBOSJON <br />
               MADIEV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Ilkhomzhon Sidikov" />
             <figcaption className={style.name}>
               ILKHOMZHON <br />
               SIDIKOV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Elnazar Ulanbek Uluu" />
             <figcaption className={style.name}>
               ELNAZAR <br />
               ULANBEK ULUU
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Jasurbek Sadiev" />
             <figcaption className={style.name}>
               JASURBEK <br />
               SADIEV
@@ -174,56 +174,56 @@ const AboutUs = () => {
         <h2 className={style.teams}>Scientific Python & Math</h2>
         <div className="flex space-around justify-center mt-[70px] gap-[] mb-[500px]">
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Tariq Aziz" />
             <figcaption className={style.name}>
               TARIQ <br />
               AZIZ
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Aisha Toichieva" />
             <figcaption className={style.name}>
               AISHA <br />
               TOICHIEVA
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Attiullah Khan Niazi" />
             <figcaption className={style.name}>
               ATTIULLAH <br />
               KHAN NIAZI
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Umar" />
+            <img src={umar} alt="Benazir Temiralieva" />
             <figcaption className={style.name}>
               BENAZIR <br />
               TEMIRALIEVA
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Shokhrukh Davlatmahmadov" />
             <figcaption className={style.name}>
               SHOKHRUKH <br />
               DAVLATMAHMADOV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Elnazar Ulanbek Ullu" />
             <figcaption className={style.name}>
               ELNAZAR <br />
               ULANBEK ULUU
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Munis Saidrahmonov" />
             <figcaption className={style.name}>
               MUNIS <br />
               SAIDRAHMONOV
             </figcaption>
           </figure>
           <figure>
-            <img src={umar} alt="Elnazar" />
+            <img src={umar} alt="Zakir Hussain Muradi" />
             <figcaption className={style.name}>
               ZAKIR <br />
               HUSSAIN MURADI
