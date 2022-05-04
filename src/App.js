@@ -18,21 +18,17 @@ import RectangleCalc from "./Pages/RectangleCalc";
 import IntegralCalc from "./Pages/IntegralCalc";
 
 const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
+  
   return (
     <Routes>
       <Route
         exact
         path="/"
-        element={<Home toggle={toggle} isOpen={isOpen} />}
+        element={<Home />}
       ></Route>
       <Route
         path="/TESTYOURSELF"
-        element={<TEST_YOURSELF toggle={toggle} isOpen={isOpen} />}
+        element={<TEST_YOURSELF />}
       ></Route>
       <Route path="/newton" element={<NewtonMethod />}></Route>
       <Route path="/diff" element={<DiffCalculator />}></Route>
@@ -44,15 +40,15 @@ const App = () => {
       <Route path="/integral" element={<IntegralCalc />}></Route>
       <Route
         path="/CHEATSHEETS"
-        element={<CHEATSHEETS toggle={toggle} isOpen={isOpen} />}
+        element={<CHEATSHEETS />}
       ></Route>
       <Route
         path="/AboutUs"
-        element={<AboutUs toggle={toggle} isOpen={isOpen} />}
+        element={<AboutUs />}
       ></Route>
       <Route
         path="/CONTACTUS"
-        element={<ContactUs toggle={toggle} isOpen={isOpen} />}
+        element={<ContactUs />}
       ></Route>
     </Routes>
   );

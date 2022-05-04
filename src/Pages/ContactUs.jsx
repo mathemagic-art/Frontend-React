@@ -2,17 +2,17 @@ import React from "react";
 import Navbar from "../Layouts/Navbar";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { ReactComponent as HeroBg } from "../Files/svgs/HeroBG.svg";
-const ContactUs = ({ toggle, isOpen }) => {
+const ContactUs = () => {
   return (
     <div className="bg-white text-dark h-full w-full flex flex-col text-center  dark:bg-dark dark:text-white pb-20">
-      <Navbar toggle={toggle} />
-      {isOpen ? <FunctionsMenu /> : ""}
+      <Navbar />
+      <FunctionsMenu />
       <h2 className="font-primary text-5xl tracking-wide leading-tight mt-16 mb-10">
         Send us a message <br /> and we'll get ball rolling
       </h2>
       <form
         action="#"
-        className="grid w-2/5 m-auto p-12 bg-white dark:bg-black rounded-3xl shadow-xl border-2 grid-cols-2 gap-8 justify-center items-center z-10 bg-opacity-90 dark:border-black dark:bg-opacity-80 bg-blur-md"
+        className="backdrop-blur-sm grid w-2/5 m-auto p-12 bg-white dark:bg-black rounded-3xl shadow-xl border-2 grid-cols-2 gap-8 justify-center items-center z-10 bg-opacity-90 dark:border-black dark:bg-opacity-80 bg-blur-md"
       >
         <input
           type="text"

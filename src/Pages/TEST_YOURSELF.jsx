@@ -3,14 +3,14 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Navbar from "../Layouts/Navbar";
 import { Link } from "react-router-dom";
 
-const Test_Yourself = ({ toggle, isOpen }) => {
+const Test_Yourself = () => {
   return (
     <div
       className=" bg-white dark:bg-dark text-dark dark:text-white
     "
     >
-      <Navbar toggle={toggle} />
-      {isOpen ? <FunctionsMenu /> : ""}
+      <Navbar />
+      <FunctionsMenu />
       <div className="w-full m-auto">
         <h2 className="pl-[8%] text-4xl my-20 leading-snug ">
           Have a test coming up? <br />

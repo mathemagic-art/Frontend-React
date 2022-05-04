@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios"
 import { useState, useEffect } from "react";
+import EquationEditor from "equation-editor-next";
 // import MethodsCard from "../Components/MethodsCard";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
@@ -69,7 +70,7 @@ const NewtonMethod = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex tablet:flex-col">
+      <div className="flex tablet:flex-col bg-white dark:bg-black">
         <form onSubmit={handleSubmit}>
         <div className="ml-52 mt-12 border-2 w-1/2 h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30">
           <h2 className="text-center text-3xl font-primary text-primary">
@@ -91,7 +92,6 @@ const NewtonMethod = () => {
                 name="argument_1"
                 value={data.argument_1}
                 onChange={handleInput}
-                
                 />{" "}
               <button className="px-4 border-2 border-primary rounded-r-xl ">
                 <Fx />
@@ -126,10 +126,10 @@ const NewtonMethod = () => {
           </div>
         </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-white tablet:w-full tablet:pl-16 tablet:pb-16" >
-          <p className="mt-24 ml-10 font-normal text-2xl flex">According to Newton's Method:<Newton className="ml-10 -mt-5"/></p>
+        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-black dark:text-white tablet:w-full tablet:pl-16 tablet:pb-16" >
+          <p className="mt-24 ml-10 font-normal text-2xl flex">According to Newton's Method:<Newton className="ml-10 -mt-5  fill-black dark:fill-current"/></p>
           <div className="flex mt-10 pl-10 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p>The root of</p> <X2 className="mx-5 -mt-3"/><p>equals to </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{data.argument_2}(0)={answer !=="" ? answer:"_____________" }</div>
+            <p>The root of</p> <X2 className="mx-5 -mt-3 fill-dark dark:fill-current"/><p>equals to </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{data.argument_2}(0)={answer !=="" ? answer:"_____________" }</div>
           </div>
         </div>
       </div>
