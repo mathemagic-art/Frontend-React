@@ -4,7 +4,7 @@ import RouteItem from "../Components/RouteItem";
 const FunctionsMenu = ({ isOpen }) => {
   
 
-  const onStyle = "w-[30rem] backdrop-blur-sm h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 top-[13%] z-10"
+  const onStyle = "w-[30rem] backdrop-blur-sm h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 top-[13%] z-30"
   const offStyle = "-ml-[100%] w-[30rem] h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 top-[13%] z-10"
 
   return (
