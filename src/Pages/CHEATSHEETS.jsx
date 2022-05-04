@@ -1,30 +1,32 @@
-import React from 'react'
-import Navbar from '../Layouts/Navbar'
+import React from 'react';
+import Navbar from '../Layouts/Navbar';
 import FunctionsMenu from '../Layouts/FunctionsMenu';
+import {ReactComponent as BasicDeriv} from "../Files/svgs/BasicDeriv.svg";
+import { ReactComponent as HeroBg } from "../Files/svgs/HeroBG.svg";
 
 
 function Cheatsheets({ toggle, isOpen }) {
     return (
-        <div>
+        <>
             <Navbar toggle={toggle} />
             {isOpen ? <FunctionsMenu /> : ""}
-            <div className='flex justify-between mx-32 my-20'>
-                <div className='flex flex-col'>
-
-                    <h2 className="text-center mt-10 mb-4 text-3xl font-primary text-primary">Basic Differentiation Rules</h2>
-                    <div className="flex border-2 w-[647px] h-[463px] mb-20 rounded-3xl text-white px-10 bg-dark bg-opacity-30"></div>
-                    <h2 className="text-center mt-20 mb-4  text-3xl font-primary text-primary">Basic Differentiation Rules</h2>
-                    <div className="flex border-2 w-[647px] h-[463px] rounded-3xl text-white px-10 bg-dark bg-opacity-30 mb-20"></div>
-               </div>
-               <div className='flex flex-col'>
-               <h2 className="text-center mt-10 mb-4 text-3xl font-primary text-primary">Basic Integration Rules</h2>
-                <div className="flex border-2 w-[647px] mb-20 h-[463px] rounded-3xl text-white px-10 bg-dark bg-opacity-30 "></div>
-                <h2 className="text-center mt-20 mb-4 text-3xl font-primary text-primary">Basic Limit Rules</h2>
-                <div className="flex border-2 w-[647px] h-[463px] rounded-3xl text-white px-10 bg-dark bg-opacity-30 relative object-right-"></div>
-               </div>
-
+            <div className='flex flex-row justify-between w-full h-full z-10'>
+                <div className='z-20'>
+                    <h2 className="mt-[80px] ml-[280px] mb-[20px] flex space-around justify-start text-primary font-medium font-inter text-[24px]">Basic Differentiation Rules</h2>
+                    <BasicDeriv className="ml-[110px] mb-[153px] flex space-around justify-start" />
+                    <h2 className="ml-[280px] mb-[20px] flex space-around justify-start text-primary font-medium font-inter text-[24px]">Basic Differentiation Rules</h2>
+                    <BasicDeriv className="ml-[110px] mb-[420px] flex space-around justify-end" />
+                </div>
+                <div className='z-20'>
+                    <h2 className="mr-[200px] mt-[80px] mb-[20px] justify-center flex space-around text-primary font-medium font-inter text-[24px]">Basic Differentiation Rules</h2>
+                    <BasicDeriv className="mr-[116px] mb-[153px] flex space-around justify-start" />
+                    <h2 className="mr-[200px] mb-[20px] flex space-around justify-center text-primary font-medium font-inter text-[24px]">Basic Differentiation Rules</h2>
+                    <BasicDeriv className="flex space-around justify-end" />
+                </div>
+            
             </div>
-        </div>
+            <HeroBg className="-mt-[600px] m-auto z-0" />
+        </>
     );
 }
 
