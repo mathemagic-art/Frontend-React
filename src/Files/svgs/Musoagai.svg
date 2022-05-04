@@ -1,0 +1,14 @@
+<svg width="350" height="350" viewBox="0 0 350 350" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<circle cx="175" cy="175" r="175" fill="url(#paint0_linear_33_17520)"/>
+<circle cx="175" cy="175" r="175" fill="url(#pattern0)"/>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_33_17520" transform="scale(0.00154321)"/>
+</pattern>
+<linearGradient id="paint0_linear_33_17520" x1="175" y1="0" x2="175" y2="350" gradientUnits="userSpaceOnUse">
+<stop offset="0.192708" stop-color="#494949" stop-opacity="0.78"/>
+<stop offset="0.947917" stop-color="#131313" stop-opacity="0.100645"/>
+<stop offset="1" stop-color="#131313" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
