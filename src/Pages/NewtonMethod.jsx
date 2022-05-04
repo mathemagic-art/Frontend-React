@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios"
 import { useState, useEffect } from "react";
-import EquationEditor from "equation-editor-next";
 // import MethodsCard from "../Components/MethodsCard";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
