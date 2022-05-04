@@ -24,7 +24,7 @@ const AboutUs = () => {
       <FunctionsMenu />
       <div className="flex flex-col">
         <Logo1 className="m-auto h-[134px] w-[120px] " />
-        <Quotemark className="place-self-start ml-60 mt-5" />
+        <Quotemark className="place-self-start ml-60 mt-5 fill-black dark:fill-white" />
         <h2 className="text-center fon-inter ml-96 mr-96 mt-5 italic text-3xl">
           MatheMagic offers a wealth of smart calculators from various domains
           of Mathematics. The stated goal of the site is to make scientific
@@ -32,7 +32,7 @@ const AboutUs = () => {
           onto scientific notations, equations, and formulas. MatheMagic, makes
           math simpler by doing magic.
         </h2>
-        <Quotemark className="rotate-180 place-self-end mr-60 self-end justify-self-end ml-auto" />
+        <Quotemark className="rotate-180 place-self-end mr-60 self-end justify-self-end ml-auto fill-black dark:fill-white" />
         <img
           src={professor}
           alt="Professor"
