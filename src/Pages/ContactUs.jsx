@@ -12,7 +12,7 @@ const ContactUs = () => {
       </h2>
       <form
         action="#"
-        className="grid w-2/5 m-auto p-12 bg-white dark:bg-black rounded-3xl shadow-xl border-2 grid-cols-2 gap-8 justify-center items-center z-10 bg-opacity-90 dark:border-black dark:bg-opacity-80 bg-blur-md"
+        className="backdrop-blur-sm grid w-2/5 m-auto p-12 bg-white dark:bg-black rounded-3xl shadow-xl border-2 grid-cols-2 gap-8 justify-center items-center z-10 bg-opacity-90 dark:border-black dark:bg-opacity-80 bg-blur-md"
       >
         <input
           type="text"
