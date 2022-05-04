@@ -9,3 +9,9 @@
 body {
   background: black;
 }
+
+.thumbnail:hover {
+  width:250px;
+  height: 250px;;
+  z-index:999;
+}
