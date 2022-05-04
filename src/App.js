@@ -16,20 +16,13 @@ import SimpsonCalc from "./Pages/SimpsonCalc";
 import TrapezoidCalc from "./Pages/TrapezoidCalc";
 import RectangleCalc from "./Pages/RectangleCalc";
 import IntegralCalc from "./Pages/IntegralCalc";
+import LimitTest from "./Pages/Test Pages/LimitTest";
 
 const App = () => {
-  
   return (
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={<Home />}
-      ></Route>
-      <Route
-        path="/TESTYOURSELF"
-        element={<TEST_YOURSELF />}
-      ></Route>
+      <Route exact path="/" element={<Home />}></Route>
+      <Route path="/TESTYOURSELF" element={<TEST_YOURSELF />}></Route>
       <Route path="/newton" element={<NewtonMethod />}></Route>
       <Route path="/diff" element={<DiffCalculator />}></Route>
       <Route path="/limit" element={<LimitCalc />}></Route>
@@ -38,18 +31,10 @@ const App = () => {
       <Route path="/trapezoid" element={<TrapezoidCalc />}></Route>
       <Route path="/rectangle" element={<RectangleCalc />}></Route>
       <Route path="/integral" element={<IntegralCalc />}></Route>
-      <Route
-        path="/CHEATSHEETS"
-        element={<CHEATSHEETS />}
-      ></Route>
-      <Route
-        path="/AboutUs"
-        element={<AboutUs />}
-      ></Route>
-      <Route
-        path="/CONTACTUS"
-        element={<ContactUs />}
-      ></Route>
+      <Route path="/CHEATSHEETS" element={<CHEATSHEETS />}></Route>
+      <Route path="/AboutUs" element={<AboutUs />}></Route>
+      <Route path="/CONTACTUS" element={<ContactUs />}></Route>
+      <Route path="/TESTYOURSELF/LIMITTEST" element={<LimitTest />}></Route>
     </Routes>
   );
 };

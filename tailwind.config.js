@@ -14,6 +14,7 @@ module.exports = {
         text: "#757D8A",
         head: "#5F5B80",
         border: "#5665AF",
+        button: "#6989FE",
       },
     },
     screens: {

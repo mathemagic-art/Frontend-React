@@ -38,7 +38,7 @@ const Test_Yourself = () => {
           <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
             <p className="h-[87%]"></p>
             <Link
-              to={"/"}
+              to={"/TESTYOURSELF/LIMITTEST"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[7.8rem]"
             >
               LIMIT
