@@ -40,7 +40,7 @@ const QuestionCard = ({ id, Question, Answer }) => {
           Skip to this Question {">>"}
         </button>
       </div>
-      <HeroBg className="-mt-[10%] m-auto z-0" />
+      {/* <HeroBg className="-mt-[10%] m-auto z-0" /> */}
     </div>
   );
 };
