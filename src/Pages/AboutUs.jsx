@@ -5,7 +5,6 @@ import { ReactComponent as Logo1 } from "../Files/svgs/Logo1.svg";
 import umar from "../Files/pngs/Umar.png";
 import abo from "../Files/pngs/abo.png";
 import { ReactComponent as Quotemark } from "../Files/svgs/Quotemark.svg";
-import { FaBeer } from "react-icons/fa";
 import professor from "../Files/pngs/Muso.png";
 
 const AboutUs = () => {
@@ -47,9 +46,6 @@ const AboutUs = () => {
         <div className={style.div}>
           <figure className={style.img}>
             <img src={umar} alt="Umar" className={style.hover_shadow} />
-            <a href="#" className="">
-              <FaBeer className="self-center justify-self-start" />
-            </a>
             <figcaption className={style.name}>
               ELNAZAR <br />
               ULANBEK ULUU
