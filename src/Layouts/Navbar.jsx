@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import NavLink from "../Components/NavLink";
 import { ReactComponent as Logo } from "../Files/svgs/Logo.svg";
 import { ReactComponent as Bucket } from "../Files/svgs/bucket.svg";
@@ -13,24 +13,34 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="flex flex-row items-center  text-2xl tablet:text-lg text-dark bg-white dark:bg-dark dark:text-white shadow-md h-[13%]">
+    <div className="flex flex-row items-center  text-2xl tablet:text-lg text-dark bg-white dark:bg-dark dark:text-white shadow-md border-b-2 dark:border-dark">
       <div className="flex mx-10 tablet:mx-2">
         <button onClick={toggle}>
           <Bucket className="dark:fill-white fill-black" />
-          <FunctionsMenu isOpen={isOpen}/>
+          <FunctionsMenu isOpen={isOpen} />
         </button>
       </div>
       <div className="flex flex-row p-10 py-10 px-5 space-x-10 tablet:space-x-3 items-center m-auto gap-20 tablet:gap-3">
         <NavLink text={"TEST YOURSELF"} onClick={toggle} isOpen={isOpen} />
-        <NavLink text={"CHEATSHEETS"} onClick={toggle} isOpen={isOpen}/>
+        <NavLink text={"CHEATSHEETS"} onClick={toggle} isOpen={isOpen} />
         <Link to="/">
           <h1 className="text-4xl tablet:text-2xl font-semibold text-center flex flex-row">
-            <Logo className="mr-3" onClick={toggle} isOpen={isOpen}/>
+            <Logo className="mr-3" onClick={toggle} isOpen={isOpen} />
             MATHEMAGICS
           </h1>
         </Link>
-        <NavLink text={"ABOUT US"} className="flex" onClick={toggle} isOpen={isOpen}/>
-        <NavLink text={"CONTACT US"} className="flex" onClick={toggle} isOpen={isOpen}/>
+        <NavLink
+          text={"ABOUT US"}
+          className="flex"
+          onClick={toggle}
+          isOpen={isOpen}
+        />
+        <NavLink
+          text={"CONTACT US"}
+          className="flex"
+          onClick={toggle}
+          isOpen={isOpen}
+        />
         <Toggle />
       </div>
     </div>

@@ -44,63 +44,9 @@ const Test_Yourself = () => {
               LIMIT
             </Link>
           </div>
-          <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
-            <p className="h-[87%]"></p>
-            <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
-              className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[2.52rem]"
-            >
-              NEWTON'S METHOD
-            </Link>
-          </div>
-          <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
-            <p className="h-[87%]"></p>
-            <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
-              className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[3.6rem]"
-            >
-              SYMPSON'S RULE
-            </Link>
-          </div>
-          <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
-            <p className="h-[87%]"></p>
-            <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
-              className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[2.75rem]"
-            >
-              TRAPEZOIDAL RULE
-            </Link>
-          </div>
-          <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
-            <p className="h-[87%]"></p>
-            <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
-              className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[4.06rem]"
-            >
-              MIDPOINT RULE
-            </Link>
-          </div>
-          <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
-            <p className="h-[87%]"></p>
-            <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
-              className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[5.75rem]"
-            >
-              GEOMETRY
-            </Link>
-          </div>
-          <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
-            <p className="h-[87%]"></p>
-            <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
-              className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[5.35rem]"
-            >
-              ARITHMETIC
-            </Link>
-          </div>
         </div>
       </div>
-      <div className="ml-[46%] pb-20 pt-10">
+      <div className="ml-[46%] pb-20 pt-32">
         <Link
           to={"/TESTYOURSELF/LIMITTEST"}
           className="shadow-md border-2 rounded-sm bg-white text-dark py-2 px-3 mx-2"

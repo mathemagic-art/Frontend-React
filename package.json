@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://api-mathemagics.herokuapp.com/",
   "dependencies": {
     "axios": "^0.26.1",
     "chokidar": "^3.5.3",
