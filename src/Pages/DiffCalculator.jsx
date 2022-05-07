@@ -59,7 +59,7 @@ const DiffCalculator = () => {
 
   const handleSubmit = (event) => {
     axios
-      .post("http://api-mathemagics.herokuapp.com/differentiation/", data)
+      .post("differentiation/", data)
       .then((res) => {
         setAnswer(res.data);
       });
