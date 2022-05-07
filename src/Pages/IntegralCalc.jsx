@@ -26,28 +26,6 @@ const IntegralCalc = () => {
 
   console.log(data);
 
-  // const handleInput = (event) => {
-  //   console.log(event.target)
-  //   setData(values => ({...values, [event.target.name] : event.target.value}))
-
-  // }
-  // const handleFunction = (event) => {
-  //   // setData({equation: event.target.value});
-  //   // console.log("something")
-  // };
-  // const handleFirst = (event) => {
-  //   setData({first: event.target.value})
-  // };
-  // const handleSecond = (event) => {
-  //   setData({second: event.target.value})
-
-  // };
-
-  // const handleClick = () =>{
-  //   console.log(data)
-  //   // axios.post("https://api-mathemagics.herokuapp.com/definite-integral/", data).then((res)=>{setAnswer(res)})
-  // };
-
   const handleReset = (event) => {
     event.preventDefault();
     setData({
@@ -135,7 +113,7 @@ const IntegralCalc = () => {
               <div className="flex rounded-xl text-black mb-10 " id="searchbox">
                 <input
                   required
-                  className="w-full h-[50px] p-4 border-2  border-primary rounded-l-xl text-lg"
+                  className="w-full h-[50px] p-4 border-2  border-primary rounded-l-xl text-lg "
                   type="text"
                   id="function"
                   name="argument_2"
