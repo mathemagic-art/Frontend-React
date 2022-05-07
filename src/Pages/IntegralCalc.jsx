@@ -91,7 +91,6 @@ const IntegralCalc = () => {
   };
 
   const handleSubmit = (event) => {
-<<<<<<< HEAD
     axios.post("universal_integral/", data).then((res) => {
       setAnswer(res.data);
     });
@@ -99,14 +98,6 @@ const IntegralCalc = () => {
     console.log(answer);
     event.preventDefault();
   };
-=======
-    axios.post("universal_integral/", data).then((res)=>{setAnswer(res.data)})
-    console.log(data)
-    console.log(answer)
-    event.preventDefault()
-    
-  }
->>>>>>> e14b4f0d0fa9a2249a482f47e5b6b090a4730034
   return (
     <>
       <Navbar toggle={toggle} />
