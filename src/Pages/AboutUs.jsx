@@ -33,16 +33,12 @@ const AboutUs = () => {
           math simpler by doing magic.
         </h2>
         <Quotemark className="rotate-180 place-self-end mr-60 self-end justify-self-end ml-auto fill-black dark:fill-white" />
-        <img
-          src={professor}
-          alt="Professor"
-          className="self-end ml-auto mr-32 mt-[85px] w-[300px] h-[300px]"
-        />
+        <img src={professor} alt="Professor" className="self-end ml-auto mr-32 mt-[85px] w-[300px] h-[300px]"/>
 
-        <h1 className="text-center font-inter text-bold text-6xl mt-[320px]">
+        <h1 className="text-center font-inter text-bold text-6xl mt-[150px]">
           Meet our TEAM
         </h1>
-        <h2 className={style.teams}> PRODUCT MANAGERS</h2>
+        <h2 className={style.teams}> PROJECT MANAGERS</h2>
         <div className={style.div}>
           <figure className={style.img}>
             <img src={umar} alt="Umar" className={style.hover_shadow} />
@@ -98,64 +94,6 @@ const AboutUs = () => {
           </figure>
         </div>
 
-        {/* FRONTEND DEVELOPMENT TEAM */}
-        <h2 className={style.teams}>Frontend Development</h2>
-        <div className={style.div}>
-          <figure className={style.img}>
-            <img src={umar} alt="Umar Nurov" className={style.hover_shadow} />
-            <figcaption className={style.name}>
-              UMAR <br />
-              NUROV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={umar}
-              alt="Umidbek Ulmasov"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              UMIDBEK <br />
-              ULMASOV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={abo}
-              alt="Abdullah Nazari"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ABDULLAH
-              <br />
-              NAZARI
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={umar}
-              alt="Marzia Taban Jafari"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              MARZIA
-              <br />
-              TABAN JAFARI
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={umar}
-              alt="Jasurbek Sadiev"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              JASURBEK
-              <br />
-              SADIEV
-            </figcaption>
-          </figure>
-        </div>
 
         {/* BACKEND DEVELOPMENT TEAM */}
         <h2 className={style.teams}>Backend Development</h2>
@@ -219,6 +157,64 @@ const AboutUs = () => {
             />
             <figcaption className={style.name}>
               JASURBEK <br />
+              SADIEV
+            </figcaption>
+          </figure>
+        </div>
+        {/* FRONTEND DEVELOPMENT TEAM */}
+        <h2 className={style.teams}>Frontend Development</h2>
+        <div className={style.div}>
+          <figure className={style.img}>
+            <img src={umar} alt="Umar Nurov" className={style.hover_shadow} />
+            <figcaption className={style.name}>
+              UMAR <br />
+              NUROV
+            </figcaption>
+          </figure>
+          <figure className={style.img}>
+            <img
+              src={umar}
+              alt="Umidbek Ulmasov"
+              className={style.hover_shadow}
+            />
+            <figcaption className={style.name}>
+              UMIDBEK <br />
+              ULMASOV
+            </figcaption>
+          </figure>
+          <figure className={style.img}>
+            <img
+              src={abo}
+              alt="Abdullah Nazari"
+              className={style.hover_shadow}
+            />
+            <figcaption className={style.name}>
+              ABDULLAH
+              <br />
+              NAZARI
+            </figcaption>
+          </figure>
+          <figure className={style.img}>
+            <img
+              src={umar}
+              alt="Marzia Taban Jafari"
+              className={style.hover_shadow}
+            />
+            <figcaption className={style.name}>
+              MARZIA
+              <br />
+              TABAN JAFARI
+            </figcaption>
+          </figure>
+          <figure className={style.img}>
+            <img
+              src={umar}
+              alt="Jasurbek Sadiev"
+              className={style.hover_shadow}
+            />
+            <figcaption className={style.name}>
+              JASURBEK
+              <br />
               SADIEV
             </figcaption>
           </figure>
