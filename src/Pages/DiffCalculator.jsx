@@ -97,7 +97,7 @@ const DiffCalculator = () => {
                   }
                 />{" "}
                 <button className="px-4 w-[67px] border-2 dark:border-primary rounded-r-lg ">
-                  <Fx className="dark:fill-white fill-tx " />
+                  <Fx className="dark:fill-white fill-tx w-[25px]" />
                 </button>
               </div>
               <label htmlFor="first" className="ml-2 dark:text-bright  text-text">

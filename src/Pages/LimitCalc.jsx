@@ -82,24 +82,24 @@ const LimitCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white" >
         <form onSubmit={handleSubmit}>
-        <div className="ml-32 mt-12 border-2 w-[55%] h-[95%] rounded-3xl text-white p-10 bg-dark bg-opacity-30">
-          <h2 className="text-center text-3xl font-primary text-primary">
+        <div className="ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-sm shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black ">
+          <h2 className="text-center text-[30px] font-Manrope font-bold text-primary ">
             Limit Calculator
           </h2>
-          <p className="text-center text-text mb-10">
-            Analyses the behavior of a function near a particular point{" "}
+          <p className="text-center text-[14px] text-text mb-[21px] ">
+            Analyses the behavior of a function near a particular point{" "}<br />
             infinity(oo, -oo) and pi(π)
           </p>
           <div>
-            <label htmlFor="function" className="ml-2 text-bright text-xl">
+            <label htmlFor="function" className="ml-2 dark:text-bright text-text text-[16px]">
               Enter a function f(x)
             </label>
-            <div className="flex rounded-xl text-black mb-10 " id="searchbox">
+            <div className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] " id="searchbox">
               <input
               required
-                className="w-full p-4 border-2  border-primary rounded-l-xl text-xl"
+                className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-xl text-xl"
                 type="text"
                 id="function"
                 name="argument_1"
@@ -107,24 +107,24 @@ const LimitCalc = () => {
                 onChange={handleInput}
                 
                 />{" "}
-              <button className="px-4 border-2 border-primary rounded-r-xl ">
-                <Fx />
+              <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
+                <Fx className="dark:fill-white fill-tx w-[25px]"/>
               </button>
             </div>
-            <label htmlFor="first" className="ml-2 text-bright text-xl">
+            <label htmlFor="first" className="ml-2 dark:text-bright text-text text-[16px]">
               Respect to
             </label>
-            <input name="argument_2" value={data.argument_2} onChange = {handleInput} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10" />
+            <input name="argument_2" value={data.argument_2} onChange = {handleInput} className="w-[460px] h-[48px] p-4 border-2 text-black text-xl dark:border-primary rounded-[8px] mb-[40px]" />
                 
-            <label htmlFor="second" className="ml-2 text-bright text-xl">
+            <label htmlFor="second" className="ml-2 dark:text-bright text-text text-[16px]">
               Side
             </label>
-            <select value = {data.argument_3} name="argument_3" onChange = {handleInput} className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10">
+            <select value = {data.argument_3} name="argument_3" onChange = {handleInput} className="w-[460px] h-[48px] p-3 border-2 dark:text-black text-text text-[18px] dark:border-primary rounded-[8px] mb-[40px] ">
                 <option value = "+-">Two-sided</option>
                 <option value = "-">Left (-)</option>
                 <option value = "+">Right (+)</option>
             </select>
-            <label htmlFor="third" className="ml-2 text-bright text-xl">
+            <label htmlFor="third" className="ml-2 dark:text-bright text-text text-[16px]">
               Limits approach to
             </label>
             <input
@@ -134,24 +134,24 @@ const LimitCalc = () => {
               value={data.argument_4}
               name="argument_4"
               onChange={handleInput}
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
+              className="w-[460px] h-[48px] p-4 border-2  text-black dark:border-primary rounded-xl mb-[40px] text-xl"
               defaultValue="oo"
               />    
           </div>
           <div className=" flex justify-evenly">
-            <button className="bg-primary text-white px-6 py-2 text-center text-lg rounded-md" type="submit" >
+            <button className="bg-primary text-white w-[116px] h-[48px] font-medium text-center text-[16px] rounded-[8px]" type="submit" >
               Magic!
             </button>
-            <button className="bg-white text-black px-6 py-2 text-center text-lg rounded-md" onClick={handleReset}>
+            <button className="bg-white dark:text-black text-primary border-primary  border-2  w-[116px] h-[48px] font-medium text-center text-lg rounded-[8px]" onClick={handleReset}>
               Reset!
             </button>
           </div>
         </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-white">
-          <p className="mt-24 ml-10 font-normal text-2xl flex">According to Limit Rule's:<Newton className="ml-10 -mt-5"/></p>
-          <div className="flex mt-10 pl-10 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-          <p>The limit of {!data.argument_1? variable: (variable + " = " + data.argument_1)} as x approaches {approach} : {!data.argument_2 ? "": variable}=</p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{answer !=="" ? answer:"_____________" }</div>
+        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
+          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">According to Limit Rule's:<Newton className="fill-tx dark:fill-white ml-10 -mt-5"/></p>
+          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
+          <p>The limit of {!data.argument_1? variable: (variable + " = " + data.argument_1)} as x approaches {approach} : {!data.argument_2 ? "": variable}=</p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">{answer !=="" ? answer:"_____________" }</div>
           </div>
         </div>
       </div>
