@@ -2,16 +2,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
-  
-
-}
-body {
-  background: black;
 }
 
 .thumbnail:hover {
-  width:250px;
-  height: 250px;;
-  z-index:999;
+  width: 250px;
+  height: 250px;
+  z-index: 999;
 }

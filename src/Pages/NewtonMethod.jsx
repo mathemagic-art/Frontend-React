@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import MethodsCard from "../Components/MethodsCard";
+
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
-import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
+var Latex = require("react-latex");
 
 const NewtonMethod = () => {
   const [data, setData] = useState({
@@ -48,7 +48,7 @@ const NewtonMethod = () => {
       {isOpen ? <FunctionsMenu /> : ""}
       <div className="flex tablet:flex-col  text-dark bg-white dark:bg-dark dark:text-white pt-20">
         <form onSubmit={handleSubmit}>
-          <div className="ml-52 mt-12 border-2 w-1/2 h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30">
+          <div className="ml-52 mt-12 border-2 w-1/2 h-full rounded-3xl  p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-3xl font-primary text-primary">
               Newton's Method Calculator
             </h2>
@@ -56,24 +56,32 @@ const NewtonMethod = () => {
               Finds the roots of the equation f(x)=0{" "}
             </p>
             <div>
-              <label htmlFor="function" className="ml-2 text-bright">
+              <label
+                htmlFor="function"
+                className="ml-2 dark:text-bright text-text "
+              >
                 Enter a function f(x)
               </label>
-              <div className="flex rounded-xl text-black mb-10" id="searchbox">
+              <div
+                className="flex rounded-xl dark:text-bright text-text mb-10"
+                id="searchbox"
+              >
                 <input
                   required
-                  className="w-full p-4 border-2  border-primary rounded-l-xl text-xl"
+                  className="w-full p-4 border-2  dark:border-primary rounded-l-xl text-xl"
                   type="text"
-                  // id="function"
                   name="argument_1"
                   value={data.argument_1}
                   onChange={handleInput}
                 />{" "}
-                <button className="px-4 border-2 border-primary rounded-r-xl ">
-                  <Fx />
+                <button className="px-4 border-2 dark:border-primary rounded-r-xl ">
+                  <Fx className="dark:fill-white fill-black " />
                 </button>
               </div>
-              <label htmlFor="respect" className="ml-2 text-bright">
+              <label
+                htmlFor="respect"
+                className="ml-2  dark:text-bright text-text"
+              >
                 With Respect to
               </label>
               <input
@@ -81,10 +89,13 @@ const NewtonMethod = () => {
                 id="respect"
                 value={data.argument_2}
                 onChange={handleInput}
-                className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
+                className="w-full p-4 border-2  text-black dark:border-primary rounded-xl mb-10 text-xl"
               />
 
-              <label htmlFor="iterations" className="ml-2 text-bright">
+              <label
+                htmlFor="iterations"
+                className="ml-2  dark:text-bright text-text"
+              >
                 Number of Iterations
               </label>
               <input
@@ -94,7 +105,7 @@ const NewtonMethod = () => {
                 name="argument_3"
                 value={data.argument_3}
                 onChange={handleInput}
-                className="w-full p-4 border-2 text-black  border-primary rounded-xl mb-10 text-xl"
+                className="w-full p-4 border-2 text-black  dark:border-primary rounded-xl mb-10 text-xl"
               />
             </div>
             <div className=" flex justify-evenly">
@@ -116,14 +127,13 @@ const NewtonMethod = () => {
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-black dark:text-white tablet:w-full tablet:pl-16 tablet:pb-16">
           <p className="mt-24 ml-10 font-normal text-2xl flex">
             According to Newton's Method:
-            <Newton className="ml-10 -mt-5  fill-black dark:fill-current" />
+            <Newton className="ml-10 -mt-5  fill-black dark:fill-white" />
           </p>
           <div className="flex mt-10 pl-10 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide text-dark bg-white dark:bg-dark dark:text-white">
-            <p>The root of</p>
-            <X2 className="mx-5 -mt-3 fill-dark dark:fill-current" />
-            <p>equals to </p>
+            <p className="pr-4">The root of</p> <Latex>{data.argument_1}</Latex>
+            <p className="pl-4">equals to </p>
             <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">
-              {data.argument_2}(0)={answer !== "" ? answer : "_____________"}
+              {answer !== "" ? answer : "_____________"}
             </div>
           </div>
         </div>
