@@ -116,7 +116,7 @@ const NewtonMethod = () => {
                 Magic!
               </button>
               <button
-                className="bg-white text-black px-6 py-2 text-center text-lg rounded-md"
+                className="bg-white dark:text-black text-primary px-6 py-2 text-center text-lg rounded-md"
                 onClick={handleReset}
               >
                 Reset!

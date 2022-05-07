@@ -71,9 +71,9 @@ const DiffCalculator = () => {
     <>
       <Navbar />
       <FunctionsMenu />
-      <div className="flex">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white ">
         <form onSubmit={handleSubmit}>
-          <div className="ml-32 mt-12 border-2 w-[60%] h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30">
+          <div className="ml-32 mt-12 border-2 w-[60%] h-full rounded-3xl  p-10 dark:bg-dark bg-bg dark:text-white text-black bg-opacity-30">
             <h2 className="text-center text-3xl font-primary text-primary">
               Derivative Calculator
             </h2>
@@ -81,13 +81,13 @@ const DiffCalculator = () => {
               Finds the instantaneous rate of change of a function{" "}
             </p>
             <div>
-              <label htmlFor="function" className="ml-2 text-bright">
+              <label htmlFor="function" className="ml-2 dark:text-bright text-text">
                 Enter a function f(x)
               </label>
-              <div className="flex rounded-xl text-black mb-10" id="searchbox">
+              <div className="flex rounded-xl dark:text-black text-black mb-10" id="searchbox">
                 <input
                   required
-                  className="w-full p-4 border-2  border-primary rounded-l-xl text-xl"
+                  className="w-full p-4 border-2  dark:border-primary rounded-l-xl text-xl"
                   type="text"
                   name="argument_1"
                   id="function"
@@ -96,11 +96,11 @@ const DiffCalculator = () => {
                     setData((prev) => ({ ...prev, argument_1: e.target.value }))
                   }
                 />{" "}
-                <button className="px-4 border-2 border-primary rounded-r-xl ">
-                  <Fx />
+                <button className="px-4 border-2 dark:border-primary rounded-r-xl ">
+                  <Fx className="dark:fill-white fill-black " />
                 </button>
               </div>
-              <label htmlFor="first" className="ml-2 text-bright">
+              <label htmlFor="first" className="ml-2 dark:text-bright text-text">
                 With respect to variable
               </label>
               <input
@@ -110,10 +110,10 @@ const DiffCalculator = () => {
                 onChange={(e) =>
                   setData((prev) => ({ ...prev, argument_2: e.target.value }))
                 }
-                className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10"
+                className="w-full p-4 border-2 text-black text-xl dark:border-primary rounded-xl mb-10"
               />
 
-              <label htmlFor="second" className="ml-2 text-bright">
+              <label htmlFor="second" className="ml-2 dark:text-bright text-text">
                 Order of derivative
               </label>
               <select
@@ -123,9 +123,9 @@ const DiffCalculator = () => {
                 onChange={(e) =>
                   setData((prev) => ({ ...prev, argument_3: e.target.value }))
                 }
-                className="w-full p-4 border-2 text-black text-xl border-primary rounded-xl mb-10"
+                className="w-full p-4 border-2 dark:text-black text-text text-xl dark:border-primary rounded-xl mb-10"
               >
-                <option value="1" className="text-2xl">
+                <option value="1" className="">
                   First Order
                 </option>
                 <option value="2">Second Order</option>
@@ -139,7 +139,7 @@ const DiffCalculator = () => {
                 Magic!
               </button>
               <button
-                className="bg-white text-black px-6 py-2 text-center text-lg rounded-md"
+                className="bg-white dark:text-black text-primary border-primary  border-2  px-6 py-2 text-center text-lg rounded-md"
                 onClick={handleReset}
               >
                 Reset!
@@ -147,13 +147,13 @@ const DiffCalculator = () => {
             </div>
           </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-white">
-          <p className="mt-24 pl-20 font-normal text-2xl flex">
+        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
+          <p className="mt-24 pl-20 font-semi-bold text-[28px] flex">
             According to Differential Rules:
-            <Newton className="ml-10 -mt-5" />
+            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
           </p>
           <div className="flex mt-10 pl-20 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p>
+            <p className="text-[28px] font-semi-bold text-tx dark:text-white">
               The Derivative of{" "}
               {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
               equals to{" "}
