@@ -71,23 +71,23 @@ const SimpsonCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white">
         <form onSubmit={handleSubmit}>
-        <div className="ml-32 mt-12 border-2 w-[50%] h-[95%] rounded-3xl text-white p-10 bg-dark bg-opacity-30">
-          <h2 className="text-center text-3xl font-primary text-primary">
+        <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
+          <h2 className="text-center text-[30px] font-inter font-bold text-primary">
             Simpson's 1/3 Rule Calculator
           </h2>
-          <p className="text-center text-text mb-10">
+          <p className="text-center font-inter text-[12px] text-text mb-[33px]">
             Approximate the value of a definite integral by using quadratic functions{" "}
           </p>
           <div>
-            <label htmlFor="function" className="ml-2 text-bright text-xl">
+            <label htmlFor="function" className="ml-2 dark:text-bright text-text text-[16px]">
               Enter a function f(x)
             </label>
-            <div className="flex rounded-xl text-black mb-10 " id="searchbox">
+            <div className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] " id="searchbox">
               <input
               required
-                className="w-full p-4 border-2  border-primary rounded-l-xl text-xl"
+                className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
                 type="text"
                 id="function"
                 name="argument_1"
@@ -95,11 +95,11 @@ const SimpsonCalc = () => {
                 onChange={handleInput}
                 
                 />{" "}
-              <button className="px-4 border-2 border-primary rounded-r-xl ">
-                <Fx />
+              <button className="px-4 border-2 dark:border-primary rounded-r-[8px] w-[67px] h-[48px] ">
+                <Fx className="dark:fill-white fill-tx w-[25px]" />
               </button>
             </div>
-            <label htmlFor="lower-limit" className="ml-2 text-bright text-xl">
+            <label htmlFor="lower-limit" className="ml-2 dark:text-bright text-text text-[16px] ">
               Respect to
             </label>
             <input
@@ -109,9 +109,9 @@ const SimpsonCalc = () => {
               name="argument_2"
               value={data.argument_2}
               onChange={handleInput}
-              className="w-full p-4 border-2 text-black  border-primary rounded-xl mb-10 text-xl"
+              className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
             />
-            <label htmlFor="upper-limit" className="ml-2 text-bright text-xl">
+            <label htmlFor="upper-limit" className="ml-2 dark:text-bright text-text text-[16px] ">
               Initial Point
             </label>
             <input
@@ -121,9 +121,9 @@ const SimpsonCalc = () => {
               value={data.argument_3}
               name="argument_3"
               onChange={handleInput}
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
+              className="w-[460px] h-[48px] p-4 border-2  text-black dark:border-primary rounded-[8px] mb-[40px] text-xl"
               />
-              <label htmlFor="intervals" className="ml-2 text-bright text-xl">
+              <label htmlFor="intervals" className="ml-2 dark:text-bright text-text text-[16px] ">
               End Point
             </label>
             <input
@@ -133,23 +133,23 @@ const SimpsonCalc = () => {
               value={data.argument_4}
               name="argument_4"
               onChange={handleInput}
-              className="w-full p-4 border-2  text-black border-primary rounded-xl mb-10 text-xl"
+              className="w-[460px] h-[48px] p-4 border-2  text-black dark:border-primary rounded-[8px] mb-[40px] text-xl"
               />
           </div>
           <div className=" flex justify-evenly">
-            <button className="bg-primary text-white px-6 py-2 text-center text-lg rounded-md" type="submit" >
+            <button className="bg-primary text-white w-[116px] h-[48px] font-medium text-center text-[16px] rounded-[8px]" type="submit" >
               Magic!
             </button>
-            <button className="bg-white text-black px-6 py-2 text-center text-lg rounded-md" onClick={handleReset}>
+            <button className="bg-white dark:text-black text-primary border-primary  border-2  w-[116px] h-[48px] font-medium text-center text-lg rounded-[8px]" onClick={handleReset}>
               Reset!
             </button>
           </div>
         </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-white">
-          <p className="mt-24 ml-10 font-normal text-2xl flex">Based on Simpson's 1/3 Rule's:<Newton className="ml-10 -mt-5"/></p>
-          <div className="flex mt-10 pl-10 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-          <p>The answer for {!data.equation? "f(x)": ("f(x) = " + data.equation)} is: </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">{answer !=="" ? answer:"_____________" }</div>
+        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-text dark:text-white">
+          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">Based on Simpson's 1/3 Rule's:<Newton className="fill-tx dark:fill-white ml-10 -mt-5"/></p>
+          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
+          <p>The answer for {!data.equation? "f(x)": ("f(x) = " + data.equation)} is: </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">{answer !=="" ? answer:"_____________" }</div>
           </div>
         </div>
       </div>
