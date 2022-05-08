@@ -64,7 +64,7 @@ const NewtonMethod = () => {
                 Enter a function f(x)
               </label>
               <div
-                className="flex rounded-xl dark:text-bright text-text mb-10"
+                className="flex rounded-xl dark:text-black text-text mb-10"
                 id="searchbox"
               >
                 <input
@@ -136,7 +136,7 @@ const NewtonMethod = () => {
               {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
               equals to{" "}
             </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-">
+            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
               {data.argument_2}=
               {answer !== "" ? answer : "_____________"}
             </div>

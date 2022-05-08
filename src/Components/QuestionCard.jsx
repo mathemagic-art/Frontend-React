@@ -4,8 +4,8 @@ import { ReactComponent as HeroBg } from "../Files/svgs/HeroBG.svg";
 
 const QuestionCard = ({ id, Question, Answer }) => {
   return (
-    <div>
-      <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center z-10">
+    <div className="z-20">
+      <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center z-20">
         <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl">
           Question {id}
         </h3>
@@ -40,7 +40,7 @@ const QuestionCard = ({ id, Question, Answer }) => {
           Skip to this Question {">>"}
         </button>
       </div>
-      {/* <HeroBg className="-mt-[10%] m-auto z-0" /> */}
+      <HeroBg className="-mt-[10%] m-auto z-0" />
     </div>
   );
 };
