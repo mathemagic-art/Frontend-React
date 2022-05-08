@@ -74,7 +74,7 @@ const DiffCalculator = () => {
       <div className="flex text-dark bg-white dark:bg-dark dark:text-white ">
         <form onSubmit={handleSubmit}>
           <div className="justify-start ml-[114px] mt-[94px] border-2 w-[554px] h-[665px] rounded-[30px] drop-shadow-lg  p-10 dark:bg-dark bg-bg dark:text-white text-black">
-            <h2 className="mt-5 text-center text-3xl font-primary text-primary">
+            <h2 className="mt-5 text-center text-[30px] font-inter font-bold text-primary">
               Derivative Calculator
             </h2>
             <p className="text-center text-text mb-10">

@@ -84,8 +84,8 @@ const LimitCalc = () => {
       {isOpen ? <FunctionsMenu /> : ""}
       <div className="flex text-dark bg-white dark:bg-dark dark:text-white" >
         <form onSubmit={handleSubmit}>
-        <div className="ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-sm shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black ">
-          <h2 className="text-center text-[30px] font-Manrope font-bold text-primary ">
+        <div className="ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-lg rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black ">
+          <h2 className="text-center text-[30px] font-inter font-bold text-primary ">
             Limit Calculator
           </h2>
           <p className="text-center text-[14px] text-text mb-[21px] ">

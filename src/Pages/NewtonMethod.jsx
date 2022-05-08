@@ -49,8 +49,8 @@ const NewtonMethod = () => {
       {isOpen ? <FunctionsMenu /> : ""}
       <div className="flex tablet:flex-col text-dark bg-white dark:bg-dark dark:text-white pt-20">
         <form onSubmit={handleSubmit}>
-          <div className="justify-start ml-[114px] mt-6 shadow- border-2 w-[554px] h-[672px] rounded-3xl  p-10 dark:bg-dark bg-bg dark:text-white text-black">
-            <h2 className="text-center text-3xl font-primary text-primary">
+          <div className="justify-start ml-[114px] mt-6 drop-shadow-lg border-2 w-[554px] h-[672px] rounded-3xl  p-10 dark:bg-dark bg-bg dark:text-white text-black">
+            <h2 className="text-center text-[30px] font-inter font-bold text-primary">
               Newton's Method Calculator
             </h2>
             <p className="text-center text-text mb-10">
