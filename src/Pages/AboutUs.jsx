@@ -4,6 +4,7 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { ReactComponent as Logo1 } from "../Files/svgs/Logo1.svg";
 import umar from "../Files/pngs/Umar.png";
 import abo from "../Files/pngs/abo.png";
+import Umedjon from "../Files/pngs/Umedjon.png";
 import { ReactComponent as Quotemark } from "../Files/svgs/Quotemark.svg";
 import professor from "../Files/pngs/Muso.png";
 
@@ -61,7 +62,7 @@ const AboutUs = () => {
         <div className={style.div}>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={Umedjon}
               alt="Umidbek Ulmasov"
               className={style.hover_shadow}
             />
