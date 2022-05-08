@@ -44,19 +44,19 @@ const IntegralCalc = () => {
   let variable = "";
 
   if (data.argument_1 === "type1") {
-    style_for_content_div = " w-1/2 ml-60 mt-12 mr-20 flex flex-col text-white";
+    style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
     style_for_main_div =
-      "ml-52 mt-12 border-2 w-[60%] h-full rounded-3xl text-white p-10 bg-dark bg-opacity-30";
+      "mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[665px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black";
     url = "indefinite-integral/";
     variable =
-      "w-full h-[50px] p-4 border-2 mt-7 -ml-[85px] text-black border-primary rounded-xl mb-10 text-xl";
+      "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl";
   } else {
-    style_for_content_div = " w-1/2 ml-60 mt-12 mr-20 flex flex-col text-white";
+    style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
     style_for_main_div =
-      "ml-52 mt-12 border-2 w-[50%] h-full rounded-3xl text-white p-10  bg-dark bg-opacity-30";
+      "mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[760px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black";
     url = "definite-integral/";
     variable =
-      "w-[25%] h-[50px] p-4 border-2 mt-7 -ml-[85px] text-black border-primary rounded-xl mb-10 text-xl";
+      "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl";
   }
   // useEffect(() => {
 
@@ -80,20 +80,37 @@ const IntegralCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white">
         <form onSubmit={handleSubmit}>
           <div className={style_for_main_div}>
-            <h2 className="text-center text-3xl font-primary text-primary">
+            <h2 className="text-center text-[30px] mt-5 font-inter font-bold text-primary">
               {data.argument_1 === "type1"
                 ? "Indefinite Integral Calculator"
                 : "Definite Integral Calculator"}
             </h2>
-            <p className="text-center text-text mb-10">
+            <p className="text-center text-text mt-[11px] mb-[24px]">
               Find areas and volumes by adding the slices to find the whole.{" "}
             </p>
+              <label htmlFor="function" className="ml-2 dark:text-bright mb-[30px] text-text text-[18px] ">
+                Enter a function f(x)
+              </label>
+              <div className="flex rounded-l-[8px] text-black mb-[30px] " id="searchbox">
+                <input
+                  required
+                  className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                  type="text"
+                  id="function"
+                  name="argument_2"
+                  value={data.argument_2}
+                  onChange={handleInput}
+                />{" "}
+                <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
+                  <Fx className="dark:fill-white fill-tx w-[25px]"/>
+                </button>
+              </div>
             <div className="">
-              <label htmlFor="list" className="ml-2 text-bright text-xl">
-                Integral type
+              <label htmlFor="list" className="ml-2 dark:text-bright text-text text-[18px] ">
+                Integration type
               </label>
               <select
                 id="list"
@@ -101,31 +118,14 @@ const IntegralCalc = () => {
                 defaultValue="type1"
                 value={data.argument_1}
                 onChange={handleInput}
-                className="w-full h-[50px] p-2 border-2 text-black text-lg border-primary rounded-xl mb-10"
+                className="w-[460px] h-[48px] p-2 border-2 text-text  dark:border-primary rounded-[8px] mb-[30px] text-lg"
               >
                 <option value="type1">Indefinite Integral</option>
                 <option value="type2">Definite Integral</option>
               </select>
 
-              <label htmlFor="function" className="ml-2 text-bright text-xl">
-                Enter a function f(x)
-              </label>
-              <div className="flex rounded-xl text-black mb-10 " id="searchbox">
-                <input
-                  required
-                  className="w-full h-[50px] p-4 border-2  border-primary rounded-l-xl text-lg "
-                  type="text"
-                  id="function"
-                  name="argument_2"
-                  value={data.argument_2}
-                  onChange={handleInput}
-                />{" "}
-                <button className="px-4 border-2 border-primary rounded-r-xl ">
-                  <Fx />
-                </button>
-              </div>
-              <div className="flex flex-row gap-5 w-full">
-                <label htmlFor="variable" className=" text-bright text-lg">
+              <div>
+                <label htmlFor="variable" className=" dark:text-bright text-text text-[18px] ">
                   Variable
                 </label>
                 <input
@@ -135,16 +135,16 @@ const IntegralCalc = () => {
                   value={data.argument_3}
                   name="argument_3"
                   onChange={handleInput}
-                  className={variable}
+                  className={variable }
                 />
 
                 {data.argument_1 === "type1" ? (
                   ""
                 ) : (
-                  <div className="flex flex-row">
+                  <div>
                     <label
                       htmlFor="third"
-                      className=" ml-6 text-center flex flex-row text-bright w-auto h-auto text-lg"
+                      className=" ml-2 dark:text-bright text-text text-[18px]"
                     >
                       Lower
                     </label>
@@ -154,13 +154,13 @@ const IntegralCalc = () => {
                       value={data.argument_4}
                       name="argument_4"
                       onChange={handleInput}
-                      className="w-[100%] h-[50px] p-4 border-2 mt-7 -ml-16  text-black border-primary rounded-xl mb-10 text-xl"
+                      className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
                       defaultValue="oo"
                     />
 
                     <label
                       htmlFor="third"
-                      className="ml-2 pl-8 pr-auto text-bright text-lg"
+                      className="ml-2 dark:text-bright text-text text-[18px] "
                     >
                       Upper
                     </label>
@@ -170,7 +170,7 @@ const IntegralCalc = () => {
                       value={data.argument_5}
                       name="argument_5"
                       onChange={handleInput}
-                      className="w-[100%] h-[50px] p-4 mt-7 -ml-16 border-2 text-black border-primary rounded-xl mb-10 text-xl"
+                      className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
                       defaultValue="oo"
                     />
                   </div>
@@ -179,13 +179,13 @@ const IntegralCalc = () => {
             </div>
             <div className=" flex justify-evenly">
               <button
-                className="bg-primary text-white px-6 py-2 text-center text-lg rounded-md"
+                className="bg-primary text-white w-[116px] h-[48px] font-medium text-center text-[16px] rounded-[8px]"
                 type="submit"
               >
                 Magic!
               </button>
               <button
-                className="bg-white text-black px-6 py-2 text-center text-lg rounded-md"
+                className="bg-white dark:text-black text-primary border-primary  border-2  w-[116px] h-[48px] font-medium text-center text-lg rounded-[8px]"
                 onClick={handleReset}
               >
                 Reset!
@@ -194,11 +194,11 @@ const IntegralCalc = () => {
           </div>
         </form>
         <div className={style_for_content_div}>
-          <p className="mt-24 ml-10 font-normal text-2xl flex">
+          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
             Based on Integral Rule's:
-            <Newton className="ml-10 -mt-5" />
+            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
           </p>
-          <div className="flex mt-10 pl-10 pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
+          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
             <p>
               The answer for{" "}
               {!data.argument_2 ? "f(x)" : "f(x) = " + data.argument_2} is:{" "}
