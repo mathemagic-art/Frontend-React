@@ -10,8 +10,8 @@ function Cheatsheets({ toggle, isOpen }) {
         <>
             <Navbar toggle={toggle} />
             {isOpen ? <FunctionsMenu /> : ""}
-            <div className='flex flex-row justify-between w-full h-full z-10'>
-                <div className='z-20'>
+            <div className='flex flex-row justify-between w-full h-full z-0'>
+                <div className='z-0'>
                     <h2 className="mt-[80px] ml-[280px] mb-[20px] flex space-around justify-start text-primary font-medium font-inter text-[24px]">Basic Differentiation Rules</h2>
                     <BasicDeriv className="ml-[110px] mb-[153px] flex space-around justify-start" />
                     <h2 className="ml-[280px] mb-[20px] flex space-around justify-start text-primary font-medium font-inter text-[24px]">Basic Differentiation Rules</h2>

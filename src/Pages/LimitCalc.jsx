@@ -82,7 +82,7 @@ const LimitCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex text-dark bg-white dark:bg-dark dark:text-white" >
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white flex-wrap" >
         <form onSubmit={handleSubmit}>
         <div className="ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-lg rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black ">
           <h2 className="text-center text-[30px] font-inter font-bold text-primary ">

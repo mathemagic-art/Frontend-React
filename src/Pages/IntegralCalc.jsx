@@ -80,7 +80,7 @@ const IntegralCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex text-dark bg-white dark:bg-dark dark:text-white">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
         <form onSubmit={handleSubmit}>
           <div className={style_for_main_div}>
             <h2 className="text-center text-[30px] mt-5 font-inter font-bold text-primary">
