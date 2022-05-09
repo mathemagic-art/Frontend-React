@@ -3,10 +3,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
+import {ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
+import numerical from "../Files/svgs/numerical.svg";
 
 const SimpsonCalc = () => {
   const [data, setData] = useState({
@@ -23,8 +24,9 @@ const SimpsonCalc = () => {
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
-  };
+    setData(values => ({...values, [name]: value}))
+    event.preventDefault()
+  }
 
   console.log(data);
 
@@ -37,6 +39,7 @@ const SimpsonCalc = () => {
       argument_4: "",
     });
     setAnswer("");
+    setSubmitted(false);
   };
 
   const toggle = () => {
@@ -62,7 +65,7 @@ const SimpsonCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex text-dark bg-white dark:bg-dark dark:text-white">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
         <form onSubmit={handleSubmit}>
           <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-[30px] font-inter font-bold text-primary">
@@ -158,7 +161,7 @@ const SimpsonCalc = () => {
             </div>
           </div>
         </form>
-        <div className="w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white justify-center items-end">
+        <div className="w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white justify-center">
           <p className="mt-[40px] ml-[300px] font-normal text-2xl flex">
             Based on Simpson's 1/3 Rule's:
             <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
@@ -172,9 +175,10 @@ const SimpsonCalc = () => {
               {answer !== "" ? answer : "_____________"}
             </div>
           </div>
-          <div className="mt-20 rounded-2xl">
+          <div className="mt-20 ml-[300px]">
             {submitted ? (
               <Plot
+                className="mt-10"
                 data={[
                   {
                     x: xValues,
@@ -197,7 +201,7 @@ const SimpsonCalc = () => {
                 }}
               />
             ) : (
-              ""
+              <img src={numerical} className="" />
             )}
           </div>
         </div>

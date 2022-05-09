@@ -64,7 +64,7 @@ const TrapezoidCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex text-dark bg-white dark:bg-dark dark:text-white">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
         <form onSubmit={handleSubmit}>
           <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[730px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-[30px] font-inter font-bold text-primary">

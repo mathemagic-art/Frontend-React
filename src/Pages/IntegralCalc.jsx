@@ -9,11 +9,11 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 
 const IntegralCalc = () => {
   const [data, setData] = useState({
-    argument_1: "type1",
+    argument_1: "indefinite",
     argument_2: "",
     argument_3: "x",
-    argument_4: "",
-    argument_5: "",
+    argument_4: "0",
+    argument_5: "1",
   });
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -29,11 +29,11 @@ const IntegralCalc = () => {
   const handleReset = (event) => {
     event.preventDefault();
     setData({
-      argument_1: "type1",
+      argument_1: "indefinite",
       argument_2: "",
       argument_3: "x",
-      argument_4: "",
-      argument_5: "",
+      argument_4: "0",
+      argument_5: "1",
     });
     setAnswer("");
   };
@@ -43,20 +43,24 @@ const IntegralCalc = () => {
   let url = "";
   let variable = "";
 
-  if (data.argument_1 === "type1") {
+  if (data.argument_1 === "indefinite") {
+
     style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
     style_for_main_div =
       "mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[665px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black";
     url = "indefinite-integral/";
     variable =
       "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl";
+
   } else {
+
     style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
     style_for_main_div =
       "mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[760px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black";
     url = "definite-integral/";
     variable =
       "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl";
+
   }
   // useEffect(() => {
 
@@ -69,7 +73,7 @@ const IntegralCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("universal_integral/", data).then((res) => {
+    axios.post("universal-integral/", data).then((res) => {
       setAnswer(res.data);
     });
     console.log(data);
@@ -80,11 +84,11 @@ const IntegralCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex text-dark bg-white dark:bg-dark dark:text-white">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
         <form onSubmit={handleSubmit}>
           <div className={style_for_main_div}>
             <h2 className="text-center text-[30px] mt-5 font-inter font-bold text-primary">
-              {data.argument_1 === "type1"
+              {data.argument_1 === "indefinite"
                 ? "Indefinite Integral Calculator"
                 : "Definite Integral Calculator"}
             </h2>
@@ -120,8 +124,8 @@ const IntegralCalc = () => {
                 onChange={handleInput}
                 className="w-[460px] h-[48px] p-2 border-2 text-text  dark:border-primary rounded-[8px] mb-[30px] text-lg"
               >
-                <option value="type1">Indefinite Integral</option>
-                <option value="type2">Definite Integral</option>
+                <option value="indefinite">Indefinite Integral</option>
+                <option value="definite">Definite Integral</option>
               </select>
 
               <div>
@@ -138,7 +142,7 @@ const IntegralCalc = () => {
                   className={variable }
                 />
 
-                {data.argument_1 === "type1" ? (
+                {data.argument_1 === "indefinite" ? (
                   ""
                 ) : (
                   <div>
