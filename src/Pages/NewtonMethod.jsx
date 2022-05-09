@@ -69,7 +69,7 @@ const NewtonMethod = () => {
               >
                 <input
                   required
-                  className="w-full p-4 border-2  dark:border-primary rounded-l-xl text-xl"
+                  className="w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
                   type="text"
                   name="argument_1"
                   value={data.argument_1}
@@ -128,8 +128,8 @@ const NewtonMethod = () => {
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white tablet:w-full tablet:pl-16 tablet:pb-16">
           <p className="mt-12 ml-[350px] font-semi-bold text-[28px] flex">
             According to Newton's Method:
-            <Newton className="ml-10 -mt-5  fill-tx dark:fill-white" />
           </p>
+          <Newton className="ml-[300px] mt-[47px] w-[500px] h-[200px]  fill-tx dark:fill-white" />
           <div className="flex mt-10 pt-10 ml-[350px] h-full w-full flex-row text-2xl tracking-wide">
             <p className="text-[28px] font-semi-bold text-tx dark:text-white">
               The root of {" "}
