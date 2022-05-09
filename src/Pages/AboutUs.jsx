@@ -8,13 +8,13 @@ import { images } from "../constants";
 
 const AboutUs = () => {
   const style = {
-    name: "font-bold text-[20px] leading-6 mt-3 font-DM text-center mr-[50px]", 
-    teams: "text-center font-inter text-bold text-4xl mt-[180px]",
-    img: "transform transition duration-500 delay-200 hover:scale-125 z-[999] w-[200px]",
-    div: "flex space-around justify-center mt-[70px] gap-[28px] flex-wrap",
+    name: "mt-[10px] mb-[40px] text-[20px] text-tx font-bold font-Inter", 
+    img_content: "ml-[14px]",
+    position: "text-[16px] font-normal text-tx",
     hover: "transform transition duration-500 hover:scale-125",
     hover_shadow:
       "transition delay-200 hover:shadow-[5px_10px_20px_2px_rgba(0,255,255,0.7)] rounded-full",
+    figure:  "flex mb-[73px]",
   };
 
   return (
@@ -32,270 +32,82 @@ const AboutUs = () => {
           math simpler by doing magic.
         </h2>
         <Quotemark className="rotate-180 place-self-end mr-60 self-end justify-self-end ml-auto fill-black dark:fill-white" />
-        <img src={images.Muso} alt="Professor" className="self-end ml-auto mr-32 mt-[85px] w-[300px] h-[300px]"/>
+        <div className="flex">
+          <div className="flex flex-col mt-[150px] ml-auto items-end max-w-[350px]">
+            <h3 className="">Dr. Mukhammadmuso Abduzhabbarov</h3>
+            <p className="mr-[283px] max-w-[350px]">PhD in Mathematics</p>
+            <p className="mt-[22px] max-w-[350px] mr-[343px]">Product Owner</p>
+            <p className="mt-[22px] max-w-[350px] mr-auto">Chair of the Department of Math and Natural Sciences at University of Central Asia </p>
+          </div>
+          <img src={images.Muso} alt="Professor" className="self-end ml-10 mr-32 mt-[85px] w-[300px] h-[300px]"/>
+        </div>
 
         <h1 className="text-center font-inter text-bold text-6xl mt-[150px]">
           Meet our TEAM
         </h1>
-        <div className={style.div}>
-          <figure className={style.img}>
-            <img src={images.Elnazar} alt="Elnazar" className={style.hover_shadow} />
-            <figcaption className={style.name}>
-              ELNAZAR <br />
-              ULANBEK ULUU
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img src={images.Umar} alt="Umar" className={style.hover_shadow} />
-            <figcaption className={style.name}>
-              UMAR <br />
-              NUROV
-            </figcaption>
-          </figure>
-        </div>
-        <div className={style.div}>
-          <figure className={style.img}>
-            <img
-              src={images.Umedjon}
-              alt="Umidbek Ulmasov"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              UMIDBEK <br />
-              ULMASOV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Benazir}
-              alt="Benazir Temiralieva"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              BENAZIR <br />
-              TEMIRALIEVA
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Munis}
-              alt="Munis Saidrahmonov"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              MUNIS <br />
-              SAIDRAHMONOV
-            </figcaption>
-          </figure>
-        </div>
+        <div className="flex flex-row justify-around items-center gap-4 mt-[100px]">
+          {/* First Column */}
+          <div className="flex flex-col"> 
+            <figure className={style.figure}>
+              <img src={images.Aisha} />
+              <div className={style.img_content}>
+                <h2 className={style.name}>Aisha Toichieva</h2>
+                <h4 className={style.position}> Scipy Team</h4>
+                <h4>Frontend</h4>
+              </div>
+            </figure>
 
+            <figure className="flex">
+              <img src={images.Aisha} />
+              <div className={style.img_content}>
+                <h2 className={style.name}>Aisha Toichieva</h2>
+                <h4 className={style.position}> Scipy Team</h4>
+                <h4>Frontend</h4>
+              </div>
+            </figure>
+          </div>
 
-        <div className={style.div}>
-          <figure className={style.img}>
-            <img src={images.Eldar} alt="Eldar Ulanov" className={style.hover_shadow} />
-            <figcaption className={style.name}>
-              ELDAR <br />
-              ULANOV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Aizada}
-              alt="Aizada Berdibekova"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              AIZADA <br />
-              BERDIBEKOVA
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.abbosjon}
-              alt="Abbosjon Madiev"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ABBOSJON <br />
-              MADIEV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Ilkhom}
-              alt="Ilkhomzhon Sidikov"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ILKHOMZHON <br />
-              SIDIKOV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Elnazar}
-              alt="Elnazar Ulanbek Uluu"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ELNAZAR <br />
-              ULANBEK ULUU
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Umedjon}
-              alt="Jasurbek Sadiev"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              JASURBEK <br />
-              SADIEV
-            </figcaption>
-          </figure>
-        </div>
-        <div className={style.div}>
-          <figure className={style.img}>
-            <img src={images.Umar} alt="Umar Nurov" className={style.hover_shadow} />
-            <figcaption className={style.name}>
-              UMAR <br />
-              NUROV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Umedjon}
-              alt="Umidbek Ulmasov"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              UMIDBEK <br />
-              ULMASOV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.abo}
-              alt="Abdullah Nazari"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ABDULLAH
-              <br />
-              NAZARI
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Marzia}
-              alt="Marzia Taban Jafari"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              MARZIA
-              <br />
-              TABAN JAFARI
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Umedjon}
-              alt="Jasurbek Sadiev"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              JASURBEK
-              <br />
-              SADIEV
-            </figcaption>
-          </figure>
-        </div>
-        
-        <div className="flex space-around justify-center mt-[70px] gap-[28px] mb-[500px] flex-wrap">
-          <figure className={style.img}>
-            <img src={images.Tariq} alt="Tariq Aziz" className={style.hover_shadow} />
-            <figcaption className={style.name}>
-              TARIQ <br />
-              AZIZ
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Aisha}
-              alt="Aisha Toichieva"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              AISHA <br />
-              TOICHIEVA
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Attiullah}
-              alt="Attiullah Khan Niazi"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ATTIULLAH <br />
-              KHAN NIAZI
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Benazir}
-              alt="Benazir Temiralieva"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              BENAZIR <br />
-              TEMIRALIEVA
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Shokhrukh}
-              alt="Shokhrukh Davlatmahmadov"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              SHOKHRUKH <br />
-              DAVLATMAHMADOV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Elnazar}
-              alt="Elnazar Ulanbek Ullu"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ELNAZAR <br />
-              ULANBEK ULUU
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Munis}
-              alt="Munis Saidrahmonov"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              MUNIS <br />
-              SAIDRAHMONOV
-            </figcaption>
-          </figure>
-          <figure className={style.img}>
-            <img
-              src={images.Zakir}
-              alt="Zakir Hussain Muradi"
-              className={style.hover_shadow}
-            />
-            <figcaption className={style.name}>
-              ZAKIR <br />
-              HUSSAIN MURADI
-            </figcaption>
-          </figure>
+          {/* Second Column */}
+          <div className="flex flex-col">
+          <figure className={style.figure}>
+              <img src={images.Aizada} />
+              <div className={style.img_content}>
+                <h2 className={style.name}>Aizada Berdibekova</h2>
+                <h4 className={style.position}> Scipy Team</h4>
+                <h4 className={style.position}>Frontend</h4>
+              </div>
+            </figure>
+
+            <figure className={style.figure}>
+              <img src={images.Aizada} />
+              <div className={style.img_content}>
+                <h2 className={style.name}>Aizada Berdibekova</h2>
+                <h4 className={style.position}> Scipy Team</h4>
+                <h4 className={style.position}>Frontend</h4>
+              </div>
+            </figure>
+          </div>
+
+          {/* Third Column */}
+          <div className="flex flex-col">
+          <figure className={style.figure}>
+              <img src={images.Aizada} />
+              <div className={style.img_content}>
+                <h2 className={style.name}>Aizada Berdibekova</h2>
+                <h4 className={style.position}> Scipy Team</h4>
+                <h4 className={style.position}>Frontend</h4>
+              </div>
+            </figure>
+
+            <figure className={style.figure}>
+              <img src={images.Aizada} />
+              <div className={style.img_content}>
+                <h2 className={style.name}>Aizada Berdibekova</h2>
+                <h4 className={style.position}> Scipy Team</h4>
+                <h4 className={style.position}>Frontend</h4>
+              </div>
+            </figure>
+          </div>
         </div>
       </div>
     </div>
