@@ -2,9 +2,9 @@ import { useState } from "react";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import axios from "axios";
 
-const QuestionCard = ({ id }) => {
+const QuestionCard = () => {
   const [data, setData] = useState({
-    argument_1: "",
+    argument_1: "1",
   });
   const [question, setQuestion] = useState({
     argument_1: "",
@@ -24,12 +24,24 @@ const QuestionCard = ({ id }) => {
   const [showq, setShowq] = useState(false);
 
   const handleSelect = (e) => {
-    console.log("called");
     e.preventDefault();
-    const name = e.target.name;
+    setShow(false);
+    setAnswer("");
     const value = e.target.value;
     console.log(value);
     setData({ argument_1: value });
+    console.log(data);
+    axios.post("/test-limit", data).then((res) => {
+      setQuestion({ ...res.data });
+      console.log(res.data);
+    });
+    setShowq(true);
+  };
+
+  const nextQuestion = (e) => {
+    e.preventDefault();
+    setShow(false);
+    setAnswer("");
     axios.post("/test-limit", data).then((res) => {
       setQuestion({ ...res.data });
       console.log(res.data);
@@ -66,22 +78,23 @@ const QuestionCard = ({ id }) => {
   const showAnswer = () => {
     setShow(!show);
   };
+
   return (
     <div className="z-10">
       <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
         <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl">
-          Question
+          Limit Question
         </h3>
         <div className="flex flex-col p-6 text-center gap-2 text-xl items-end">
-          <label htmlFor="option" className="pr-3">
-            Select your level
+          <label htmlFor="option" className="pr-10">
+            Difficulty level
           </label>
           <select
             id="option"
             className="p-2 rounded-lg bg-blue-600 text-white"
             onChange={handleSelect}
           >
-            <option></option>
+            <option>Select Your Level</option>
             <option value="1">Begginer</option>
             <option value="2">Intermediate</option>
             <option value="3">Advance</option>
@@ -90,7 +103,7 @@ const QuestionCard = ({ id }) => {
 
         <form onSubmit={handleSubmit}>
           {showq ? (
-            <p className="text-center py-10 text-2xl text-black">
+            <p className="text-center py-10 text-2xl bg-white dark:bg-dark dark:text-white text-dark">
               {question[0]} approaches to: {question[1]}
             </p>
           ) : (
@@ -105,7 +118,7 @@ const QuestionCard = ({ id }) => {
               name="argument_1"
               value={data[0]}
             />
-            <Fx className="fill-black ml-4" />
+            <Fx className="fill-black dark:fill-white ml-4" />
           </div>
           <div className="m-auto flex justify-center mt-10">
             <button
@@ -132,12 +145,6 @@ const QuestionCard = ({ id }) => {
           >
             Show Answer
           </button>
-          <button
-            className="px-6 py-2 mt-4 bg-red-500 text-white rounded-md text-lg font-primary hover:bg-white hover:shadow-md hover:text-dark mr-5 duration-300"
-            onClick={handleSelect}
-          >
-            Next Question
-          </button>
           {show ? (
             <p className="text-center py-10 text-2xl text-text">
               {answer.argument_2}
@@ -145,6 +152,12 @@ const QuestionCard = ({ id }) => {
           ) : (
             ""
           )}
+          <button
+            className="px-6 py-2 mt-4 bg-red-500 text-white rounded-md text-lg font-primary hover:bg-white hover:shadow-md hover:text-dark mr-5 duration-300"
+            onClick={nextQuestion}
+          >
+            Next Question
+          </button>
         </div>
       </div>
     </div>

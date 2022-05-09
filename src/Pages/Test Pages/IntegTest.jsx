@@ -6,7 +6,7 @@ import Navbar from "../../Layouts/Navbar";
 
 const IntegTest = () => {
   const [data, setData] = useState({
-    argument_1: "",
+    argument_1: "1",
   });
   const [question, setQuestion] = useState({
     argument_1: "",
@@ -25,8 +25,9 @@ const IntegTest = () => {
   const [showq, setShowq] = useState(false);
 
   const handleSelect = (e) => {
-    console.log("called");
     e.preventDefault();
+    setShow(false);
+    setAnswer("");
     const value = e.target.value;
     console.log(value);
     setData({ argument_1: value });
@@ -59,28 +60,41 @@ const IntegTest = () => {
       console.log(answer);
     });
   };
+  const nextQuestion = (e) => {
+    e.preventDefault();
+    setShow(false);
+    setAnswer("");
+    axios.post("/test-limit", data).then((res) => {
+      setQuestion({ ...res.data });
+      console.log(res.data);
+    });
+    setShowq(true);
+  };
   const showAnswer = () => {
     setShow(!show);
   };
+  const handleReset = (event) => {
+    window.location.reload();
+  };
   return (
-    <div className="bg-white h-full w-full dark:bg-dark dark:text-white text-dark">
+    <div className=" h-full w-full bg-white dark:bg-dark dark:text-white text-dark">
       <Navbar />
       <FunctionsMenu />
       <div className="z-10">
-        <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
+        <div className="w-2/3  bg-white dark:bg-dark dark:text-white text-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
           <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl">
-            Question
+            Integration Question
           </h3>
           <div className="flex flex-col p-6 text-center gap-2 text-xl items-end">
-            <label htmlFor="option" className="pr-3">
-              Select your level
+            <label htmlFor="option" className="pr-10">
+              Difficulty level
             </label>
             <select
               id="option"
               className="p-2 rounded-lg bg-blue-600 text-white"
               onChange={handleSelect}
             >
-              <option></option>
+              <option>Select Your Level</option>
               <option value="1">Begginer</option>
               <option value="2">Intermediate</option>
               <option value="3">Advance</option>
@@ -89,7 +103,7 @@ const IntegTest = () => {
 
           <form onSubmit={handleSubmit}>
             {showq ? (
-              <p className="text-center py-10 text-2xl text-black">
+              <p className="text-center py-10 text-2xl dark:text-white text-dark">
                 {question[0]}
               </p>
             ) : (
@@ -103,7 +117,7 @@ const IntegTest = () => {
                 onChange={handleInput}
                 name="argument_1"
               />
-              <Fx className="fill-black ml-4" />
+              <Fx className="fill-black dark:fill-white ml-4" />
             </div>
             <div className="m-auto flex justify-center mt-10">
               <button
@@ -112,7 +126,10 @@ const IntegTest = () => {
               >
                 Submit
               </button>
-              <button className="px-8 py-2 bg-white shadow-md  text-dark rounded-md text-lg font-primary hover:bg-button hover:text-white ml-5 duration-300">
+              <button
+                onClick={handleReset}
+                className="px-8 py-2 bg-white shadow-md  text-dark rounded-md text-lg font-primary hover:bg-button hover:text-white ml-5 duration-300"
+              >
                 Reset
               </button>
             </div>
@@ -134,6 +151,12 @@ const IntegTest = () => {
             ) : (
               ""
             )}
+            <button
+              className="px-6 py-2 mt-4 bg-red-500 text-white rounded-md text-lg font-primary hover:bg-white hover:shadow-md hover:text-dark mr-5 duration-300"
+              onClick={nextQuestion}
+            >
+              Next Question
+            </button>
           </div>
         </div>
       </div>
