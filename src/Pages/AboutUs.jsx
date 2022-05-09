@@ -7,7 +7,7 @@ import { images } from "../constants";
 
 const AboutUs = () => {
   const style = {
-    name: "font-bold text-[20px] leading-6 mt-3 font-DM text-center mr-[50px]",
+    name: "font-bold text-[20px] leading-6 mt-3 font-DM text-center mr-[50px]", 
     teams: "text-center font-inter text-bold text-4xl mt-[180px]",
     img: "transform transition duration-500 delay-200 hover:scale-125 z-[999] w-[200px]",
     div: "flex space-around justify-center mt-[70px] gap-[28px] flex-wrap",
