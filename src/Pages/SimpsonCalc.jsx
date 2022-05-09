@@ -57,8 +57,9 @@ const SimpsonCalc = () => {
   };
 
   const expression = exp;
+  // const nR
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math.range(data.argument_3, data.argument_4, 0.5).toArray();
+  const xValues = math.range(data.argument_3, Number(data.argument_4) + 0.01, 0.0099).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
@@ -187,19 +188,25 @@ const SimpsonCalc = () => {
               <Plot
                 className="mt-10"
                 data={[
+
                   {
                     x: xValues,
                     y: yValues,
+                    name: "Area",
+                    fill: 'tozeroy',
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "red" },
+                    marker: { color: "6F46F3" },
                   },
                   {
-                    type: "bar",
                     x: xValues,
                     y: yValues,
+                    name: expression,
+                    type: "scatter",
+                    mode: "lines",
                     marker: { color: "blue" },
                   },
+
                 ]}
                 layout={{
                   width: 720,

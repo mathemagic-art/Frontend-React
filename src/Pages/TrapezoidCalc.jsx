@@ -67,7 +67,7 @@ const TrapezoidCalc = () => {
   const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
   const expr = math.compile(expression.replaceAll("**", "^"));
   
-  const xValues = math.range(data.argument_3, data.argument_4, 0.1).toArray();
+  const xValues = math.range(data.argument_3, Number(data.argument_4) + 0.01, 0.0099).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
@@ -253,19 +253,19 @@ const TrapezoidCalc = () => {
                     x: xValuesNterms,
                     y: yValuesNterms,
                     fill: 'tozeroy',
-                    // fillcolor: "blue",
+                    name: "Area",
+                    // fillcolor: "6F46F3",
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "blue" },
+                    marker: { color: "6F46F3" },
                   },
                   {
                     x: xValues,
                     y: yValues,
-                    fill: 'tozeroy',
-                    fillcolor: "blue",
+                    name: expression,
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "red" },
+                    marker: { color: "blue" },
                   },
 
                 ]}
