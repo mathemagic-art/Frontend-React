@@ -43,13 +43,22 @@ const TaylorCalc = () => {
 
   const handleSubmit = (event) => {
     axios.post("taylor-series/", data).then((res) => {
-      setAnswer(res.data);
+      console.log(res.data);
+      const data1 = res.data.replaceAll("**", "^");
+      setAnswer(data1);
     });
     setSubmitted(true);
     setExp(data.argument_1);
     console.log(answer);
     event.preventDefault();
   };
+
+  const expression2 = answer;
+  const expr2 = math.compile(expression2);
+  const xValues2 = math.range(-50, 50, 0.1).toArray();
+  const yValues2 = xValues2.map(function (x) {
+    return expr2.evaluate({ x: x });
+  });
 
   const expression = exp;
   const expr = math.compile(expression);
@@ -184,6 +193,13 @@ const TaylorCalc = () => {
                     type: "scatter",
                     mode: "lines",
                     marker: { color: "blue" },
+                  },
+                  {
+                    x: xValues2,
+                    y: yValues2,
+                    type: "scatter",
+                    mode: "lines",
+                    marker: { color: "red" },
                   },
                   // { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
                 ]}

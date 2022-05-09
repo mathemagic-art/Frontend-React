@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-// import MethodsCard from "../Components/MethodsCard";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
@@ -54,7 +53,7 @@ const SimpsonCalc = () => {
   };
 
   const expression = exp;
-  const expr = math.compile(expression);
+  const expr = math.compile(expression.replaceAll("**", "^"));
   const xValues = math.range(data.argument_3, data.argument_4, 0.5).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
