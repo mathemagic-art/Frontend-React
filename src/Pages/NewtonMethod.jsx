@@ -44,7 +44,7 @@ const NewtonMethod = () => {
     event.preventDefault();
   };
   return (
-    <div className="h-full flex flex-col text-dark bg-white dark:bg-dark dark:text-white">
+    <div className="h-full flex flex-col text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
       <div className="flex tablet:flex-col text-dark bg-white dark:bg-dark dark:text-white pt-20">

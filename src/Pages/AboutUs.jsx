@@ -2,15 +2,12 @@ import React from "react";
 import Navbar from "../Layouts/Navbar";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { ReactComponent as Logo1 } from "../Files/svgs/Logo1.svg";
-import umar from "../Files/pngs/Umar.png";
-import abo from "../Files/pngs/abo.png";
-import Umedjon from "../Files/pngs/Umedjon.png";
 import { ReactComponent as Quotemark } from "../Files/svgs/Quotemark.svg";
-import professor from "../Files/pngs/Muso.png";
+import { images } from "../constants";
 
 const AboutUs = () => {
   const style = {
-    name: "font-bold text-[20px] leading-6 mt-3 font-DM text-center",
+    name: "font-bold text-[20px] leading-6 mt-3 font-DM text-center mr-[50px]",
     teams: "text-center font-inter text-bold text-4xl mt-[180px]",
     img: "transform transition duration-500 delay-200 hover:scale-125 z-[999] w-[200px]",
     div: "flex space-around justify-center mt-[70px] gap-[28px] flex-wrap",
@@ -34,7 +31,7 @@ const AboutUs = () => {
           math simpler by doing magic.
         </h2>
         <Quotemark className="rotate-180 place-self-end mr-60 self-end justify-self-end ml-auto fill-black dark:fill-white" />
-        <img src={professor} alt="Professor" className="self-end ml-auto mr-32 mt-[85px] w-[300px] h-[300px]"/>
+        <img src={images.Muso} alt="Professor" className="self-end ml-auto mr-32 mt-[85px] w-[300px] h-[300px]"/>
 
         <h1 className="text-center font-inter text-bold text-6xl mt-[150px]">
           Meet our TEAM
@@ -42,14 +39,14 @@ const AboutUs = () => {
         <h2 className={style.teams}> PROJECT MANAGERS</h2>
         <div className={style.div}>
           <figure className={style.img}>
-            <img src={umar} alt="Umar" className={style.hover_shadow} />
+            <img src={images.Elnazar} alt="Elnazar" className={style.hover_shadow} />
             <figcaption className={style.name}>
               ELNAZAR <br />
               ULANBEK ULUU
             </figcaption>
           </figure>
           <figure className={style.img}>
-            <img src={umar} alt="Elnazar" className={style.hover_shadow} />
+            <img src={images.Umar} alt="Umar" className={style.hover_shadow} />
             <figcaption className={style.name}>
               UMAR <br />
               NUROV
@@ -62,7 +59,7 @@ const AboutUs = () => {
         <div className={style.div}>
           <figure className={style.img}>
             <img
-              src={Umedjon}
+              src={images.Umedjon}
               alt="Umidbek Ulmasov"
               className={style.hover_shadow}
             />
@@ -73,7 +70,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Benazir}
               alt="Benazir Temiralieva"
               className={style.hover_shadow}
             />
@@ -84,7 +81,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Munis}
               alt="Munis Saidrahmonov"
               className={style.hover_shadow}
             />
@@ -100,7 +97,7 @@ const AboutUs = () => {
         <h2 className={style.teams}>Backend Development</h2>
         <div className={style.div}>
           <figure className={style.img}>
-            <img src={umar} alt="Eldar Ulanov" className={style.hover_shadow} />
+            <img src={images.Eldar} alt="Eldar Ulanov" className={style.hover_shadow} />
             <figcaption className={style.name}>
               ELDAR <br />
               ULANOV
@@ -108,7 +105,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Aizada}
               alt="Aizada Berdibekova"
               className={style.hover_shadow}
             />
@@ -119,7 +116,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.abbosjon}
               alt="Abbosjon Madiev"
               className={style.hover_shadow}
             />
@@ -130,7 +127,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Ilkhom}
               alt="Ilkhomzhon Sidikov"
               className={style.hover_shadow}
             />
@@ -141,7 +138,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Elnazar}
               alt="Elnazar Ulanbek Uluu"
               className={style.hover_shadow}
             />
@@ -152,7 +149,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Umedjon}
               alt="Jasurbek Sadiev"
               className={style.hover_shadow}
             />
@@ -166,7 +163,7 @@ const AboutUs = () => {
         <h2 className={style.teams}>Frontend Development</h2>
         <div className={style.div}>
           <figure className={style.img}>
-            <img src={umar} alt="Umar Nurov" className={style.hover_shadow} />
+            <img src={images.Umar} alt="Umar Nurov" className={style.hover_shadow} />
             <figcaption className={style.name}>
               UMAR <br />
               NUROV
@@ -174,7 +171,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Umedjon}
               alt="Umidbek Ulmasov"
               className={style.hover_shadow}
             />
@@ -185,7 +182,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={abo}
+              src={images.abo}
               alt="Abdullah Nazari"
               className={style.hover_shadow}
             />
@@ -197,7 +194,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Marzia}
               alt="Marzia Taban Jafari"
               className={style.hover_shadow}
             />
@@ -209,7 +206,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Umedjon}
               alt="Jasurbek Sadiev"
               className={style.hover_shadow}
             />
@@ -224,7 +221,7 @@ const AboutUs = () => {
         <h2 className={style.teams}>Scientific Python & Math</h2>
         <div className="flex space-around justify-center mt-[70px] gap-[28px] mb-[500px] flex-wrap">
           <figure className={style.img}>
-            <img src={umar} alt="Tariq Aziz" className={style.hover_shadow} />
+            <img src={images.Tariq} alt="Tariq Aziz" className={style.hover_shadow} />
             <figcaption className={style.name}>
               TARIQ <br />
               AZIZ
@@ -232,7 +229,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Aisha}
               alt="Aisha Toichieva"
               className={style.hover_shadow}
             />
@@ -243,7 +240,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Attiullah}
               alt="Attiullah Khan Niazi"
               className={style.hover_shadow}
             />
@@ -254,7 +251,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Benazir}
               alt="Benazir Temiralieva"
               className={style.hover_shadow}
             />
@@ -265,7 +262,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Shokhrukh}
               alt="Shokhrukh Davlatmahmadov"
               className={style.hover_shadow}
             />
@@ -276,7 +273,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Elnazar}
               alt="Elnazar Ulanbek Ullu"
               className={style.hover_shadow}
             />
@@ -287,7 +284,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Munis}
               alt="Munis Saidrahmonov"
               className={style.hover_shadow}
             />
@@ -298,7 +295,7 @@ const AboutUs = () => {
           </figure>
           <figure className={style.img}>
             <img
-              src={umar}
+              src={images.Zakir}
               alt="Zakir Hussain Muradi"
               className={style.hover_shadow}
             />
