@@ -18,6 +18,8 @@ import Zakir from "../Files/pngs/Zakir.png"
 import Aizada from "../Files/pngs/Aizada.png"
 import Muso from "../Files/pngs/Muso.png"
 import Jasurbek from "../Files/pngs/Jasurbek.png"
+import graphnw from "../Files/pngs/graphnw.png"
+
 
 
 export default {
@@ -40,7 +42,8 @@ export default {
     Zakir,
     Benazir,
     Aizada,
-    Muso,   
+    Muso,
+    graphnw,   
 };
 
 

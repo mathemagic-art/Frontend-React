@@ -149,8 +149,8 @@ const LimitCalc = () => {
         </div>
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
-          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">According to Limit Rule's:<Newton className="fill-tx dark:fill-white ml-10 -mt-5"/></p>
-          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
+          <p className="mt-[98px] ml-[300px] font-semi-bold text-3xl flex">Based on Limit Rule's</p>
+          <div className="flex mt-5 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
           <p>The limit of {!data.argument_1? variable: (variable + " = " + data.argument_1)} as x approaches {approach} : {!data.argument_2 ? "": variable}=</p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">{answer !=="" ? answer:"_____________" }</div>
           </div>
         </div>

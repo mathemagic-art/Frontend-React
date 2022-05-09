@@ -3,12 +3,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
-import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
+import { ReactComponent as Rectangle } from "../Files/svgs/Rectangle.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import * as math from "mathjs";
 import Plot from "react-plotly.js";
 import numerical from "../Files/svgs/numerical.svg";
+
 
 const RectangleCalc = () => {
   const [data, setData] = useState({
@@ -73,7 +73,7 @@ const RectangleCalc = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[730px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-[30px] font-inter font-bold text-primary">
-              Midpoint Rule Calculator
+              Rectangle Rule Calculator
             </h2>
             <p className="text-center font-inter text-[12px] text-text mb-[33px]">
               Approximate the area under a simple curve{" "}
@@ -178,9 +178,10 @@ const RectangleCalc = () => {
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col  text-tx dark:text-white">
           <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Midpoint Rule's:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
+            Based on Rectangle Rule's: <br/>
+            <Rectangle className="fill-tx dark:fill-white mt-10" />
           </p>
+
           <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
             <p>
               The answer for{" "}
