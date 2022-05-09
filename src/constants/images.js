@@ -17,11 +17,13 @@ import Umedjon from "../Files/pngs/Umedjon.png"
 import Zakir from "../Files/pngs/Zakir.png"
 import Aizada from "../Files/pngs/Aizada.png"
 import Muso from "../Files/pngs/Muso.png"
+import Jasurbek from "../Files/pngs/Jasurbek.png"
 
 
 export default {
     abbosjon,
     abo,
+    Jasurbek,
     Aisha,
     Attiullah,
     Baistan,
@@ -38,7 +40,7 @@ export default {
     Zakir,
     Benazir,
     Aizada,
-    Muso,
+    Muso,   
 };
 
 
