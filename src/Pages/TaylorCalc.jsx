@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
-import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
@@ -165,7 +164,7 @@ const TaylorCalc = () => {
               {answer !== "" ? answer : "_____________"}
             </div>
           </div>
-          <div className="mt-20 rounded-2xl">
+          <div className="mt-20 ml-[300px] mb-28 rounded-2xl">
             {submitted ? (
               <Plot
                 className="rounded-2xl"
