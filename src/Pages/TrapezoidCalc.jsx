@@ -267,6 +267,13 @@ const TrapezoidCalc = () => {
                     mode: "lines",
                     marker: { color: "blue" },
                   },
+                  {
+                    type: "bar",
+                    width: 0,
+                    x: xValuesNterms,
+                    y: yValuesNterms,
+                    marker: { color: "blue" },
+                  },
 
                 ]}
                 layout={{
