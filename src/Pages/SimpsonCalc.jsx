@@ -5,18 +5,23 @@ import { useState, useEffect } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import {ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
-import {ReactComponent as X2} from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
+import Plot from "react-plotly.js";
+import * as math from "mathjs";
+import numerical from "../Files/svgs/numerical.svg";
 
 const SimpsonCalc = () => {
   const [data, setData] = useState({argument_1: "", argument_2: "x", argument_3: "", argument_4: ""})
   const [answer, setAnswer] = useState("")
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, isSubmitting] = useState(false);
+  const [exp, setExp] = useState("");
 
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setData(values => ({...values, [name]: value}))
+    event.preventDefault()
   }
 
   console.log(data)
@@ -47,6 +52,7 @@ const SimpsonCalc = () => {
     event.preventDefault()
     setData({argument_1:"", argument_2:"x", argument_3:"", argument_4:""})
     setAnswer("")
+    isSubmitting(false)
   }
 
   // useEffect(() => {
@@ -54,6 +60,7 @@ const SimpsonCalc = () => {
   // }, [data, setData])
   
   
+
   console.log(answer)
   
   const toggle = () => {
@@ -64,9 +71,21 @@ const SimpsonCalc = () => {
     axios.post("simpsons-method/", data).then((res)=>{setAnswer(res.data)})
     console.log(data)
     console.log(answer)
+    isSubmitting(true);
+    setExp(data.argument_1);
     event.preventDefault()
     
   }
+
+  const expression = exp;
+  const expr = math.compile(expression);
+
+  const xValues = math.range(-50, 50, 1).toArray();
+  const yValues = xValues.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
+
+
   return (
     <>
       <Navbar toggle={toggle} />
@@ -150,6 +169,28 @@ const SimpsonCalc = () => {
           <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">Based on Simpson's 1/3 Rule's:<Newton className="fill-tx dark:fill-white ml-10 -mt-5"/></p>
           <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
           <p>The answer for {!data.equation? "f(x)": ("f(x) = " + data.equation)} is: </p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">{answer !=="" ? answer:"_____________" }</div>
+          </div>
+          <div className="mt-20 mr-20">
+            {submitted ? (
+              <Plot
+                className="rounded-2xl ml-[300px]"
+                data={[
+                  {
+                    x: xValues,
+                    y: yValues,
+                    type: "scatter",
+                    mode: "lines",
+                    marker: { color: "blue" },
+                  },
+                  // { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
+                ]}
+                layout={{
+                  width: 720,
+                  height: 540,
+                  title: "Taylor Series Calculator",
+                }}
+              />
+            ) : (<img src={numerical} className="ml-[300px]" />)}
           </div>
         </div>
       </div>
