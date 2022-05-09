@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import {ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
+import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
@@ -24,9 +24,9 @@ const SimpsonCalc = () => {
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData(values => ({...values, [name]: value}))
-    event.preventDefault()
-  }
+    setData((values) => ({ ...values, [name]: value }));
+    event.preventDefault();
+  };
 
   console.log(data);
 

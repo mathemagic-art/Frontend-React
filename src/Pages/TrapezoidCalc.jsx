@@ -209,13 +209,11 @@ const TrapezoidCalc = () => {
                     marker: { color: "blue" },
                   },
                   {
-                    type: "funnelarea",
-                    parents: "funnelarea",
-                    x: xValues,
+                    type: "bar",
+                    x: data.argument_5,
                     y: yValues,
                     marker: { color: "red" },
                   },
-                  // { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
                 ]}
                 layout={{
                   width: 720,
