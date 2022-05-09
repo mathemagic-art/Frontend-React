@@ -3,6 +3,7 @@ import Navbar from "../Layouts/Navbar";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { ReactComponent as Logo1 } from "../Files/svgs/Logo1.svg";
 import { ReactComponent as Quotemark } from "../Files/svgs/Quotemark.svg";
+import {ReactComponent as Triangle } from "../Files/svgs/Triangle.svg";
 import { images } from "../constants";
 
 const AboutUs = () => {
@@ -36,7 +37,6 @@ const AboutUs = () => {
         <h1 className="text-center font-inter text-bold text-6xl mt-[150px]">
           Meet our TEAM
         </h1>
-        <h2 className={style.teams}> PROJECT MANAGERS</h2>
         <div className={style.div}>
           <figure className={style.img}>
             <img src={images.Elnazar} alt="Elnazar" className={style.hover_shadow} />
@@ -53,9 +53,6 @@ const AboutUs = () => {
             </figcaption>
           </figure>
         </div>
-
-        {/* UX/UI DESIGN TEAM */}
-        <h2 className={style.teams}>UX/UI Design</h2>
         <div className={style.div}>
           <figure className={style.img}>
             <img
@@ -93,8 +90,6 @@ const AboutUs = () => {
         </div>
 
 
-        {/* BACKEND DEVELOPMENT TEAM */}
-        <h2 className={style.teams}>Backend Development</h2>
         <div className={style.div}>
           <figure className={style.img}>
             <img src={images.Eldar} alt="Eldar Ulanov" className={style.hover_shadow} />
@@ -159,8 +154,6 @@ const AboutUs = () => {
             </figcaption>
           </figure>
         </div>
-        {/* FRONTEND DEVELOPMENT TEAM */}
-        <h2 className={style.teams}>Frontend Development</h2>
         <div className={style.div}>
           <figure className={style.img}>
             <img src={images.Umar} alt="Umar Nurov" className={style.hover_shadow} />
@@ -217,8 +210,7 @@ const AboutUs = () => {
             </figcaption>
           </figure>
         </div>
-        {/* SCIENTIFIC PYTHON TEAM */}
-        <h2 className={style.teams}>Scientific Python & Math</h2>
+        
         <div className="flex space-around justify-center mt-[70px] gap-[28px] mb-[500px] flex-wrap">
           <figure className={style.img}>
             <img src={images.Tariq} alt="Tariq Aziz" className={style.hover_shadow} />

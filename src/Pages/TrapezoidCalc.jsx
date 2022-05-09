@@ -5,6 +5,8 @@ import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
+import Plot from "react-plotly.js";
+import * as math from "mathjs";
 
 const TrapezoidCalc = () => {
   const [data, setData] = useState({
@@ -16,6 +18,8 @@ const TrapezoidCalc = () => {
   });
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [exp, setExp] = useState("");
 
   const handleInput = (event) => {
     const name = event.target.name;
@@ -45,11 +49,17 @@ const TrapezoidCalc = () => {
     axios.post("trapezoid-method/", data).then((res) => {
       setAnswer(res.data);
     });
-    console.log(data);
-    console.log(answer);
+    setSubmitted(true);
+    setExp(data.argument_1);
     event.preventDefault();
   };
 
+  const expression = exp;
+  const expr = math.compile(expression.replaceAll("**", "^"));
+  const xValues = math.range(data.argument_3, data.argument_4, 1).toArray();
+  const yValues = xValues.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
   return (
     <>
       <Navbar toggle={toggle} />
@@ -185,6 +195,37 @@ const TrapezoidCalc = () => {
             <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
               {answer !== "" ? answer : "_____________"}
             </div>
+          </div>
+          <div className="mt-20 rounded-2xl">
+            {submitted ? (
+              <Plot
+                className="rounded-2xl"
+                data={[
+                  {
+                    x: xValues,
+                    y: yValues,
+                    type: "scatter",
+                    mode: "lines",
+                    marker: { color: "blue" },
+                  },
+                  {
+                    type: "funnelarea",
+                    parents: "funnelarea",
+                    x: xValues,
+                    y: yValues,
+                    marker: { color: "red" },
+                  },
+                  // { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
+                ]}
+                layout={{
+                  width: 720,
+                  height: 540,
+                  title: "Taylor Series Calculator",
+                }}
+              />
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
