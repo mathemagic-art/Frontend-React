@@ -3,10 +3,12 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
+import { ReactComponent as Trapezoid } from "../Files/svgs/trapezoideq.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
+import {images} from "../constants"
+
 
 const TrapezoidCalc = () => {
   const [data, setData] = useState({
@@ -183,19 +185,39 @@ const TrapezoidCalc = () => {
           </div>
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
-          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Trapezoid Rule's:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
-          </p>
-          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p>
-              The answer for{" "}
-              {!data.argument_1 ? "f(x)" : "f(x) = " + data.argument_1} is:{" "}
-            </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
-              {answer !== "" ? answer : "_____________"}
+
+          {!submitted ? (
+            <div className="flex flex-col -mt-10">
+
+              <p className="mt-[98px] pb-[62px] ml-[225px] font-semibold text-[28px] text-tx flex">
+                According to Trapezoidal Rule:
+              </p>
+              <Trapezoid className="fill-tx dark:fill-white ml-[225px] -mt-5 " />
+              <img src={images.graphtrap} className="w-[659px] h-[430px] self-center" />
             </div>
-          </div>
+
+            ) : (
+            <div className="flex flex-col">
+                <div className="flex flex-col">
+
+                  <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
+                  Based on Trapezoid Rule's:
+                  <Trapezoid className="fill-tx dark:fill-white ml-10 -mt-5" />
+                  </p>
+                </div>
+              <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
+                <p>
+                  The answer for{" "}
+                  {!data.argument_1 ? "f(x)" : "f(x) = " + data.argument_1} is:{" "}
+                </p>
+                <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
+                  {answer !== "" ? answer : "_____________"}
+                </div>
+              </div>
+            </div>
+            )}
+
+          
           <div className="mt-20 rounded-2xl ml-[300px]">
             {submitted ? (
               <Plot

@@ -19,6 +19,7 @@ import Aizada from "../Files/pngs/Aizada.png"
 import Muso from "../Files/pngs/Muso.png"
 import Jasurbek from "../Files/pngs/Jasurbek.png"
 import graphnw from "../Files/pngs/graphnw.png"
+import graphtrap from "../Files/pngs/trapezoidgraph.png"
 
 
 
@@ -43,7 +44,8 @@ export default {
     Benazir,
     Aizada,
     Muso,
-    graphnw,   
+    graphnw,
+    graphtrap,   
 };
 
 
