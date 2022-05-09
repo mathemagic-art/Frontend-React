@@ -64,21 +64,20 @@ const TrapezoidCalc = () => {
 
 
   const expression = exp;
+  const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math.range(data.argument_3, data.argument_4, 0.1).toArray();
-  const xValuesNterms = math.range(data.argument_3, data.argument_4, 4).toArray();
   
-  const yValuesNterms = xValuesNterms.map(function (x) {
-    return expr.evaluate({ x: x });
-  });
-
+  const xValues = math.range(data.argument_3, data.argument_4, 0.1).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
-
-
-
-
+  
+  
+  // roof
+  const xValuesNterms = math.range(data.argument_3, Number(data.argument_4) + 0.01, nRange).toArray();
+  const yValuesNterms = xValuesNterms.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
 
 
 
@@ -249,21 +248,21 @@ const TrapezoidCalc = () => {
               <Plot
                 className="rounded-2xl"
                 data={[
+                  // roofs
                   {
                     x: xValuesNterms,
                     y: yValuesNterms,
                     fill: 'tozeroy',
-                    fillcolor: "blue",
+                    // fillcolor: "blue",
                     type: "scatter",
                     mode: "lines",
                     marker: { color: "blue" },
                   },
-
                   {
                     x: xValues,
                     y: yValues,
-                    // fill: 'tozeroy',
-                    // fillcolor: "blue",
+                    fill: 'tozeroy',
+                    fillcolor: "blue",
                     type: "scatter",
                     mode: "lines",
                     marker: { color: "red" },
