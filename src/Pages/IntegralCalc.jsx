@@ -69,7 +69,7 @@ const IntegralCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("universal_integral/", data).then((res) => {
+    axios.post("universal-integral/", data).then((res) => {
       setAnswer(res.data);
     });
     console.log(data);
