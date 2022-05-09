@@ -196,7 +196,7 @@ const TrapezoidCalc = () => {
               {answer !== "" ? answer : "_____________"}
             </div>
           </div>
-          <div className="mt-20 rounded-2xl">
+          <div className="mt-20 rounded-2xl ml-[300px]">
             {submitted ? (
               <Plot
                 className="rounded-2xl"

@@ -8,6 +8,7 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
 import numerical from "../Files/svgs/numerical.svg";
+import { ReactComponent as Simpsons_eq} from "../Files/svgs/SimpsonsEq.svg"
 
 const SimpsonCalc = () => {
   const [data, setData] = useState({
@@ -163,17 +164,23 @@ const SimpsonCalc = () => {
         </form>
         <div className="w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white justify-center">
           <p className="mt-[40px] ml-[300px] font-normal text-2xl flex">
-            Based on Simpson's 1/3 Rule's:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
+            According to Simpson's 1/3 Rule's:
           </p>
           <div className="flex mt-10 ml-[300px] pt-10  flex-row font-normal text-2xl tracking-wide">
-            <p>
-              The answer for{" "}
-              {!data.equation ? "f(x)" : "f(x) = " + data.equation} is:{" "}
-            </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
-              {answer !== "" ? answer : "_____________"}
-            </div>
+            {!submitted ?
+              <Simpsons_eq className="fill-tx dark:fill-white"/>
+             : (
+              <div>
+                <Simpsons_eq className="-mt-10 pb-20" />
+                <p className="-mt-10 pb-10">The area under the curve equals to: {" "}
+                  {!data.equation ? "f(x)" : "f(x) = " + data.equation} is:{" "}
+                </p>
+                <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
+                  {answer !== "" ? answer : ""}
+                </div>
+              </div>
+            )}
+            
           </div>
           <div className="mt-20 ml-[300px]">
             {submitted ? (
