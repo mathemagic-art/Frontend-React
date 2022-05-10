@@ -21,7 +21,7 @@ import Jasurbek from "../Files/pngs/Jasurbek.png"
 import graphnw from "../Files/pngs/graphnw.png"
 import graphtrap from "../Files/pngs/trapezoidgraph.png"
 import rectangle from "../Files/pngs/rectanglegraph.png"
-
+import integral_org from "../Files/pngs/integral_org.png"
 
 
 export default {
@@ -47,7 +47,8 @@ export default {
     Muso,
     graphnw,
     graphtrap,
-    rectangle,   
+    rectangle,
+    integral_org,   
 };
 
 
