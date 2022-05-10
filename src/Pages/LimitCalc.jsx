@@ -7,11 +7,13 @@ import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import {ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import {ReactComponent as X2} from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
+import { images } from "../constants";
 
 const LimitCalc = () => {
   const [data, setData] = useState({argument_1:"", argument_2:"x", argument_3:"+-", argument_4:"oo"})
   const [answer, setAnswer] = useState("")
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleInput = (event) => {
     const name = event.target.name;
@@ -55,9 +57,10 @@ const LimitCalc = () => {
   // };
 
   const handleReset = (event) => {
-    event.preventDefault()
-    setData({argument_1:"", argument_2:"x", argument_3:"x", argument_4: "oo"})
-    setAnswer("")
+    event.preventDefault();
+    setData({argument_1:"", argument_2:"x", argument_3:"x", argument_4: "oo"});
+    setAnswer("");
+    setSubmitted(false);
   }
 
   // useEffect(() => {
@@ -75,6 +78,7 @@ const LimitCalc = () => {
     axios.post("limit-calculator/", data).then((res)=>{setAnswer(res.data)})
     console.log(data)
     console.log(answer)
+    setSubmitted(true);
     event.preventDefault()
     
   }
@@ -149,10 +153,27 @@ const LimitCalc = () => {
         </div>
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
-          <p className="mt-[98px] ml-[300px] font-semi-bold text-3xl flex">Based on Limit Rule's</p>
-          <div className="flex mt-5 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-          <p>The limit of {!data.argument_1? variable: (variable + " = " + data.argument_1)} as x approaches {approach} : {!data.argument_2 ? "": variable}=</p><div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">{answer !=="" ? answer:"_____________" }</div>
-          </div>
+        {!submitted ? (
+            <div className="flex flex-col ml-[300px]">
+              <div className="flex flex-col leading-9">
+                <p className="mt-[98px] pb-[32px] font-semibold text-[30px] dark:text-white text-tx">Why do we need to learn Limits?</p>
+                <p className="mr-[10px] tracking-[1%] font-normal text-[25px]">In Calculus, a limit is the value that a function (or sequence) approaches as the input approaches some value. Limits are essential to calculus and mathematical analysis, and are used to define continuity, derivatives, and integrals. </p>
+              </div>
+              <img src={images.limit} className=" mt-5" />
+            </div>
+          ) : (
+            <div className="flex flex-col ml-[300px]">
+              <div className="flex mt-[98px]">
+                <p className="mb-10 flex text-tx dark:text-white font-semibold text-2xl">
+                  The solution: 
+                </p>
+                <div className="ml-[40px] pt-6 -mt-2 mr-auto pr-[30px] pb-6 border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-dark flex items-center">
+                  {answer !== "" ? ("x(0) = " + answer) : ""}
+                </div>
+              </div>
+              <img src={images.limit} className="mt-5" />
+            </div>
+          )}
         </div>
       </div>
     </>

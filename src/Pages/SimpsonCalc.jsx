@@ -191,7 +191,7 @@ const SimpsonCalc = () => {
           <div className="mt-20 ml-[300px]">
             {submitted ? (
               <Plot
-                className="mt-10"
+                className="mt-10 mb-10"
                 data={[
                   {
                     x: xValues,
@@ -218,7 +218,7 @@ const SimpsonCalc = () => {
                 }}
               />
             ) : (
-              <img src={numerical} className="" />
+              <img src={numerical} className="mb-10" />
             )}
           </div>
         </div>

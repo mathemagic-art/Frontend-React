@@ -22,6 +22,8 @@ import graphnw from "../Files/pngs/graphnw.png"
 import graphtrap from "../Files/pngs/trapezoidgraph.png"
 import rectangle from "../Files/pngs/rectanglegraph.png"
 import integral_org from "../Files/pngs/integral_org.png"
+import limit from "../Files/pngs/limit.png"
+import limit2 from "../Files/pngs/limit2.png"
 
 
 export default {
@@ -48,7 +50,9 @@ export default {
     graphnw,
     graphtrap,
     rectangle,
-    integral_org,   
+    integral_org,
+    limit,
+    limit2,   
 };
 
 

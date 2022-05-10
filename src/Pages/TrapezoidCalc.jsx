@@ -20,7 +20,7 @@ const TrapezoidCalc = () => {
   });
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false); 
   const [exp, setExp] = useState("");
 
   const handleInput = (event) => {

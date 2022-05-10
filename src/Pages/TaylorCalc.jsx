@@ -55,7 +55,12 @@ const TaylorCalc = () => {
     event.preventDefault();
   };
 
-  const expression2 = answer;
+  const ax = ""
+  if (answer) {
+    ax = answer.replace(/\\/g, "\\");
+  }
+
+  const expression2 = ax;
   const expr2 = math.compile(expression2);
   const xValues2 = math.range(-50, 50, 0.1).toArray();
   const yValues2 = xValues2.map(function (x) {
@@ -175,11 +180,11 @@ const TaylorCalc = () => {
           {!submitted ? (
           <div className="flex flex-col -mt-10">
 
-            <p className="mt-[98px] pb-[62px] font-semibold text-[28px] text-tx flex">
+            <p className="mt-[98px] pb-[62px] font-semibold text-[28px] dark:text-white text-tx flex">
               According to Taylor's Series
             </p>
             <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
-            <p className="mt-[98px] text-[28px] font-semibold pb-[62px] text-tx flex">
+            <p className="mt-[98px] text-[28px] font-semibold pb-[62px] dark:text-white text-tx flex">
              According to Maclorian's Series
             </p>
             <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
@@ -188,11 +193,11 @@ const TaylorCalc = () => {
           ) : (
           <div className="flex mt-10  pt-10 flex-row font-normal text-2xl tracking-wide ">
             <p>
-              The answer for{" "}
-              {!data.argument_1 ? "f(x)" : "f(x) = " + data.argument_1} is:{" "}
+              According to Taylor's Series 
             </p>
+            <Taylor className="fill-tx dark:fill-white" />
             <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white ">
-              {answer !== "" ? answer : "_____________"}
+              {answer !== "" ? ax : "_____________"}
             </div>
           </div>
           )}
