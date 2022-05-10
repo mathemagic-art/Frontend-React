@@ -59,11 +59,24 @@ const RectangleCalc = () => {
   };
 
   const expression = exp;
+  const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
+  
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math.range(data.argument_3, data.argument_4, 1).toArray();
+  const xValues = math.range(data.argument_3, Number(data.argument_4) + 0.0001, 0.01).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
+  const xValuesNterms = math.range(data.argument_3, Number(data.argument_4) + 0.01, nRange).toArray();
+  const xWidth = xValuesNterms.map(function (x) {
+    return 0
+  })
+  const yValuesNterms = xValuesNterms.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
+  
+  // const yValuesNterms = xValuesNterms.map(function (x) {
+  //   return expr.evaluate({ x: x });
+  // });
 
   return (
     <>
@@ -205,9 +218,10 @@ const RectangleCalc = () => {
                   },
                   {
                     type: "bar",
-                    x: xValues,
-                    y: yValues,
+                    x: xValuesNterms,
+                    y: yValuesNterms,
                     marker: { color: "blue" },
+                    width: nRange ,
                   },
                 ]}
                 layout={{

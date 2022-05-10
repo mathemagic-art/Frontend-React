@@ -2,7 +2,15 @@ import { useState } from "react";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import axios from "axios";
 
+
+import { BlockMath, InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
+
+
+
 const QuestionCard = () => {
+  let ax = ''
+
   const [data, setData] = useState({
     argument_1: "1",
   });
@@ -11,6 +19,9 @@ const QuestionCard = () => {
     argument_2: "",
     argument_3: "",
   });
+
+
+  
   const [uanswer, setUanswer] = useState({
     argument_1: "",
     argument_2: "",
@@ -33,10 +44,15 @@ const QuestionCard = () => {
     console.log(data);
     axios.post("/test-limit", data).then((res) => {
       setQuestion({ ...res.data });
-      console.log(res.data);
+      console.log("Fraction: " + res.data);
     });
     setShowq(true);
   };
+  if (question[0]) {
+    ax = question[0].replace(/\\/g, "\\")
+  }
+  console.log(typeof(ax))
+  
 
   const nextQuestion = (e) => {
     e.preventDefault();
@@ -79,6 +95,7 @@ const QuestionCard = () => {
     setShow(!show);
   };
 
+
   return (
     <div className="z-10">
       <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
@@ -97,15 +114,17 @@ const QuestionCard = () => {
             <option>Select Your Level</option>
             <option value="1">Begginer</option>
             <option value="2">Intermediate</option>
-            <option value="3">Advance</option>
+            <option value="3">Advance &#92;</option>
           </select>
         </div>
-
+        
         <form onSubmit={handleSubmit}>
           {showq ? (
-            <p className="text-center py-10 text-2xl bg-white dark:bg-dark dark:text-white text-dark">
-              {question[0]} approaches to: {question[1]}
-            </p>
+            <>
+            <div className="my-8 mb-20">
+            <BlockMath>{ax}</BlockMath>
+            </div>
+            </>
           ) : (
             ""
           )}
