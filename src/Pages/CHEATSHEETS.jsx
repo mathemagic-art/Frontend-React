@@ -2,6 +2,26 @@ import React from 'react';
 import Navbar from '../Layouts/Navbar';
 import FunctionsMenu from '../Layouts/FunctionsMenu';
 import { ReactComponent as HeroBg } from "../Files/svgs/HeroBG.svg";
+import { ReactComponent as ConsRule } from "../Files/svgs/constantrule.svg";
+import { ReactComponent as MultRule } from "../Files/svgs/multiplerule.svg";
+import { ReactComponent as PowRule } from "../Files/svgs/powerrule.svg";
+import { ReactComponent as SumRule } from "../Files/svgs/sumrule.svg";
+import { ReactComponent as DifferenceRule } from "../Files/svgs/differencerule.svg";
+import { ReactComponent as ProductRule } from "../Files/svgs/productrule.svg";
+import { ReactComponent as QuotientRule } from "../Files/svgs/quotientrule.svg";
+import { ReactComponent as ChainRule } from "../Files/svgs/chainrule.svg";
+import { ReactComponent as MidRule } from "../Files/svgs/midrule.svg";
+import { ReactComponent as  TrapRule } from "../Files/svgs/traprule.svg";
+import { ReactComponent as SimpRule } from "../Files/svgs/simprule.svg";
+import { ReactComponent as PowerRule } from "../Files/svgs/powruke.svg";
+import { ReactComponent as ExponRule } from "../Files/svgs/exponrule.svg";
+import { ReactComponent as ExponenRule } from "../Files/svgs/exponenrule1.svg";
+import { ReactComponent as TrigRule } from "../Files/svgs/trigrule.svg";
+import { ReactComponent as TrigRule1 } from "../Files/svgs/trigrule1.svg";
+import { ReactComponent as InverseRule } from "../Files/svgs/inverserulesvg";
+import { ReactComponent as InverseRule1 } from "../Files/svgs/inverserule1.svg";
+import { ReactComponent as TaylsRule } from "../Files/svgs/tayls1.svg";
+import { ReactComponent as MacsRule } from "../Files/svgs/macs1.svg";
 
 
 
@@ -19,14 +39,14 @@ function Cheatsheets({ toggle, isOpen }) {
                 <div className='z-0'>
                     <h2 className={style.topic_calc}>Basic Differentiation Rules</h2>
                     <div className={style.box + "flex flex-col dark:bg-opacity-80"}>
-                        <h4 className="ml-[40px] mt-[45px] mb-[30px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Constant Rule: </h4>
-                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Constant Multiple Rule:</h4>
-                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Power Rule:</h4>
-                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Sum Rule:</h4>
-                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Difference Rule:</h4>
-                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Product Rule:</h4>
-                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Quotient Rule:</h4>
-                        <h4 className="ml-[40px] mb-[45px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Chain Rule:</h4>
+                        <h4 className="ml-[40px] mt-[45px] mb-[25px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Constant Rule: <ConsRule className="dark:fill-white fill-black flex flex-row ml-[130px] -mt-7"/> </h4>
+                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Constant Multiple Rule: <MultRule className="flex flex-row ml-[200px] -mt-7"/> </h4>
+                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Power Rule:<PowRule className="flex flex-row ml-[110px] -mt-7"/></h4>
+                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Sum Rule:<SumRule className="flex flex-row ml-[95px] -mt-7"/></h4>
+                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Difference Rule: <DifferenceRule className="flex flex-row ml-[140px] -mt-7"/></h4>
+                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Product Rule: <ProductRule className="flex flex-row ml-[115px] -mt-7" /></h4>
+                        <h4 className="ml-[40px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Quotient Rule: <QuotientRule className="flex flex-row ml-[125px] -mt-7" /></h4>
+                        <h4 className="ml-[40px] mb-[45px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Chain Rule:<ChainRule className="flex flex-row ml-[100px] -mt-7" /></h4>
 
                     </div> 
                     <h2 className={style.topic_calc}>Basic Differentiation Rules</h2>
