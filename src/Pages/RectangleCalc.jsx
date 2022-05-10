@@ -9,7 +9,6 @@ import * as math from "mathjs";
 import Plot from "react-plotly.js";
 import numerical from "../Files/svgs/numerical.svg";
 
-
 const RectangleCalc = () => {
   const [data, setData] = useState({
     argument_1: "",
@@ -57,26 +56,27 @@ const RectangleCalc = () => {
     setExp(data.argument_1);
     event.preventDefault();
   };
-
   const expression = exp;
   const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
-  
+
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math.range(data.argument_3, Number(data.argument_4) + 0.0001, 0.01).toArray();
+  const xValues = math
+    .range(data.argument_3, Number(data.argument_4) + 0.0001, 0.01)
+    .toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
-  const xValuesNterms = math.range(data.argument_3, Number(data.argument_4) + 0.01, nRange).toArray();
+
+  const xValuesNterms = math
+    .range(data.argument_3, Number(data.argument_4) + 0.01, nRange)
+    .toArray();
   const xWidth = xValuesNterms.map(function (x) {
-    return 0
-  })
+    return 0;
+  });
+
   const yValuesNterms = xValuesNterms.map(function (x) {
     return expr.evaluate({ x: x });
   });
-  
-  // const yValuesNterms = xValuesNterms.map(function (x) {
-  //   return expr.evaluate({ x: x });
-  // });
 
   return (
     <>
@@ -191,7 +191,7 @@ const RectangleCalc = () => {
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col  text-tx dark:text-white">
           <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Rectangle Rule's: <br/>
+            Based on Rectangle Rule's: <br />
             <Rectangle className="fill-tx dark:fill-white mt-10" />
           </p>
 
@@ -221,7 +221,7 @@ const RectangleCalc = () => {
                     x: xValuesNterms,
                     y: yValuesNterms,
                     marker: { color: "blue" },
-                    width: nRange ,
+                    width: nRange,
                   },
                 ]}
                 layout={{

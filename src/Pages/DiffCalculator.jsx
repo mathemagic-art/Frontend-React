@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
-// import MethodsCard from "../Components/MethodsCard";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
+import { BlockMath } from "react-katex";
 
 const DiffCalculator = () => {
+  let ax = "";
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -24,26 +25,6 @@ const DiffCalculator = () => {
 
   console.log(data);
 
-  // const handleInput = (event) => {
-  //   console.log(event.target)
-  //   setData(values => ({...values, [event.target.name] : event.target.value}))
-
-  // }
-  // const handleFunction = (event) => {
-  //   // setData({equation: event.target.value});
-  //   // console.log("samat")
-  // };
-
-  // const handleSecond = (event) => {
-  //   setData({second: event.target.value})
-
-  // };
-
-  // const handleClick = () =>{
-  //   console.log(data)
-  //   // axios.post("http://127.0.0.1:8000/diff/", data).then((res)=>{setAnswer(res)})
-  // };
-
   const handleReset = (event) => {
     event.preventDefault();
     setData({ argument_1: "", argument_2: "x", argument_3: "1" });
@@ -51,22 +32,21 @@ const DiffCalculator = () => {
   };
 
   let variable = "f(" + data.argument_2 + ")";
-  // useEffect(() => {
-
-  // }, [data, setData])
 
   console.log(answer);
-
+  if (answer) {
+    ax = answer.replace(/\\/g, "\\");
+  }
+  console.log(ax);
   const handleSubmit = (event) => {
-    axios
-      .post("differentiation/", data)
-      .then((res) => {
-        setAnswer(res.data);
-      });
+    axios.post("differentiation/", data).then((res) => {
+      setAnswer(res.data);
+    });
     console.log(data);
     console.log(answer);
     event.preventDefault();
   };
+
   return (
     <>
       <Navbar />
@@ -81,10 +61,16 @@ const DiffCalculator = () => {
               Finds the instantaneous rate of change of a function{" "}
             </p>
             <div>
-              <label htmlFor="function" className="ml-2 dark:text-bright text-text">
+              <label
+                htmlFor="function"
+                className="ml-2 dark:text-bright text-text"
+              >
                 Enter a function f(x)
               </label>
-              <div className="flex rounded-xl dark:text-black text-black mb-10" id="searchbox">
+              <div
+                className="flex rounded-xl dark:text-black text-black mb-10"
+                id="searchbox"
+              >
                 <input
                   required
                   className="w-[393px] h-[48px] p-4 border-2 border-double  dark:border-primary rounded-l-lg text-lg "
@@ -100,7 +86,10 @@ const DiffCalculator = () => {
                   <Fx className="dark:fill-white fill-tx w-[25px]" />
                 </button>
               </div>
-              <label htmlFor="first" className="ml-2 dark:text-bright  text-text">
+              <label
+                htmlFor="first"
+                className="ml-2 dark:text-bright  text-text"
+              >
                 With respect to variable
               </label>
               <input
@@ -113,7 +102,10 @@ const DiffCalculator = () => {
                 className="w-[460px] h-[48px] p-4 border-2 text-black text-xl dark:border-primary rounded-lg mb-10"
               />
 
-              <label htmlFor="second" className="ml-2 dark:text-bright text-text">
+              <label
+                htmlFor="second"
+                className="ml-2 dark:text-bright text-text"
+              >
                 Order of derivative
               </label>
               <select
@@ -153,14 +145,14 @@ const DiffCalculator = () => {
             <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
           </p>
           <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p className="text-[28px] font-semi-bold text-tx dark:text-white">
+            <p className="text-[28px] font-semi-bold text-tx dark:text-white flex mt-4">
               The Derivative of{" "}
               {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
               equals to{" "}
             </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-">
+            <div className="ml-3 py-8 border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-dark flex items-center">
               {data.argument_3 === "1" ? "f'" : "f''"}({data.argument_2})=
-              {answer !== "" ? answer : "_____________"}
+              {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
             </div>
           </div>
         </div>
