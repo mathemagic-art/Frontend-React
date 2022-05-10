@@ -54,41 +54,24 @@ const TrapezoidCalc = () => {
     event.preventDefault();
   };
 
-
-
-
-
-
-
-
-
-
   const expression = exp;
   const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
   const expr = math.compile(expression.replaceAll("**", "^"));
-  
-  const xValues = math.range(data.argument_3, Number(data.argument_4) + 0.01, 0.0099).toArray();
+
+  const xValues = math
+    .range(data.argument_3, Number(data.argument_4) + 0.01, 0.0099)
+    .toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
-  
-  
+
   // roof
-  const xValuesNterms = math.range(data.argument_3, Number(data.argument_4) + 0.01, nRange).toArray();
+  const xValuesNterms = math
+    .range(data.argument_3, Number(data.argument_4) + 0.01, nRange)
+    .toArray();
   const yValuesNterms = xValuesNterms.map(function (x) {
     return expr.evaluate({ x: x });
   });
-
-
-
-
-
-
-
-
-
-
-
 
   return (
     <>
@@ -227,23 +210,6 @@ const TrapezoidCalc = () => {
             </div>
           </div>
           <div className="mt-20 rounded-2xl">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             {submitted ? (
               <Plot
                 className="rounded-2xl"
@@ -252,7 +218,7 @@ const TrapezoidCalc = () => {
                   {
                     x: xValuesNterms,
                     y: yValuesNterms,
-                    fill: 'tozeroy',
+                    fill: "tozeroy",
                     name: "Area",
                     // fillcolor: "6F46F3",
                     type: "scatter",
@@ -274,7 +240,6 @@ const TrapezoidCalc = () => {
                     y: yValuesNterms,
                     marker: { color: "blue" },
                   },
-
                 ]}
                 layout={{
                   width: 720,
@@ -285,19 +250,6 @@ const TrapezoidCalc = () => {
             ) : (
               ""
             )}
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
         </div>
       </div>
