@@ -46,28 +46,6 @@ const Test_Yourself = () => {
           </div>
         </div>
       </div>
-      <div className="ml-[46%] pb-20 pt-32">
-        <Link
-          to={"/testyourself"}
-          className="shadow-md border-2 rounded-sm bg-white text-dark py-2 px-3 mx-2"
-        >
-          1
-        </Link>
-
-        <Link
-          to={"/"}
-          className="shadow-md border-2 rounded-sm bg-slate-300 text-slate-400 py-2 px-3 mx-2"
-        >
-          2
-        </Link>
-
-        <Link
-          to={"/"}
-          className="shadow-md border-2 rounded-sm bg-slate-300 text-slate-400 py-2 px-3 mx-2"
-        >
-          3
-        </Link>
-      </div>
     </div>
   );
 };

@@ -215,6 +215,7 @@ const SimpsonCalc = () => {
                   width: 720,
                   height: 540,
                   title: "Simpsons Rule Calculator",
+          
                 }}
               />
             ) : (

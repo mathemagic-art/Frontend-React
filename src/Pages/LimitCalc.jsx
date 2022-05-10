@@ -170,7 +170,7 @@ const LimitCalc = () => {
                   The solution: 
                 </p>
                 <div className="ml-[40px] pt-6 -mt-2 mr-auto pr-[30px] pb-6 border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-dark flex items-center">
-                  {answer !== "" ? ("x(0) = " + answer) : ""}
+                  {answer !== "" ? ("Answer = " + answer) : ""}
                 </div>
               </div>
               <img src={images.limit} className="mt-5" />
