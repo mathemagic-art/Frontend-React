@@ -20,6 +20,7 @@ import Muso from "../Files/pngs/Muso.png"
 import Jasurbek from "../Files/pngs/Jasurbek.png"
 import graphnw from "../Files/pngs/graphnw.png"
 import graphtrap from "../Files/pngs/trapezoidgraph.png"
+import rectangle from "../Files/pngs/rectanglegraph.png"
 
 
 
@@ -45,7 +46,8 @@ export default {
     Aizada,
     Muso,
     graphnw,
-    graphtrap,   
+    graphtrap,
+    rectangle,   
 };
 
 
