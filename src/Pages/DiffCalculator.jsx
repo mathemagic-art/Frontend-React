@@ -6,6 +6,7 @@ import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { BlockMath } from "react-katex";
+import { images } from "../constants";
 
 const DiffCalculator = () => {
   let ax = "";
@@ -16,6 +17,7 @@ const DiffCalculator = () => {
   });
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false); 
 
   const handleInput = (event) => {
     const name = event.target.name;
@@ -29,6 +31,7 @@ const DiffCalculator = () => {
     event.preventDefault();
     setData({ argument_1: "", argument_2: "x", argument_3: "1" });
     setAnswer("");
+    setSubmitted(false);
   };
 
   let variable = "f(" + data.argument_2 + ")";
@@ -44,6 +47,7 @@ const DiffCalculator = () => {
     });
     console.log(data);
     console.log(answer);
+    setSubmitted(true);
     event.preventDefault();
   };
 
@@ -140,21 +144,27 @@ const DiffCalculator = () => {
           </div>
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
-          <p className="mt-[98px] ml-[300px] font-semi-bold text-[28px] flex">
-            According to Differential Rules:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
-          </p>
-          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p className="text-[28px] font-semi-bold text-tx dark:text-white flex mt-4">
-              The Derivative of{" "}
-              {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
-              equals to{" "}
-            </p>
-            <div className="ml-3 py-8 border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-dark flex items-center">
-              {data.argument_3 === "1" ? "f'" : "f''"}({data.argument_2})=
-              {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
+          {!submitted ? (
+            <div className="flex flex-col mt-[98px] ml-[300px] fill-tx dark:fill-white">
+              <p className="font-semibold text-[30px] fill-tx dark:fill-white flex mb-10">Why do we need to learn Differentiation?</p>
+              <p className="w-full tracking-[1%] font-normal text-[25px] ">Differentiation is a fundamental tool of calculus.The uniqueness of this concept is its predictive ability to evaluate the change in quantities. It finds the Tangent, Normal to Curve, identifies the behaviours of a a function.</p>
+              <img src={images.diff} className="w-[300px] h-[300px] mt-20 self-center" />
             </div>
-          </div>
+          ) : (
+            <div className="flex flex-col">
+              <div className="flex flex-col mt-10 ml-[300px] pt-10 h-full w-full font-normal text-2xl tracking-wide">
+                <p className="text-[28px] font-semi-bold text-tx dark:text-white flex mt-4">
+                  The {data.argument_3 === "1" ? "" : "Second "}Derivative of{" "}
+                  {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
+                  equals to:{" "}
+                </p>
+                <div className="ml-3 py-8 mr-auto  mt-20 pr-[200px] border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-dark flex items-center">
+                  {data.argument_3 === "1" ? "f'" : "f''"}({data.argument_2})=
+                  {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </>
