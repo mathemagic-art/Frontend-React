@@ -7,7 +7,7 @@ import "katex/dist/katex.min.css";
 
 const QuestionCard = () => {
   let ax = "";
-
+  let apr = "";
   const [data, setData] = useState({
     argument_1: "1",
   });
@@ -46,6 +46,7 @@ const QuestionCard = () => {
 
   if (question[0]) {
     ax = question[0].replace(/\\/g, "\\");
+    apr = question[1].replace(/\\/g, "\\");
   }
   console.log(typeof ax);
 
@@ -115,8 +116,10 @@ const QuestionCard = () => {
         <form onSubmit={handleSubmit}>
           {showq ? (
             <>
-              <div className="my-8 mb-20 text-2xl">
-                <BlockMath>{ax}</BlockMath>
+              <div className="my-8 mb-20 text-2xl flex justify-center items-center gap-5">
+                <BlockMath>{"Lim(" + ax + ")  "}</BlockMath>
+                approches to
+                <BlockMath>{apr}</BlockMath>
               </div>
             </>
           ) : (
