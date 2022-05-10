@@ -49,7 +49,7 @@ function Cheatsheets({ toggle, isOpen }) {
                         <h4 className="ml-[40px] mb-[45px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Chain Rule:<ChainRule className="dark:fill-white fill-black flex flex-row ml-[100px] -mt-7" /></h4>
 
                     </div> 
-                    <h2 className={style.topic_calc}>Basic Differentiation Rules</h2>
+                    <h2 className={style.topic_calc}>Numerical Approximation Rules</h2>
                     <div className={style.box + "flex flex-col bg-opacity-95 dark:bg-opacity-80"}>
                         <h4 className="ml-[40px] mt-[45px] mb-[25px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Midpoint Rule: <MidRule className="dark:fill-white fill-black mt-[14px] mb-[10px] " /></h4>
                         <h4 className="ml-[40px] mb-[25px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Trapezoidal Rule: <TrapRule className="dark:fill-white fill-black mt-[14px]" /></h4>
@@ -59,7 +59,7 @@ function Cheatsheets({ toggle, isOpen }) {
 
                 </div>
                 <div className='z-20'>
-                    <h2 className={style.topic_calc}>Basic Differentiation Rules</h2>
+                    <h2 className={style.topic_calc}>Basic Integration Rules</h2>
                     <div className={style.box + "flex flex-col dark:bg-opacity-80"}>
                     <h4 className="ml-[40px] mt-[50px] mb-[20px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Power Rule: <PowerRule className="dark:fill-white fill-black flex flex-row ml-[110px] -mt-9"/> </h4>
                         <h4 className="ml-[40px] mb-[15px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Exponential Rule: <ExponRule className="dark:fill-white fill-black flex flex-row ml-[150px] -mt-9"/> </h4>
@@ -69,7 +69,7 @@ function Cheatsheets({ toggle, isOpen }) {
                         <h4 className="ml-[40px] mb-[15px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Inverse Trigonometry Rule: <InverseRule className="dark:fill-white fill-black flex flex-row ml-[225px] -mt-9" /></h4>
                         <h4 className="ml-[40px] mb-[15px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Inverse Trigonometry Rule: <InverseRule1 className="dark:fill-white fill-black flex flex-row ml-[225px] -mt-9" /></h4>   
                     </div> 
-                    <h2 className={style.topic_calc}>Basic Differentiation Rules</h2>
+                    <h2 className={style.topic_calc}>Taylor & Maclaurin Series</h2>
                     <div className={style.box+ "flex flex-col bg-opacity-95 dark:bg-opacity-80"}>
                         <h4 className="ml-[40px] mt-[54px] mb-[25px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Taylor's Series: <TaylsRule className="dark:fill-white fill-black mt-[14px] mb-[40px] " /></h4>
                         <h4 className="ml-[40px] mb-[25px] text-[18px] font-medium text-tx dark:text-primary font-inter ">Maclaurin's Series: <MacsRule className="dark:fill-white fill-black mb-[54px]" /></h4>
