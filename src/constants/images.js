@@ -24,6 +24,7 @@ import rectangle from "../Files/pngs/rectanglegraph.png"
 import integral_org from "../Files/pngs/integral_org.png"
 import limit from "../Files/pngs/limit.png"
 import limit2 from "../Files/pngs/limit2.png"
+import diff from "../Files/pngs/diff.png"
 
 
 export default {
@@ -52,7 +53,8 @@ export default {
     rectangle,
     integral_org,
     limit,
-    limit2,   
+    limit2,
+    diff,   
 };
 
 
