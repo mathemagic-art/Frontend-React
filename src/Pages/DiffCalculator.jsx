@@ -160,7 +160,7 @@ const DiffCalculator = () => {
                 </p>
                 <div className="ml-3 py-8 mr-auto  mt-20 pr-[200px] border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-dark flex items-center">
                   {data.argument_3 === "1" ? "f'" : "f''"}({data.argument_2})=
-                  {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
+                  {answer !== "" ? <BlockMath>{ax}</BlockMath> : ""}
                 </div>
               </div>
             </div>
