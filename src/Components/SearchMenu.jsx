@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Search } from "../Files/svgs/search.svg";
 import PagesRoute from "./PageRoutes";
@@ -8,13 +8,19 @@ import PagesRoutes from "../Data/Pages.json";
 const SearchMenu = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [show, setShow] = useState(false);
+
+  const catMenu = useRef(null);
+
   const toggleFunctions = () => {
     setShow(!show);
   };
 
-  const showMenu = () => {
-    // setShow(false);
+  const closeOpenMenus = (e) => {
+    if (catMenu.current && show && !catMenu.current.contains(e.target)) {
+      setShow(!show);
+    }
   };
+  document.addEventListener("mousedown", closeOpenMenus);
 
   return (
     <div className="flex flex-col m-auto justify-center bg-transparent mt-10 laptop:-mt-6 laptop:pt-20 text-dark dark:text-white text-xl mb-52 z-10 w-2/3 relative">
@@ -27,10 +33,12 @@ const SearchMenu = () => {
           }}
           placeholder="Search for a method..."
           onFocus={toggleFunctions}
-          onBlur={showMenu}
         />
         {show ? (
-          <ul className="absolute top-40  w-full h-full rounded-md z-10">
+          <ul
+            className="absolute top-40  w-full h-full rounded-md z-10"
+            ref={catMenu}
+          >
             {PagesRoutes.filter((val) => {
               if (searchTerm == "") {
                 return val;
