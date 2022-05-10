@@ -27,7 +27,7 @@ const FunctionsMenu = ({ isOpen }) => {
         <RouteItem text="Derivative Calculator" path="diff" />
         <RouteItem text="Limit Calculator" path="limit" />
         <RouteItem text="Taylor Series Calculator" path="taylor" />
-        <RouteItem text="Simpson's 1/3 Rule Calculator" path="simpson" />
+        <RouteItem text="Simpson's Rule Calculator" path="simpson" />
         <RouteItem text="Trapezoidal Rule Calculator" path="trapezoid" />
         <RouteItem text="Midpoint Rule Calculator" path="rectangle" />
         <RouteItem text="Integral Calculator" path="integral" />

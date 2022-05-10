@@ -76,7 +76,7 @@ const SimpsonCalc = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-[30px] font-inter font-bold text-primary">
-              Simpson's 1/3 Rule Calculator
+              Simpson's Rule Calculator
             </h2>
             <p className="text-center font-inter text-[12px] text-text mb-[33px]">
               Approximate the value of a definite integral by using quadratic
