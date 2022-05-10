@@ -3,8 +3,11 @@ import { ReactComponent as Fx } from "../../Files/svgs/fx.svg";
 import axios from "axios";
 import FunctionsMenu from "../../Layouts/FunctionsMenu";
 import Navbar from "../../Layouts/Navbar";
+import { BlockMath } from "react-katex";
 
 const IntegTest = () => {
+  let ax = "";
+
   const [data, setData] = useState({
     argument_1: "1",
   });
@@ -37,7 +40,9 @@ const IntegTest = () => {
     });
     setShowq(true);
   };
-
+  if (question[0]) {
+    ax = question[0].replace(/\\/g, "\\");
+  }
   const handleInput = (e) => {
     e.preventDefault();
     const value = e.target.value;
@@ -81,8 +86,8 @@ const IntegTest = () => {
       <Navbar />
       <FunctionsMenu />
       <div className="z-10">
-        <div className="w-2/3  bg-white dark:bg-dark dark:text-white text-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
-          <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl">
+        <div className="w-2/3  bg-white dark:bg-dark dark:text-white text-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center pb-10 border-2">
+          <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl border-b-2">
             Integration Question
           </h3>
           <div className="flex flex-col p-6 text-center gap-2 text-xl items-end">
@@ -103,9 +108,11 @@ const IntegTest = () => {
 
           <form onSubmit={handleSubmit}>
             {showq ? (
-              <p className="text-center py-10 text-2xl dark:text-white text-dark">
-                {question[0]}
-              </p>
+              <>
+                <div className="my-8 mb-10 text-2xl">
+                  <BlockMath>{ax}</BlockMath>
+                </div>
+              </>
             ) : (
               ""
             )}

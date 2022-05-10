@@ -7,8 +7,8 @@ import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
-import {images} from "../constants";
-import {ReactComponent as Trapezoideq } from "../Files/svgs/Trapezoideq.svg"
+import { images } from "../constants";
+import { ReactComponent as Trapezoideq } from "../Files/svgs/Trapezoideq.svg";
 
 const TrapezoidCalc = () => {
   const [data, setData] = useState({
@@ -201,8 +201,10 @@ const TrapezoidCalc = () => {
         <div className=" w-1/2 mt-12 flex flex-col text-tx dark:text-white">
           {!submitted ? (
             <div className="mt-[98px] ml-[300px]">
-              <p className="mb-10 font-semibold text-2xl flex">According to Trapezoidal Rule:</p>
-              <Trapezoideq className="fill-tx dark:fill-white"/>
+              <p className="mb-10 font-semibold text-2xl flex">
+                According to Trapezoidal Rule:
+              </p>
+              <Trapezoideq className="fill-tx dark:fill-white" />
               <img src={images.graphtrap} />
             </div>
           ) : (
@@ -221,8 +223,6 @@ const TrapezoidCalc = () => {
               </div>
             </div>
           )}
-
-
 
           <div className="rounded-2xl ml-[300px] -mt-10">
             {submitted ? (
