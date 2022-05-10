@@ -20,7 +20,7 @@ const Test_Yourself = () => {
           <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
             <p className="h-[87%]"></p>
             <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
+              to={"/testyourself/difftest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[3.4rem]"
             >
               DIFFERENTIATION
@@ -29,7 +29,7 @@ const Test_Yourself = () => {
           <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
             <p className="h-[87%]"></p>
             <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
+              to={"/testyourself/integtest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[4.9rem]"
             >
               INTEGRATION
@@ -38,7 +38,7 @@ const Test_Yourself = () => {
           <div className="bg-white shadow-lg dark:bg-white rounded-xl h-[25rem] w-[19.3rem] ">
             <p className="h-[87%]"></p>
             <Link
-              to={"/TESTYOURSELF/LIMITTEST"}
+              to={"/testyourself/limittest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[7.8rem]"
             >
               LIMIT
@@ -48,7 +48,7 @@ const Test_Yourself = () => {
       </div>
       <div className="ml-[46%] pb-20 pt-32">
         <Link
-          to={"/TESTYOURSELF/LIMITTEST"}
+          to={"/testyourself"}
           className="shadow-md border-2 rounded-sm bg-white text-dark py-2 px-3 mx-2"
         >
           1

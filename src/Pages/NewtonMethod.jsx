@@ -1,11 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-
+import Plot from "react-plotly.js";
+import * as math from "mathjs";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
+import { images } from "../constants";
+
 var Latex = require("react-latex");
 
 
@@ -18,6 +21,8 @@ const NewtonMethod = () => {
 
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [exp, setExp] = useState("");
 
   const handleInput = (event) => {
     const name = event.target.name;
@@ -29,6 +34,7 @@ const NewtonMethod = () => {
     event.preventDefault();
     setData({ argument_1: "", argument_2: "x", argument_3: "" });
     setAnswer("");
+    setSubmitted(false);
   };
 
   const toggle = () => {
@@ -39,10 +45,17 @@ const NewtonMethod = () => {
     axios.post("newtons-method/", data).then((res) => {
       setAnswer(res.data);
     });
-    console.log(data);
-    console.log(answer);
+    setSubmitted(true);
+    setExp(data.argument_1);
     event.preventDefault();
   };
+
+  // const expression = exp;
+  // const expr = math.compile(expression.replaceAll("**", "^"));
+  // const xValues = math.range(data.argument_3, data.argument_4, 0.5).toArray();
+  // const yValues = xValues.map(function (x) {
+  //   return expr.evaluate({ x: x });
+  // });
   return (
     <div className="h-full flex flex-col text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
       <Navbar toggle={toggle} />
@@ -131,15 +144,23 @@ const NewtonMethod = () => {
           </p>
           <Newton className="ml-[300px] mt-[47px] w-[500px] h-[200px]  fill-tx dark:fill-white" />
           <div className="flex mt-10 pt-10 ml-[350px] h-full w-full flex-row text-2xl tracking-wide">
-            <p className="text-[28px] font-semi-bold text-tx dark:text-white">
-              The root of {" "}
-              {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
-              equals to{" "}
-            </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
-              {data.argument_2}=
-              {answer !== "" ? answer : "_____________"}
-            </div>
+          {!submitted ?
+              <img src={images.graphnw} />
+             : (
+                <div>
+
+                  <p className="text-[28px] font-semi-bold text-tx -mt-5 dark:text-white">
+                  The root of {" "}
+                  {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
+                  equals to{" "}
+                  </p>
+                  <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl mt-5 px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
+                  {data.argument_2}=
+                  {answer !== "" ? answer : "_____________"}
+                  </div>
+                </div>
+            )}
+            
           </div>
         </div>
       </div>

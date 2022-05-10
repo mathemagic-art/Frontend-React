@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
+import { ReactComponent as Taylor } from "../Files/svgs/tayloreq.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
@@ -35,6 +35,7 @@ const TaylorCalc = () => {
       argument_4: "",
     });
     setAnswer("");
+    setSubmitted(false);
   };
 
   const toggle = () => {
@@ -46,6 +47,7 @@ const TaylorCalc = () => {
       console.log(res.data);
       const data1 = res.data.replaceAll("**", "^");
       setAnswer(data1);
+      event.preventDefault()
     });
     setSubmitted(true);
     setExp(data.argument_1);
@@ -169,10 +171,21 @@ const TaylorCalc = () => {
 
         {/* The Right Sections */}
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white justify-center items-end">
-          <p className="mt-[98px] font-normal text-2xl flex">
-            Based on Taylor Series Rule's:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
-          </p>
+
+          {!submitted ? (
+          <div className="flex flex-col -mt-10">
+
+            <p className="mt-[98px] pb-[62px] font-semibold text-[28px] text-tx flex">
+              According to Taylor's Series
+            </p>
+            <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
+            <p className="mt-[98px] text-[28px] font-semibold pb-[62px] text-tx flex">
+             According to Maclorian's Series
+            </p>
+            <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
+          </div>
+
+          ) : (
           <div className="flex mt-10  pt-10 flex-row font-normal text-2xl tracking-wide ">
             <p>
               The answer for{" "}
@@ -182,6 +195,7 @@ const TaylorCalc = () => {
               {answer !== "" ? answer : "_____________"}
             </div>
           </div>
+          )}
           <div className="mt-20 ml-[300px] mb-28 rounded-2xl">
             {submitted ? (
               <Plot

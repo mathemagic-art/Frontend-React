@@ -84,7 +84,7 @@ const IntegralCalc = () => {
     <>
       <Navbar toggle={toggle} />
       {isOpen ? <FunctionsMenu /> : ""}
-      <div className="flex text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
+      <div className="flex text-dark bg-white dark:bg-dark dark:text-white">
         <form onSubmit={handleSubmit}>
           <div className={style_for_main_div}>
             <h2 className="text-center text-[30px] mt-5 font-inter font-bold text-primary">
@@ -125,7 +125,7 @@ const IntegralCalc = () => {
                 className="w-[460px] h-[48px] p-2 border-2 text-text  dark:border-primary rounded-[8px] mb-[30px] text-lg"
               >
                 <option value="indefinite">Indefinite Integral</option>
-                <option value="definite">Definite Integral</option>
+                <option value="efinite">Definite Integral</option>
               </select>
 
               <div>

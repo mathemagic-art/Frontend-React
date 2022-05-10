@@ -17,11 +17,16 @@ import Umedjon from "../Files/pngs/Umedjon.png"
 import Zakir from "../Files/pngs/Zakir.png"
 import Aizada from "../Files/pngs/Aizada.png"
 import Muso from "../Files/pngs/Muso.png"
+import Jasurbek from "../Files/pngs/Jasurbek.png"
+import graphnw from "../Files/pngs/graphnw.png"
+import graphtrap from "../Files/pngs/trapezoidgraph.png"
+
 
 
 export default {
     abbosjon,
     abo,
+    Jasurbek,
     Aisha,
     Attiullah,
     Baistan,
@@ -39,6 +44,8 @@ export default {
     Benazir,
     Aizada,
     Muso,
+    graphnw,
+    graphtrap,   
 };
 
 
