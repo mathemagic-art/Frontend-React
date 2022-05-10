@@ -9,7 +9,7 @@ const LimitTest = () => {
     <div className="bg-white h-full w-full dark:bg-dark dark:text-white text-dark">
       <Navbar />
       <FunctionsMenu />
-      <QuestionCard id="1" Question="Find The Derivative of tan(sin5x)?" />
+      <QuestionCard />
     </div>
   );
 };
