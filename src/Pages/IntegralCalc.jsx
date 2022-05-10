@@ -1,16 +1,14 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-// import MethodsCard from "../Components/MethodsCard";
-import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { BlockMath } from "react-katex";
+import Navbar from "../Layouts/Navbar";
 
 const IntegralCalc = () => {
   let ax = "";
-  let q = "";
   const [data, setData] = useState({
     argument_1: "indefinite",
     argument_2: "",
@@ -43,9 +41,7 @@ const IntegralCalc = () => {
   if (answer) {
     ax = answer.replace(/\\/g, "\\");
   }
-  if (data.argument_2) {
-    q = data.argument_2.replace(/\\/g, "\\");
-  }
+
   console.log(ax);
   let style_for_main_div = "";
   let style_for_content_div = "";
