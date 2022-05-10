@@ -100,9 +100,9 @@ const IntegTest = () => {
               onChange={handleSelect}
             >
               <option>Select Your Level</option>
-              <option value="1">Begginer</option>
+              <option value="1">Beginner</option>
               <option value="2">Intermediate</option>
-              <option value="3">Advance</option>
+              <option value="3">Advanced</option>
             </select>
           </div>
 

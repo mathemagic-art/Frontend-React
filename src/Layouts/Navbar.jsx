@@ -36,7 +36,7 @@ const Navbar = () => {
           isOpen={isOpen}
         />
         <NavLink
-          text={"CONTACT US"}
+          text={"CONTUCT US"}
           className="flex"
           onClick={toggle}
           isOpen={isOpen}
