@@ -8,6 +8,7 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 import * as math from "mathjs";
 import Plot from "react-plotly.js";
 import numerical from "../Files/svgs/numerical.svg";
+import images from "../constants/images";
 
 const RectangleCalc = () => {
   const [data, setData] = useState({
@@ -40,6 +41,7 @@ const RectangleCalc = () => {
       argument_5: "",
     });
     setAnswer("");
+    setSubmitted(false);
   };
 
   console.log(answer);
@@ -190,20 +192,31 @@ const RectangleCalc = () => {
           </div>
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col  text-tx dark:text-white">
-          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Rectangle Rule's: <br />
-            <Rectangle className="fill-tx dark:fill-white mt-10" />
-          </p>
-
-          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p>
-              The answer for{" "}
-              {!data.argument_1 ? "f(x)" : "f(x) = " + data.argument_2} is:{" "}
-            </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
-              {answer !== "" ? answer : "_____________"}
+          {!submitted ? (
+            <div className="flex flex-col ml-[300px]  text-tx dark:text-white">
+              <p className="mt-[98px] font-semibold text-2xl">
+               According to Rectangle Rule's:
+              </p>
+              <Rectangle className="fill-tx dark:fill-white mt-10" />
+              <img src={images.rectangle} className="mt-[60px]" />
             </div>
-          </div>
+          ) : (
+            <div>
+              <p className="mt-[98px] ml-[300px] font-semibold text-2xl flex mb-10">
+                According to Rectangle Rule's:
+              </p>
+              <Rectangle className="fill-tx dark:fill-white mt-10 ml-[300px]" />
+
+              <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-col font-normal text-2xl tracking-wide">
+                <p className="mb-5 text-tx dark:text-white font-semibold text-2xl">
+                  The area under the curve equals to:
+                </p>
+                <div className="ml-3 pt-2 pb-10 border-2 mr-auto font-normal rounded-xl text-3xl mt-[35px] pl-3 pr-20 border-double border-green-600 h-10 text-tx dark:text-white">
+                  {answer !== "" ? answer : ""}
+                </div>
+              </div>
+            </div>
+          )}
           <div className="mt-20 ml-[300px]">
             {submitted ? (
               <Plot
@@ -231,7 +244,7 @@ const RectangleCalc = () => {
                 }}
               />
             ) : (
-              <img src={numerical} className="" />
+              ""
             )}
           </div>
         </div>
