@@ -91,12 +91,12 @@ const QuestionCard = () => {
   };
 
   return (
-    <div className="z-10">
-      <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
-        <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl">
+    <div className="z-10 ">
+      <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center pb-10 border-2">
+        <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl border-b-2">
           Limit Question
         </h3>
-        <div className="flex flex-col p-6 text-center gap-2 text-xl items-end">
+        <div className="flex flex-col p-6 text-center gap-2 text-xl items-end ">
           <label htmlFor="option" className="pr-10">
             Difficulty level
           </label>
@@ -115,7 +115,7 @@ const QuestionCard = () => {
         <form onSubmit={handleSubmit}>
           {showq ? (
             <>
-              <div className="my-8 mb-20">
+              <div className="my-8 mb-20 text-2xl">
                 <BlockMath>{ax}</BlockMath>
               </div>
             </>
@@ -126,7 +126,7 @@ const QuestionCard = () => {
             <input
               type="text"
               placeholder="Enter Your Solution.."
-              className="w-full  h-16 px-2 rounded-l-lg border-r-2 border-border"
+              className="w-full  h-16 px-2 rounded-l-lg border-r-2 border-border text-dark text-lg"
               onChange={handleInput}
               name="argument_1"
               value={data[0]}

@@ -11,7 +11,6 @@ import { images } from "../constants";
 
 var Latex = require("react-latex");
 
-
 const NewtonMethod = () => {
   const [data, setData] = useState({
     argument_1: "",
@@ -50,12 +49,6 @@ const NewtonMethod = () => {
     event.preventDefault();
   };
 
-  // const expression = exp;
-  // const expr = math.compile(expression.replaceAll("**", "^"));
-  // const xValues = math.range(data.argument_3, data.argument_4, 0.5).toArray();
-  // const yValues = xValues.map(function (x) {
-  //   return expr.evaluate({ x: x });
-  // });
   return (
     <div className="h-full flex flex-col text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
       <Navbar toggle={toggle} />
@@ -144,23 +137,22 @@ const NewtonMethod = () => {
           </p>
           <Newton className="ml-[300px] mt-[47px] w-[500px] h-[200px]  fill-tx dark:fill-white" />
           <div className="flex mt-10 pt-10 ml-[350px] h-full w-full flex-row text-2xl tracking-wide">
-          {!submitted ?
+            {!submitted ? (
               <img src={images.graphnw} />
-             : (
-                <div>
-
-                  <p className="text-[28px] font-semi-bold text-tx -mt-5 dark:text-white">
-                  The root of {" "}
-                  {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
+            ) : (
+              <div>
+                <p className="text-[28px] font-semi-bold text-tx -mt-5 dark:text-white">
+                  The root of{" "}
+                  {!data.argument_1
+                    ? variable
+                    : variable + " = " + data.argument_1}{" "}
                   equals to{" "}
-                  </p>
-                  <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl mt-5 px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
-                  {data.argument_2}=
-                  {answer !== "" ? answer : "_____________"}
-                  </div>
+                </p>
+                <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl mt-5 px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
+                  {data.argument_2}={answer !== "" ? answer : "_____________"}
                 </div>
+              </div>
             )}
-            
           </div>
         </div>
       </div>
