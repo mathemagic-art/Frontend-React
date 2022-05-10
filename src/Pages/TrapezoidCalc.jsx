@@ -7,6 +7,8 @@ import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
+import {images} from "../constants";
+import {ReactComponent as Trapezoideq } from "../Files/svgs/Trapezoideq.svg"
 
 const TrapezoidCalc = () => {
   const [data, setData] = useState({
@@ -37,6 +39,7 @@ const TrapezoidCalc = () => {
       argument_5: "",
     });
     setAnswer("");
+    setSubmitted(false);
   };
 
   console.log(answer);
@@ -195,21 +198,33 @@ const TrapezoidCalc = () => {
             </div>
           </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
-          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Trapezoid Rule's:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
-          </p>
-          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p>
-              The answer for{" "}
-              {!data.argument_1 ? "f(x)" : "f(x) = " + data.argument_1} is:{" "}
-            </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
-              {answer !== "" ? answer : "_____________"}
+        <div className=" w-1/2 mt-12 flex flex-col text-tx dark:text-white">
+          {!submitted ? (
+            <div className="mt-[98px] ml-[300px]">
+              <p className="mb-10 font-semibold text-2xl flex">According to Trapezoidal Rule:</p>
+              <Trapezoideq className="fill-tx dark:fill-white"/>
+              <img src={images.graphtrap} />
             </div>
-          </div>
-          <div className="mt-20 rounded-2xl">
+          ) : (
+            <div className="flex flex-col mt-[98px] ml-[300px]">
+              <p className="font-semibold text-2xl flex mb-10">
+                According to Trapezoidal Rule
+              </p>
+              <Trapezoideq className="fill-tx dark:fill-white -ml-[230px] w-[800px] h-[300px]" />
+              <div className="flex pt-10 mt-[30px] h-full w-full flex-col font-normal text-2xl tracking-wide">
+                <p className="mb-5 text-tx dark:text-white font-semibold text-2xl">
+                  The area under the curve equals to:
+                </p>
+                <div className="ml-3 pt-2 pb-10 mt-[16px] mr-auto border-2 font-normal rounded-xl text-3xl pl-3 pr-20 border-double border-green-600 h-5 text-tx dark:text-white">
+                  {answer !== "" ? answer : ""}
+                </div>
+              </div>
+            </div>
+          )}
+
+
+
+          <div className="rounded-2xl ml-[300px] -mt-10">
             {submitted ? (
               <Plot
                 className="rounded-2xl"
