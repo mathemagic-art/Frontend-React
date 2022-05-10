@@ -173,7 +173,7 @@ const SimpsonCalc = () => {
               <div>
                 <Simpsons_eq className="-mt-10 pb-20 fill-tx dark:fill-white" />
                 <p className="-mt-10 pb-10">The area under the curve equals to: {" "}
-                  {!data.equation ? "f(x)" : "f(x) = " + data.equation} is:{" "}
+                  {/* {!data.equation ? "f(x)" : "f(x) = " + data.equation} is:{" "} */}
                 </p>
                 <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double dark:bg-dark bg-white border-green-600 h-10 text-tx dark:text-white">
                   {answer !== "" ? answer : ""}
