@@ -1,13 +1,16 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-// import MethodsCard from "../Components/MethodsCard";
-import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
+import { BlockMath } from "react-katex";
+import Navbar from "../Layouts/Navbar";
+import { React as Integral} from "../Files/pngs/integral.svg";
+import { images } from "../constants";
 
 const IntegralCalc = () => {
+  let ax = "";
   const [data, setData] = useState({
     argument_1: "indefinite",
     argument_2: "",
@@ -17,6 +20,9 @@ const IntegralCalc = () => {
   });
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [exp, setExp] = useState("");
+
 
   const handleInput = (event) => {
     const name = event.target.name;
@@ -36,35 +42,35 @@ const IntegralCalc = () => {
       argument_5: "1",
     });
     setAnswer("");
+    setSubmitted(false);
   };
+  if (answer) {
+    ax = answer.replace(/\\/g, "\\");
+  }
 
+  console.log(ax);
   let style_for_main_div = "";
   let style_for_content_div = "";
   let url = "";
   let variable = "";
 
   if (data.argument_1 === "indefinite") {
-
-    style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
+    style_for_content_div =
+      " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
     style_for_main_div =
       "mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[665px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black";
     url = "indefinite-integral/";
     variable =
       "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl";
-
   } else {
-
-    style_for_content_div = " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
+    style_for_content_div =
+      " w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white";
     style_for_main_div =
       "mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[760px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black";
     url = "definite-integral/";
     variable =
       "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl";
-
   }
-  // useEffect(() => {
-
-  // }, [data, setData])
 
   console.log(answer);
 
@@ -79,6 +85,7 @@ const IntegralCalc = () => {
     console.log(data);
     console.log(answer);
     event.preventDefault();
+    setSubmitted(true);
   };
   return (
     <>
@@ -95,25 +102,34 @@ const IntegralCalc = () => {
             <p className="text-center text-text mt-[11px] mb-[24px]">
               Find areas and volumes by adding the slices to find the whole.{" "}
             </p>
-              <label htmlFor="function" className="ml-2 dark:text-bright mb-[30px] text-text text-[18px] ">
-                Enter a function f(x)
-              </label>
-              <div className="flex rounded-l-[8px] text-black mb-[30px] " id="searchbox">
-                <input
-                  required
-                  className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
-                  type="text"
-                  id="function"
-                  name="argument_2"
-                  value={data.argument_2}
-                  onChange={handleInput}
-                />{" "}
-                <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
-                  <Fx className="dark:fill-white fill-tx w-[25px]"/>
-                </button>
-              </div>
+            <label
+              htmlFor="function"
+              className="ml-2 dark:text-bright mb-[30px] text-text text-[18px] "
+            >
+              Enter a function f(x)
+            </label>
+            <div
+              className="flex rounded-l-[8px] text-black mb-[30px] "
+              id="searchbox"
+            >
+              <input
+                required
+                className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                type="text"
+                id="function"
+                name="argument_2"
+                value={data.argument_2}
+                onChange={handleInput}
+              />{" "}
+              <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
+                <Fx className="dark:fill-white fill-tx w-[25px]" />
+              </button>
+            </div>
             <div className="">
-              <label htmlFor="list" className="ml-2 dark:text-bright text-text text-[18px] ">
+              <label
+                htmlFor="list"
+                className="ml-2 dark:text-bright text-text text-[18px] "
+              >
                 Integration type
               </label>
               <select
@@ -125,11 +141,14 @@ const IntegralCalc = () => {
                 className="w-[460px] h-[48px] p-2 border-2 text-text  dark:border-primary rounded-[8px] mb-[30px] text-lg"
               >
                 <option value="indefinite">Indefinite Integral</option>
-                <option value="efinite">Definite Integral</option>
+                <option value="definite">Definite Integral</option>
               </select>
 
               <div>
-                <label htmlFor="variable" className=" dark:text-bright text-text text-[18px] ">
+                <label
+                  htmlFor="variable"
+                  className=" dark:text-bright text-text text-[18px] "
+                >
                   Variable
                 </label>
                 <input
@@ -139,7 +158,7 @@ const IntegralCalc = () => {
                   value={data.argument_3}
                   name="argument_3"
                   onChange={handleInput}
-                  className={variable }
+                  className={variable}
                 />
 
                 {data.argument_1 === "indefinite" ? (
@@ -198,19 +217,25 @@ const IntegralCalc = () => {
           </div>
         </form>
         <div className={style_for_content_div}>
-          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Integral Rule's:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
-          </p>
-          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p>
-              The answer for{" "}
-              {!data.argument_2 ? "f(x)" : "f(x) = " + data.argument_2} is:{" "}
-            </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 bg-white text-black">
-              {answer !== "" ? answer : "_____________"}
+          {!submitted ? (
+            <div className="flex flex-col ml-[300px]">
+              <div className="flex flex-col leading-9">
+                <p className="mt-[98px] pb-[32px] font-semibold text-[30px] dark:text-white text-tx">Why do we need to learn Integration?</p>
+                <p className="mr-[10px] tracking-[1%] text-[25px]">An integral is calculated to find the functions which will describe the area, displacement, volume, that occurs due to a collection of small data, which cannot be measured singularly. </p>
+              </div>
+              <img src={images.integral_org} className="w-[500px] h-[400px] mt-5" />
             </div>
-          </div>
+          ) : (
+            <div className="flex flex-col ml-[300px]">
+              <p className="mt-[98px] mb-10 flex text-tx dark:text-white font-semibold text-2xl">
+                The area under the curve equals to:
+              </p>
+              <div className="py-10 border-2 font-normal rounded-xl text-xl  px-3 border-double border-green-600 h-10 bg-white text-black flex justify-center items-center">
+                {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
+              </div>
+              <img src={images.integral_org} className="w-[500px] h-[400px] mt-5" />
+            </div>
+          )}
         </div>
       </div>
     </>

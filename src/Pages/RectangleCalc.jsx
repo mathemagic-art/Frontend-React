@@ -8,9 +8,12 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 import * as math from "mathjs";
 import Plot from "react-plotly.js";
 import numerical from "../Files/svgs/numerical.svg";
-
+import images from "../constants/images";
 
 const RectangleCalc = () => {
+  const [lower, setLower] = useState("");
+  const [upper, setUp] = useState("");
+  const [interval, setInterval] = useState("");
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -41,6 +44,7 @@ const RectangleCalc = () => {
       argument_5: "",
     });
     setAnswer("");
+    setSubmitted(false);
   };
 
   console.log(answer);
@@ -50,18 +54,35 @@ const RectangleCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("rectangle-method/", data).then((res) => {
+    console.log(data);
+    axios.post("/midpoint-method/", data).then((res) => {
       setAnswer(res.data);
     });
+    console.log(answer);
     setSubmitted(true);
     setExp(data.argument_1);
     event.preventDefault();
+    setLower(data.argument_3);
+    setUp(data.argument_4);
+    setInterval(data.argument_5);
   };
-
   const expression = exp;
+  const nRange = (upper - lower) / interval;
+
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math.range(data.argument_3, data.argument_4, 1).toArray();
+  const xValues = math.range(lower, Number(upper) + 0.0001, 0.01).toArray();
   const yValues = xValues.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
+
+  const xValuesNterms = math
+    .range(lower, Number(upper) + 0.01, nRange)
+    .toArray();
+  const xWidth = xValuesNterms.map(function (x) {
+    return 0;
+  });
+
+  const yValuesNterms = xValuesNterms.map(function (x) {
     return expr.evaluate({ x: x });
   });
 
@@ -73,7 +94,7 @@ const RectangleCalc = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[730px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-[30px] font-inter font-bold text-primary">
-              Rectangle Rule Calculator
+              Midpoint Rule Calculator
             </h2>
             <p className="text-center font-inter text-[12px] text-text mb-[33px]">
               Approximate the area under a simple curve{" "}
@@ -110,6 +131,7 @@ const RectangleCalc = () => {
                 type="text"
                 id="variable"
                 name="argument_2"
+                RectangleCalc
                 value={data.argument_2}
                 onChange={handleInput}
                 className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
@@ -118,7 +140,7 @@ const RectangleCalc = () => {
                 htmlFor="lower-limit"
                 className="dark:text-bright text-text text-[16px]"
               >
-                Lower Limit = α
+                Lower Limit
               </label>
               <input
                 required
@@ -133,7 +155,7 @@ const RectangleCalc = () => {
                 htmlFor="upper-limit"
                 className="ml-2 dark:text-bright text-text text-[16px] "
               >
-                Upper Limit = β
+                Upper Limit
               </label>
               <input
                 required
@@ -177,20 +199,31 @@ const RectangleCalc = () => {
           </div>
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col  text-tx dark:text-white">
-          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Rectangle Rule's: <br/>
-            <Rectangle className="fill-tx dark:fill-white mt-10" />
-          </p>
-
-          <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-            <p>
-              The answer for{" "}
-              {!data.argument_1 ? "f(x)" : "f(x) = " + data.argument_2} is:{" "}
-            </p>
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
-              {answer !== "" ? answer : "_____________"}
+          {!submitted ? (
+            <div className="flex flex-col ml-[300px]  text-tx dark:text-white">
+              <p className="mt-[98px] font-semibold text-2xl">
+                According to Rectangle Rule's:
+              </p>
+              <Rectangle className="fill-tx dark:fill-white mt-10" />
+              <img src={images.rectangle} className="mt-[60px]" />
             </div>
-          </div>
+          ) : (
+            <div>
+              <p className="mt-[98px] ml-[300px] font-semibold text-2xl flex mb-10">
+                According to Rectangle Rule's:
+              </p>
+              <Rectangle className="fill-tx dark:fill-white mt-10 ml-[300px]" />
+
+              <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-col font-normal text-2xl tracking-wide">
+                <p className="mb-5 text-tx dark:text-white font-semibold text-2xl">
+                  The area under the curve equals to:
+                </p>
+                <div className="ml-3 pt-2 pb-10 border-2 mr-auto font-normal rounded-xl text-3xl mt-[35px] pl-3 pr-20 border-double border-green-600 h-10 text-tx dark:text-white">
+                  {answer !== "" ? answer : ""}
+                </div>
+              </div>
+            </div>
+          )}
           <div className="mt-20 ml-[300px]">
             {submitted ? (
               <Plot
@@ -205,9 +238,10 @@ const RectangleCalc = () => {
                   },
                   {
                     type: "bar",
-                    x: xValues,
-                    y: yValues,
+                    x: xValuesNterms,
+                    y: yValuesNterms,
                     marker: { color: "blue" },
+                    width: nRange,
                   },
                 ]}
                 layout={{
@@ -217,7 +251,7 @@ const RectangleCalc = () => {
                 }}
               />
             ) : (
-              <img src={numerical} className="" />
+              ""
             )}
           </div>
         </div>

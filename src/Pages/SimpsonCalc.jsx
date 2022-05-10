@@ -8,9 +8,13 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
 import numerical from "../Files/svgs/numerical.svg";
-import { ReactComponent as Simpsons_eq} from "../Files/svgs/SimpsonsEq.svg"
+import { ReactComponent as Simpsons_eq } from "../Files/svgs/SimpsonsEq.svg";
 
 const SimpsonCalc = () => {
+  const [lower, setLower] = useState("");
+  const [upper, setUp] = useState("");
+  let x = "";
+  let y = "";
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -53,12 +57,14 @@ const SimpsonCalc = () => {
     });
     setSubmitted(true);
     setExp(data.argument_1);
+    setLower(data.argument_3);
+    setUp(data.argument_4);
     event.preventDefault();
   };
 
   const expression = exp;
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math.range(data.argument_3, data.argument_4, 0.5).toArray();
+  const xValues = math.range(lower, Number(upper) + 0.01, 0.0099).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
@@ -70,7 +76,7 @@ const SimpsonCalc = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[696px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-[30px] font-inter font-bold text-primary">
-              Simpson's 1/3 Rule Calculator
+              Simpson's Rule Calculator
             </h2>
             <p className="text-center font-inter text-[12px] text-text mb-[33px]">
               Approximate the value of a definite integral by using quadratic
@@ -167,37 +173,41 @@ const SimpsonCalc = () => {
             According to Simpson's 1/3 Rule's:
           </p>
           <div className="flex mt-10 ml-[300px] pt-10  flex-row font-normal text-2xl tracking-wide">
-            {!submitted ?
-              <Simpsons_eq className="fill-tx dark:fill-white"/>
-             : (
+            {!submitted ? (
+              <Simpsons_eq className="fill-tx dark:fill-white" />
+            ) : (
               <div>
                 <Simpsons_eq className="-mt-10 pb-20 fill-tx dark:fill-white" />
-                <p className="-mt-10 pb-10">The area under the curve equals to: {" "}
-                  {!data.equation ? "f(x)" : "f(x) = " + data.equation} is:{" "}
+                <p className="-mt-10 pb-10">
+                  The area under the curve equals to:{" "}
+                  {/* {!data.equation ? "f(x)" : "f(x) = " + data.equation} is:{" "} */}
                 </p>
                 <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double dark:bg-dark bg-white border-green-600 h-10 text-tx dark:text-white">
                   {answer !== "" ? answer : ""}
                 </div>
               </div>
             )}
-            
           </div>
           <div className="mt-20 ml-[300px]">
             {submitted ? (
               <Plot
-                className="mt-10"
+                className="mt-10 mb-10"
                 data={[
                   {
                     x: xValues,
                     y: yValues,
+                    name: "Area",
+                    fill: "tozeroy",
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "red" },
+                    marker: { color: "6F46F3" },
                   },
                   {
-                    type: "bar",
                     x: xValues,
                     y: yValues,
+                    name: expression,
+                    type: "scatter",
+                    mode: "lines",
                     marker: { color: "blue" },
                   },
                 ]}
@@ -205,10 +215,11 @@ const SimpsonCalc = () => {
                   width: 720,
                   height: 540,
                   title: "Simpsons Rule Calculator",
+          
                 }}
               />
             ) : (
-              <img src={numerical} className="" />
+              <img src={numerical} className="mb-10" />
             )}
           </div>
         </div>

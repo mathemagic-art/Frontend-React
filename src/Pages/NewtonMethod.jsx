@@ -11,7 +11,6 @@ import { images } from "../constants";
 
 var Latex = require("react-latex");
 
-
 const NewtonMethod = () => {
   const [data, setData] = useState({
     argument_1: "",
@@ -50,12 +49,6 @@ const NewtonMethod = () => {
     event.preventDefault();
   };
 
-  // const expression = exp;
-  // const expr = math.compile(expression.replaceAll("**", "^"));
-  // const xValues = math.range(data.argument_3, data.argument_4, 0.5).toArray();
-  // const yValues = xValues.map(function (x) {
-  //   return expr.evaluate({ x: x });
-  // });
   return (
     <div className="h-full flex flex-col text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
       <Navbar toggle={toggle} />
@@ -138,29 +131,36 @@ const NewtonMethod = () => {
             </div>
           </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white tablet:w-full tablet:pl-16 tablet:pb-16">
-          <p className="mt-12 ml-[350px] font-semi-bold text-[28px] flex">
+        <div className=" w-1/2 mr-20 flex flex-col text-tx dark:text-white tablet:w-full tablet:pl-16 tablet:pb-16">
+          <p className="mt-[35px] ml-[300px] font-semibold text-[30px] flex">
             According to Newton's Method:
           </p>
           <Newton className="ml-[300px] mt-[47px] w-[500px] h-[200px]  fill-tx dark:fill-white" />
-          <div className="flex mt-10 pt-10 ml-[350px] h-full w-full flex-row text-2xl tracking-wide">
-          {!submitted ?
-              <img src={images.graphnw} />
-             : (
-                <div>
-
-                  <p className="text-[28px] font-semi-bold text-tx -mt-5 dark:text-white">
-                  The root of {" "}
-                  {!data.argument_1 ? variable : variable + " = " + data.argument_1}{" "}
+          <div className="flex mt-10 pt-10 ml-[300px] h-full w-full flex-row text-2xl tracking-wide">
+            {!submitted ? (
+              <img src={images.graphnw} className="w-[630px] h-[400px] mb-10" />
+            ) : (
+              <div>
+                <p className="text-[28px] font-semibold text-tx dark:text-white">
+                  The root of{" "}
+                  {!data.argument_1
+                    ? variable
+                    : variable + " = " + data.argument_1}{" "}
                   equals to{" "}
+<<<<<<< HEAD
                   </p>
                   <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl mt-5 px-3 border-double border-green-600 h-10 dark:text-white dark:bg-black bg-white text-tx">
                   {data.argument_2}=
                   {answer !== "" ? answer : "_____________"}
                   </div>
+=======
+                </p>
+                <div className="ml-3 mr-[100px] pt-5 pb-[70px] border-2 mt-[46px] mb-10 font-normal rounded-xl text-3xl px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
+                  {data.argument_2}={answer !== "" ? answer : "_"}
+>>>>>>> e00f8e50f4164378ee43a1f74ec09d3c613446dd
                 </div>
+              </div>
             )}
-            
           </div>
         </div>
       </div>

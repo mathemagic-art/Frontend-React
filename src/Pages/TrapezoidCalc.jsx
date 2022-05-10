@@ -3,14 +3,18 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import Navbar from "../Layouts/Navbar";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import { ReactComponent as Trapezoid } from "../Files/svgs/trapezoideq.svg";
+import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
-import {images} from "../constants"
-
+import { images } from "../constants";
+import { ReactComponent as Trapezoideq } from "../Files/svgs/Trapezoideq.svg";
 
 const TrapezoidCalc = () => {
+  const [lower, setLower] = useState("");
+  const [upper, setUp] = useState("");
+  const [interval, setInterval] = useState("");
+
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -20,7 +24,7 @@ const TrapezoidCalc = () => {
   });
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false); 
   const [exp, setExp] = useState("");
 
   const handleInput = (event) => {
@@ -39,6 +43,7 @@ const TrapezoidCalc = () => {
       argument_5: "",
     });
     setAnswer("");
+    setSubmitted(false);
   };
 
   console.log(answer);
@@ -54,14 +59,27 @@ const TrapezoidCalc = () => {
     setSubmitted(true);
     setExp(data.argument_1);
     event.preventDefault();
+    setLower(data.argument_3);
+    setUp(data.argument_4);
+    setInterval(data.argument_5);
   };
 
   const expression = exp;
+  const nRange = (upper - lower) / interval;
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math.range(data.argument_3, data.argument_4, 1).toArray();
+  const xValues = math.range(lower, Number(upper) + 0.01, 0.0099).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
+
+  // roof
+  const xValuesNterms = math
+    .range(lower, Number(upper) + 0.01, nRange)
+    .toArray();
+  const yValuesNterms = xValuesNterms.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
+
   return (
     <>
       <Navbar toggle={toggle} />
@@ -184,57 +202,62 @@ const TrapezoidCalc = () => {
             </div>
           </div>
         </form>
-        <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
-
+        <div className=" w-1/2 mt-12 flex flex-col text-tx dark:text-white">
           {!submitted ? (
-            <div className="flex flex-col -mt-10">
-
-              <p className="mt-[98px] pb-[62px] ml-[225px] font-semibold text-[28px] text-tx flex">
+            <div className="mt-[98px] ml-[300px]">
+              <p className="mb-10 font-semibold text-2xl flex">
                 According to Trapezoidal Rule:
               </p>
-              <Trapezoid className="fill-tx dark:fill-white ml-[225px] -mt-5 " />
-              <img src={images.graphtrap} className="w-[659px] h-[430px] self-center" />
+              <Trapezoideq className="fill-tx dark:fill-white" />
+              <img src={images.graphtrap} />
             </div>
-
-            ) : (
-            <div className="flex flex-col">
-                <div className="flex flex-col">
-
-                  <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-                  Based on Trapezoid Rule's:
-                  <Trapezoid className="fill-tx dark:fill-white ml-10 -mt-5" />
-                  </p>
-                </div>
-              <div className="flex mt-10 ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide">
-                <p>
-                  The answer for{" "}
-                  {!data.argument_1 ? "f(x)" : "f(x) = " + data.argument_1} is:{" "}
+          ) : (
+            <div className="flex flex-col mt-[98px] ml-[300px]">
+              <p className="font-semibold text-2xl fill-tx dark:fill-white flex mb-10">
+                According to Trapezoidal Rule
+              </p>
+              <Trapezoideq className="fill-tx dark:fill-white -ml-[230px] w-[800px] h-[300px]" />
+              <div className="flex pt-10 mt-[30px] h-full w-full flex-col font-normal text-2xl tracking-wide">
+                <p className="mb-5 text-tx dark:text-white font-semibold text-2xl">
+                  The area under the curve equals to:
                 </p>
-                <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white">
-                  {answer !== "" ? answer : "_____________"}
+                <div className="ml-3 pt-2 pb-10 mt-[16px] mr-auto border-2 font-normal rounded-xl text-3xl pl-3 pr-20 border-double border-green-600 h-5 text-tx dark:text-white">
+                  {answer !== "" ? answer : ""}
                 </div>
               </div>
             </div>
-            )}
+          )}
 
-          
-          <div className="mt-20 rounded-2xl ml-[300px]">
+          <div className="rounded-2xl ml-[300px] -mt-10">
             {submitted ? (
               <Plot
                 className="rounded-2xl"
                 data={[
+                  // roofs
+                  {
+                    x: xValuesNterms,
+                    y: yValuesNterms,
+                    fill: "tozeroy",
+                    name: "Area",
+                    // fillcolor: "6F46F3",
+                    type: "scatter",
+                    mode: "lines",
+                    marker: { color: "6F46F3" },
+                  },
                   {
                     x: xValues,
                     y: yValues,
+                    name: expression,
                     type: "scatter",
                     mode: "lines",
                     marker: { color: "blue" },
                   },
                   {
                     type: "bar",
-                    x: data.argument_5,
-                    y: yValues,
-                    marker: { color: "red" },
+                    width: 0,
+                    x: xValuesNterms,
+                    y: yValuesNterms,
+                    marker: { color: "blue" },
                   },
                 ]}
                 layout={{

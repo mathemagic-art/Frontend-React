@@ -2,7 +2,12 @@ import { useState } from "react";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import axios from "axios";
 
+import { BlockMath } from "react-katex";
+import "katex/dist/katex.min.css";
+
 const QuestionCard = () => {
+  let ax = "";
+  let apr = "";
   const [data, setData] = useState({
     argument_1: "1",
   });
@@ -11,6 +16,7 @@ const QuestionCard = () => {
     argument_2: "",
     argument_3: "",
   });
+
   const [uanswer, setUanswer] = useState({
     argument_1: "",
     argument_2: "",
@@ -33,10 +39,16 @@ const QuestionCard = () => {
     console.log(data);
     axios.post("/test-limit", data).then((res) => {
       setQuestion({ ...res.data });
-      console.log(res.data);
+      console.log("Fraction: " + res.data);
     });
     setShowq(true);
   };
+
+  if (question[0]) {
+    ax = question[0].replace(/\\/g, "\\");
+    apr = question[1].replace(/\\/g, "\\");
+  }
+  console.log(typeof ax);
 
   const nextQuestion = (e) => {
     e.preventDefault();
@@ -80,12 +92,12 @@ const QuestionCard = () => {
   };
 
   return (
-    <div className="z-10">
-      <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
-        <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl">
+    <div className="z-10 ">
+      <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center pb-10 border-2">
+        <h3 className="w-full bg-blue-600 text-3xl text-center text-white py-2 rounded-t-xl border-b-2">
           Limit Question
         </h3>
-        <div className="flex flex-col p-6 text-center gap-2 text-xl items-end">
+        <div className="flex flex-col p-6 text-center gap-2 text-xl items-end ">
           <label htmlFor="option" className="pr-10">
             Difficulty level
           </label>
@@ -97,15 +109,19 @@ const QuestionCard = () => {
             <option>Select Your Level</option>
             <option value="1">Begginer</option>
             <option value="2">Intermediate</option>
-            <option value="3">Advance</option>
+            <option value="3">Advance &#92;</option>
           </select>
         </div>
 
         <form onSubmit={handleSubmit}>
           {showq ? (
-            <p className="text-center py-10 text-2xl bg-white dark:bg-dark dark:text-white text-dark">
-              {question[0]} approaches to: {question[1]}
-            </p>
+            <>
+              <div className="my-8 mb-20 text-2xl flex justify-center items-center gap-5">
+                <BlockMath>{"Lim(" + ax + ")  "}</BlockMath>
+                approches to
+                <BlockMath>{apr}</BlockMath>
+              </div>
+            </>
           ) : (
             ""
           )}
@@ -113,7 +129,7 @@ const QuestionCard = () => {
             <input
               type="text"
               placeholder="Enter Your Solution.."
-              className="w-full  h-16 px-2 rounded-l-lg border-r-2 border-border"
+              className="w-full  h-16 px-2 rounded-l-lg border-r-2 border-border text-dark text-lg"
               onChange={handleInput}
               name="argument_1"
               value={data[0]}
