@@ -2,14 +2,11 @@ import { useState } from "react";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
 import axios from "axios";
 
-
-import { BlockMath, InlineMath } from 'react-katex';
-import 'katex/dist/katex.min.css';
-
-
+import { BlockMath } from "react-katex";
+import "katex/dist/katex.min.css";
 
 const QuestionCard = () => {
-  let ax = ''
+  let ax = "";
 
   const [data, setData] = useState({
     argument_1: "1",
@@ -20,8 +17,6 @@ const QuestionCard = () => {
     argument_3: "",
   });
 
-
-  
   const [uanswer, setUanswer] = useState({
     argument_1: "",
     argument_2: "",
@@ -48,11 +43,11 @@ const QuestionCard = () => {
     });
     setShowq(true);
   };
+
   if (question[0]) {
-    ax = question[0].replace(/\\/g, "\\")
+    ax = question[0].replace(/\\/g, "\\");
   }
-  console.log(typeof(ax))
-  
+  console.log(typeof ax);
 
   const nextQuestion = (e) => {
     e.preventDefault();
@@ -95,7 +90,6 @@ const QuestionCard = () => {
     setShow(!show);
   };
 
-
   return (
     <div className="z-10">
       <div className="w-2/3 bg-white dark:bg-dark rounded-xl m-auto mt-[10%] shadow-xl flex flex-col justify-center py-10">
@@ -117,13 +111,13 @@ const QuestionCard = () => {
             <option value="3">Advance &#92;</option>
           </select>
         </div>
-        
+
         <form onSubmit={handleSubmit}>
           {showq ? (
             <>
-            <div className="my-8 mb-20">
-            <BlockMath>{ax}</BlockMath>
-            </div>
+              <div className="my-8 mb-20">
+                <BlockMath>{ax}</BlockMath>
+              </div>
             </>
           ) : (
             ""
