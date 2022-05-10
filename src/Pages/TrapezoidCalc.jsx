@@ -11,6 +11,10 @@ import { images } from "../constants";
 import { ReactComponent as Trapezoideq } from "../Files/svgs/Trapezoideq.svg";
 
 const TrapezoidCalc = () => {
+  const [lower, setLower] = useState("");
+  const [upper, setUp] = useState("");
+  const [interval, setInterval] = useState("");
+
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -55,22 +59,22 @@ const TrapezoidCalc = () => {
     setSubmitted(true);
     setExp(data.argument_1);
     event.preventDefault();
+    setLower(data.argument_3);
+    setUp(data.argument_4);
+    setInterval(data.argument_5);
   };
 
   const expression = exp;
-  const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
+  const nRange = (upper - lower) / interval;
   const expr = math.compile(expression.replaceAll("**", "^"));
-
-  const xValues = math
-    .range(data.argument_3, Number(data.argument_4) + 0.01, 0.0099)
-    .toArray();
+  const xValues = math.range(lower, Number(upper) + 0.01, 0.0099).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
 
   // roof
   const xValuesNterms = math
-    .range(data.argument_3, Number(data.argument_4) + 0.01, nRange)
+    .range(lower, Number(upper) + 0.01, nRange)
     .toArray();
   const yValuesNterms = xValuesNterms.map(function (x) {
     return expr.evaluate({ x: x });

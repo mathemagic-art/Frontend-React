@@ -11,6 +11,9 @@ import numerical from "../Files/svgs/numerical.svg";
 import images from "../constants/images";
 
 const RectangleCalc = () => {
+  const [lower, setLower] = useState("");
+  const [upper, setUp] = useState("");
+  const [interval, setInterval] = useState("");
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -51,26 +54,29 @@ const RectangleCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("rectangle-method/", data).then((res) => {
+    console.log(data);
+    axios.post("/midpoint-method/", data).then((res) => {
       setAnswer(res.data);
     });
+    console.log(answer);
     setSubmitted(true);
     setExp(data.argument_1);
     event.preventDefault();
+    setLower(data.argument_3);
+    setUp(data.argument_4);
+    setInterval(data.argument_5);
   };
   const expression = exp;
-  const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
+  const nRange = (upper - lower) / interval;
 
   const expr = math.compile(expression.replaceAll("**", "^"));
-  const xValues = math
-    .range(data.argument_3, Number(data.argument_4) + 0.0001, 0.01)
-    .toArray();
+  const xValues = math.range(lower, Number(upper) + 0.0001, 0.01).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
 
   const xValuesNterms = math
-    .range(data.argument_3, Number(data.argument_4) + 0.01, nRange)
+    .range(lower, Number(upper) + 0.01, nRange)
     .toArray();
   const xWidth = xValuesNterms.map(function (x) {
     return 0;
@@ -88,7 +94,7 @@ const RectangleCalc = () => {
         <form onSubmit={handleSubmit}>
           <div className="mb[11.24px] ml-[114px] mt-[94px] border-2 w-[554px] h-[730px] drop-shadow-lg shadow-blur-4 shadow-spread-24 rounded-[30px] p-10 dark:bg-dark bg-bg dark:text-white text-black">
             <h2 className="text-center text-[30px] font-inter font-bold text-primary">
-              Rectangle Rule Calculator
+              Midpoint Rule Calculator
             </h2>
             <p className="text-center font-inter text-[12px] text-text mb-[33px]">
               Approximate the area under a simple curve{" "}
@@ -125,6 +131,7 @@ const RectangleCalc = () => {
                 type="text"
                 id="variable"
                 name="argument_2"
+                RectangleCalc
                 value={data.argument_2}
                 onChange={handleInput}
                 className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
@@ -133,7 +140,7 @@ const RectangleCalc = () => {
                 htmlFor="lower-limit"
                 className="dark:text-bright text-text text-[16px]"
               >
-                Lower Limit = α
+                Lower Limit
               </label>
               <input
                 required
@@ -148,7 +155,7 @@ const RectangleCalc = () => {
                 htmlFor="upper-limit"
                 className="ml-2 dark:text-bright text-text text-[16px] "
               >
-                Upper Limit = β
+                Upper Limit
               </label>
               <input
                 required
@@ -195,7 +202,7 @@ const RectangleCalc = () => {
           {!submitted ? (
             <div className="flex flex-col ml-[300px]  text-tx dark:text-white">
               <p className="mt-[98px] font-semibold text-2xl">
-               According to Rectangle Rule's:
+                According to Rectangle Rule's:
               </p>
               <Rectangle className="fill-tx dark:fill-white mt-10" />
               <img src={images.rectangle} className="mt-[60px]" />
