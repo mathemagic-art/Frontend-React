@@ -18,7 +18,7 @@ const NewtonMethod = () => {
     argument_3: "",
   });
 
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [exp, setExp] = useState("");
@@ -41,12 +41,13 @@ const NewtonMethod = () => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     axios.post("newtons-method/", data).then((res) => {
       setAnswer(res.data);
+      console.log(res.data);
     });
     setSubmitted(true);
     setExp(data.argument_1);
-    event.preventDefault();
   };
 
   return (
@@ -149,7 +150,8 @@ const NewtonMethod = () => {
                   equals to{" "}
                 </p>
                 <div className="ml-3 pt-4 pb-14 border-2 mt-[46px] font-normal rounded-xl text-3xl px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
-                  {data.argument_2}={answer !== "" ? answer : "_____________"}
+                  {data.argument_2}=
+                  {answer[0] !== "" ? answer[0] : "_____________"}
                 </div>
               </div>
             )}
