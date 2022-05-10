@@ -238,9 +238,11 @@ const RectangleCalc = () => {
                   },
                 ]}
                 layout={{
+                  plot_bgcolor:"#F1F5FF", // f(x) 
+                  paper_bgcolor:"#F1F5FF", //B
                   width: 720,
                   height: 540,
-                  title: "Simpsons Rule Calculator",
+                  title: "Midpoint Rule",
                 }}
               />
             ) : (

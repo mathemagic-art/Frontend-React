@@ -218,6 +218,8 @@ const TaylorCalc = () => {
                   // { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
                 ]}
                 layout={{
+                  plot_bgcolor:"#F1F5FF", // f(x) 
+                  paper_bgcolor:"#F1F5FF", //B
                   width: 720,
                   height: 540,
                   title: "Taylor Series Calculator",

@@ -253,13 +253,19 @@ const TrapezoidCalc = () => {
                     width: 0,
                     x: xValuesNterms,
                     y: yValuesNterms,
-                    marker: { color: "blue" },
+                    marker: { color: "blue" },  
+                    color: "#e7e5f7",
                   },
                 ]}
                 layout={{
+                // backgraund 
+                  plot_bgcolor:"#F1F5FF", // f(x) 
+                  paper_bgcolor:"#F1F5FF", //B
+            
                   width: 720,
                   height: 540,
-                  title: "Taylor Series Calculator",
+                  title: "Trapezoid Rule",
+                  color: "red",
                 }}
               />
             ) : (
