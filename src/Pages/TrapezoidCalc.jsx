@@ -213,7 +213,7 @@ const TrapezoidCalc = () => {
             </div>
           ) : (
             <div className="flex flex-col mt-[98px] ml-[300px]">
-              <p className="font-semibold text-2xl flex mb-10">
+              <p className="font-semibold text-2xl fill-tx dark:fill-white flex mb-10">
                 According to Trapezoidal Rule
               </p>
               <Trapezoideq className="fill-tx dark:fill-white -ml-[230px] w-[800px] h-[300px]" />
