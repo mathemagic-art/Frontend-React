@@ -30,7 +30,7 @@ const NewtonMethod = () => {
   };
   let variable = "f(" + data.argument_2 + ")";
   const handleReset = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     setData({ argument_1: "", argument_2: "x", argument_3: "" });
     setAnswer("");
     setSubmitted(false);
@@ -41,14 +41,43 @@ const NewtonMethod = () => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
     axios.post("newtons-method/", data).then((res) => {
       setAnswer(res.data);
       console.log(res.data);
     });
     setSubmitted(true);
     setExp(data.argument_1);
+    event.preventDefault();
   };
+  console.log(answer);
+  const expression = exp;
+  const expr = math.compile(expression.replaceAll("**", "^"));
+  const xValues = math
+    .range(Number(answer[0]) - 25, Number(answer[0]) + 25, 0.0099)
+    .toArray();
+  const yValues = xValues.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
+
+  const expression2 = submitted && answer[1];
+  console.log(answer[1]);
+  const expr2 = math.compile(expression2.replaceAll("**", "^"));
+  const xValues2 = math
+    .range(Number(answer[0]) - 25, Number(answer[0]) + 25, 0.0099)
+    .toArray();
+  const yValues2 = xValues2.map(function (x) {
+    return expr2.evaluate({ x: x });
+  });
+
+  const expression3 = submitted && answer[2];
+  console.log(answer[2]);
+  const expr3 = math.compile(expression3.replaceAll("**", "^"));
+  const xValues3 = math
+    .range(Number(answer[0]) - 25, Number(answer[0]) + 25, 0.0099)
+    .toArray();
+  const yValues3 = xValues3.map(function (x) {
+    return expr3.evaluate({ x: x });
+  });
 
   return (
     <div className="h-full flex flex-col text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
@@ -153,6 +182,38 @@ const NewtonMethod = () => {
                   {data.argument_2}=
                   {answer[0] !== "" ? answer[0] : "_____________"}
                 </div>
+                <Plot
+                  className="mt-10 mb-10"
+                  data={[
+                    {
+                      x: xValues,
+                      y: yValues,
+                      name: "Area",
+                      type: "scatter",
+                      mode: "lines",
+                      marker: { color: "red" },
+                    },
+                    {
+                      x: xValues2,
+                      y: yValues2,
+                      type: "scatter",
+                      mode: "lines",
+                      marker: { color: "blue" },
+                    },
+                    {
+                      x: xValues3,
+                      y: yValues3,
+                      type: "scatter",
+                      mode: "lines",
+                      marker: { color: "green" },
+                    },
+                  ]}
+                  layout={{
+                    width: 720,
+                    height: 540,
+                    title: "Simpsons Rule Calculator",
+                  }}
+                />
               </div>
             )}
           </div>
