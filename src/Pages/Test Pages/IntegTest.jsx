@@ -100,11 +100,11 @@ const IntegTest = () => {
               onChange={handleSelect}
             >
               <option>Select Your Level</option>
-              <option value="1">Beginner</option>
+              <option value="1">Beginer</option>
               <option value="2">Intermediate</option>
               <option value="3">Advanced</option>
             </select>
-          </div>
+          </div> 
 
           <form onSubmit={handleSubmit}>
             {showq ? (

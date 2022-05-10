@@ -6,6 +6,7 @@ import { ReactComponent as Taylor } from "../Files/svgs/tayloreq.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import Plot from "react-plotly.js";
 import * as math from "mathjs";
+import { BlockMath } from "react-katex";
 
 const TaylorCalc = () => {
   const [data, setData] = useState({
@@ -14,7 +15,10 @@ const TaylorCalc = () => {
     argument_3: "",
     argument_4: "",
   });
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState({
+    argument_1: "",
+    argument_2: "",
+  });
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [exp, setExp] = useState("");
@@ -45,9 +49,12 @@ const TaylorCalc = () => {
   const handleSubmit = (event) => {
     axios.post("taylor-series/", data).then((res) => {
       console.log(res.data);
-      const data1 = res.data.replaceAll("**", "^");
-      setAnswer(data1);
-      event.preventDefault()
+      const data1 = res.data[0];
+      const data2 = res.data[1];
+      console.log(data1);
+      console.log(data2);
+      setAnswer({ argument_1: data1, argument_2: data2 });
+      event.preventDefault();
     });
     setSubmitted(true);
     setExp(data.argument_1);
@@ -55,21 +62,21 @@ const TaylorCalc = () => {
     event.preventDefault();
   };
 
-  const ax = ""
-  if (answer) {
-    ax = answer.replace(/\\/g, "\\");
+  let ax = "";
+  if (answer.argument_1) {
+    ax = answer.argument_1.replaceAll(/\\/g, "\\");
   }
 
-  const expression2 = ax;
+  const expression2 = answer.argument_2;
   const expr2 = math.compile(expression2);
-  const xValues2 = math.range(-50, 50, 0.1).toArray();
+  const xValues2 = math.range(-7.14, 7.14, 0.1).toArray();
   const yValues2 = xValues2.map(function (x) {
     return expr2.evaluate({ x: x });
   });
 
   const expression = exp;
   const expr = math.compile(expression);
-  const xValues = math.range(-50, 50, 0.1).toArray();
+  const xValues = math.range(-7.14, 7.14, 0.1).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
@@ -176,30 +183,25 @@ const TaylorCalc = () => {
 
         {/* The Right Sections */}
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white justify-center items-end">
-
           {!submitted ? (
-          <div className="flex flex-col -mt-10">
-
-            <p className="mt-[98px] pb-[62px] font-semibold text-[28px] dark:text-white text-tx flex">
-              According to Taylor's Series
-            </p>
-            <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
-            <p className="mt-[98px] text-[28px] font-semibold pb-[62px] dark:text-white text-tx flex">
-             According to Maclorian's Series
-            </p>
-            <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
-          </div>
-
-          ) : (
-          <div className="flex mt-10  pt-10 flex-row font-normal text-2xl tracking-wide ">
-            <p>
-              According to Taylor's Series 
-            </p>
-            <Taylor className="fill-tx dark:fill-white" />
-            <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl -mt-5 px-3 border-double border-green-600 h-10 text-tx dark:text-white ">
-              {answer !== "" ? ax : "_____________"}
+            <div className="flex flex-col -mt-10">
+              <p className="mt-[98px] pb-[62px] font-semibold text-[28px] dark:text-white text-tx flex">
+                According to Taylor's Series
+              </p>
+              <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
+              <p className="mt-[98px] text-[28px] font-semibold pb-[62px] dark:text-white text-tx flex">
+                According to Maclorian's Series
+              </p>
+              <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
             </div>
-          </div>
+          ) : (
+            <div className="flex mt-10  pt-10 flex-row font-normal text-2xl tracking-wide items-center justify-center">
+              <p>According to Taylor's Series</p>
+              {submitted ? "" : <Taylor className="fill-tx dark:fill-white" />}
+              <div className="ml-3 pt-4 py-10 border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600  text-tx dark:text-white flex justify-center items-center">
+                {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
+              </div>
+            </div>
           )}
           <div className="mt-20 ml-[300px] mb-28 rounded-2xl">
             {submitted ? (

@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
-import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { BlockMath } from "react-katex";
 import Navbar from "../Layouts/Navbar";
