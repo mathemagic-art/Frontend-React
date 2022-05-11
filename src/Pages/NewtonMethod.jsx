@@ -22,15 +22,25 @@ const NewtonMethod = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [exp, setExp] = useState("");
+  const [red, setRed] = useState(false);
 
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    const re = /[@$#%!~`&{}"':;?><.,\\]/g;
+    setRed(false);
+    if (re.test(value)) {
+      console.log("found errr");
+      setRed(true);
+    } else {
+      setData((values) => ({ ...values, [name]: value }));
+    }
+    event.preventDefault();
   };
+
   let variable = "f(" + data.argument_2 + ")";
+
   const handleReset = (event) => {
-    // event.preventDefault();
     setData({ argument_1: "", argument_2: "x", argument_3: "" });
     setAnswer("");
     setSubmitted(false);
@@ -105,7 +115,11 @@ const NewtonMethod = () => {
               >
                 <input
                   required
-                  className="w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                  className={
+                    red
+                      ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
+                      : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                  }
                   type="text"
                   name="argument_1"
                   value={data.argument_1}
@@ -126,7 +140,11 @@ const NewtonMethod = () => {
                 id="respect"
                 value={data.argument_2}
                 onChange={handleInput}
-                className="w-full p-4 border-2  text-black dark:border-primary rounded-xl mb-10 text-xl"
+                className={
+                  red
+                    ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
+                    : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                }
               />
 
               <label
@@ -142,7 +160,11 @@ const NewtonMethod = () => {
                 name="argument_3"
                 value={data.argument_3}
                 onChange={handleInput}
-                className="w-full p-4 border-2 text-black  dark:border-primary rounded-xl mb-10 text-xl"
+                className={
+                  red
+                    ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
+                    : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                }
               />
             </div>
             <div className=" flex justify-evenly">

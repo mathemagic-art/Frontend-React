@@ -52,7 +52,14 @@ const TaylorCalc = () => {
       argument_3: "",
       argument_4: "",
     });
-    setAnswer("");
+    setAnswer({
+      argument_1: "", //latex form
+      argument_2: "", //expression form
+      argument_3: "", //x left boundary
+      argument_4: "", //x right boundary
+      argument_5: "", //y top boundary
+      argument_6: "", //y bottom boundary
+    });
     setSubmitted(false);
   };
 
@@ -254,20 +261,24 @@ const TaylorCalc = () => {
                   {
                     x: xValues,
                     y: yValues,
-                    type: "scatter",
-                    mode: "lines",
-                    marker: { color: "blue" },
-                  },
-                  {
-                    x: xValues2,
-                    y: yValues2,
+                    name: expression,
                     type: "scatter",
                     mode: "lines",
                     marker: { color: "red" },
                   },
+                  {
+                    x: xValues2,
+                    y: yValues2,
+                    name: expr2,
+                    type: "scatter",
+                    mode: "lines",
+                    marker: { color: "6F46F3" },
+                  },
                   // { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
                 ]}
                 layout={{
+                  plot_bgcolor: "#F1F5FF", // f(x)
+                  paper_bgcolor: "#F1F5FF", //B
                   width: 720,
                   height: 540,
                   title: "Taylor Series Calculator",
