@@ -64,7 +64,7 @@ const RectangleCalc = () => {
 
   const handleSubmit = (event) => {
     console.log(data);
-    axios.post("/midpoint-method/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/midpoint-method/", data).then((res) => {
       setAnswer(res.data);
     });
     console.log(answer);

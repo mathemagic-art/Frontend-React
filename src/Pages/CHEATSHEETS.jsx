@@ -35,7 +35,7 @@ function Cheatsheets({ toggle, isOpen }) {
         <>
             <Navbar toggle={toggle} />
             {isOpen ? <FunctionsMenu /> : ""}
-            <div className='flex flex-row justify-between w-full h-full z-0'>
+            <div className='flex flex-row justify-between w-full h-full z-0 flex-wrap'>
                 <div className='z-0'>
                     <h2 className={style.topic_calc}>Basic Differentiation Rules</h2>
                     <div className={style.box + "flex flex-col dark:bg-opacity-80"}>

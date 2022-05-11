@@ -60,7 +60,7 @@ const SimpsonCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("simpsons-method/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/simpsons-method/", data).then((res) => {
       setAnswer(res.data);
     });
     setSubmitted(true);
