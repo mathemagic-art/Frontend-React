@@ -33,8 +33,8 @@ const App = () => {
       <Route path="/rectangle" element={<RectangleCalc />}></Route>
       <Route path="/integral" element={<IntegralCalc />}></Route>
       <Route path="/cheatsheets" element={<CHEATSHEETS />}></Route>
-      <Route path="/AboutUs" element={<AboutUs />}></Route>
-      <Route path="/CONTACTUS" element={<ContactUs />}></Route>
+      <Route path="/aboutus" element={<AboutUs />}></Route>
+      <Route path="/contuctus" element={<ContactUs />}></Route>
       <Route path="/testyourself/limittest" element={<LimitTest />}></Route>
       <Route path="/testyourself/integtest" element={<IntegTest />}></Route>
       <Route path="/testyourself/difftest" element={<DiffTest />}></Route>

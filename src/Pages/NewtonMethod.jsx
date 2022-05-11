@@ -18,19 +18,29 @@ const NewtonMethod = () => {
     argument_3: "",
   });
 
-  const [answer, setAnswer] = useState("");
+  const [answer, setAnswer] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [exp, setExp] = useState("");
+  const [red, setRed] = useState(false);
 
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
-  };
-  let variable = "f(" + data.argument_2 + ")";
-  const handleReset = (event) => {
+    const re = /[@$#%!~`&{}"':;?><.,\\]/g;
+    setRed(false);
+    if (re.test(value)) {
+      console.log("found errr");
+      setRed(true);
+    } else {
+      setData((values) => ({ ...values, [name]: value }));
+    }
     event.preventDefault();
+  };
+
+  let variable = "f(" + data.argument_2 + ")";
+
+  const handleReset = (event) => {
     setData({ argument_1: "", argument_2: "x", argument_3: "" });
     setAnswer("");
     setSubmitted(false);
@@ -43,11 +53,41 @@ const NewtonMethod = () => {
   const handleSubmit = (event) => {
     axios.post("newtons-method/", data).then((res) => {
       setAnswer(res.data);
+      console.log(res.data);
     });
     setSubmitted(true);
     setExp(data.argument_1);
     event.preventDefault();
   };
+  console.log(answer);
+  const expression = exp;
+  const expr = math.compile(expression.replaceAll("**", "^"));
+  const xValues = math
+    .range(Number(answer[0]) - 25, Number(answer[0]) + 25, 0.0099)
+    .toArray();
+  const yValues = xValues.map(function (x) {
+    return expr.evaluate({ x: x });
+  });
+
+  const expression2 = submitted && answer[1];
+  console.log(answer[1]);
+  const expr2 = math.compile(expression2.replaceAll("**", "^"));
+  const xValues2 = math
+    .range(Number(answer[0]) - 25, Number(answer[0]) + 25, 0.0099)
+    .toArray();
+  const yValues2 = xValues2.map(function (x) {
+    return expr2.evaluate({ x: x });
+  });
+
+  const expression3 = submitted && answer[2];
+  console.log(answer[2]);
+  const expr3 = math.compile(expression3.replaceAll("**", "^"));
+  const xValues3 = math
+    .range(Number(answer[0]) - 25, Number(answer[0]) + 25, 0.0099)
+    .toArray();
+  const yValues3 = xValues3.map(function (x) {
+    return expr3.evaluate({ x: x });
+  });
 
   return (
     <div className="h-full flex flex-col text-dark bg-white dark:bg-dark dark:text-white flex-wrap">
@@ -75,7 +115,11 @@ const NewtonMethod = () => {
               >
                 <input
                   required
-                  className="w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                  className={
+                    red
+                      ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
+                      : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                  }
                   type="text"
                   name="argument_1"
                   value={data.argument_1}
@@ -96,7 +140,11 @@ const NewtonMethod = () => {
                 id="respect"
                 value={data.argument_2}
                 onChange={handleInput}
-                className="w-full p-4 border-2  text-black dark:border-primary rounded-xl mb-10 text-xl"
+                className={
+                  red
+                    ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
+                    : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                }
               />
 
               <label
@@ -112,7 +160,11 @@ const NewtonMethod = () => {
                 name="argument_3"
                 value={data.argument_3}
                 onChange={handleInput}
-                className="w-full p-4 border-2 text-black  dark:border-primary rounded-xl mb-10 text-xl"
+                className={
+                  red
+                    ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
+                    : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                }
               />
             </div>
             <div className=" flex justify-evenly">
@@ -148,9 +200,47 @@ const NewtonMethod = () => {
                     : variable + " = " + data.argument_1}{" "}
                   equals to{" "}
                 </p>
+<<<<<<< HEAD
                 <div className="ml-3 mr-[100px] pt-5 pb-[70px] border-2 mt-[46px] mb-10 font-normal rounded-xl text-3xl px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
                   {data.argument_2}={answer !== "" ? answer : "_"}
+=======
+                <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl mt-5 px-3 border-double border-green-600 h-10 dark:text-white dark:bg-black bg-white text-tx">
+                  {data.argument_2}=
+                  {answer[0] !== "" ? answer[0] : "_____________"}{" "}
+>>>>>>> 583fe373656ae60b0355bbb26714b091725fd1f0
                 </div>
+                <Plot
+                  className="mt-10 mb-10"
+                  data={[
+                    {
+                      x: xValues,
+                      y: yValues,
+                      name: "Area",
+                      type: "scatter",
+                      mode: "lines",
+                      marker: { color: "red" },
+                    },
+                    {
+                      x: xValues2,
+                      y: yValues2,
+                      type: "scatter",
+                      mode: "lines",
+                      marker: { color: "blue" },
+                    },
+                    {
+                      x: xValues3,
+                      y: yValues3,
+                      type: "scatter",
+                      mode: "lines",
+                      marker: { color: "green" },
+                    },
+                  ]}
+                  layout={{
+                    width: 720,
+                    height: 540,
+                    title: "Simpsons Rule Calculator",
+                  }}
+                />
               </div>
             )}
           </div>

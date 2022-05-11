@@ -25,11 +25,20 @@ const RectangleCalc = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [exp, setExp] = useState("");
+  const [red, setRed] = useState(false);
 
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    const re = /[@$#%!~`&{}"':;?><.,\\]/g;
+    setRed(false);
+    if (re.test(value)) {
+      console.log("found errr");
+      setRed(true);
+    } else {
+      setData((values) => ({ ...values, [name]: value }));
+    }
+    event.preventDefault();
   };
 
   console.log(data);
@@ -109,7 +118,11 @@ const RectangleCalc = () => {
               <div className="flex rounded-l-[8px] dark:text-black text-black mb-[30px]">
                 <input
                   required
-                  className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                  className={
+                    red
+                      ? "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-300"
+                      : "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                  }
                   type="text"
                   id="function"
                   name="argument_1"
@@ -134,7 +147,11 @@ const RectangleCalc = () => {
                 RectangleCalc
                 value={data.argument_2}
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
               />
               <label
                 htmlFor="lower-limit"
@@ -149,7 +166,11 @@ const RectangleCalc = () => {
                 name="argument_3"
                 value={data.argument_3}
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
               />
               <label
                 htmlFor="upper-limit"
@@ -164,7 +185,11 @@ const RectangleCalc = () => {
                 value={data.argument_4}
                 name="argument_4"
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
               />
               <label
                 htmlFor="intervals"
@@ -179,7 +204,11 @@ const RectangleCalc = () => {
                 value={data.argument_5}
                 name="argument_5"
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
               />
             </div>
             <div className=" flex justify-evenly">

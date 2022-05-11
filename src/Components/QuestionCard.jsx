@@ -107,9 +107,9 @@ const QuestionCard = () => {
             onChange={handleSelect}
           >
             <option>Select Your Level</option>
-            <option value="1">Begginer</option>
+            <option value="1">Beginner</option>
             <option value="2">Intermediate</option>
-            <option value="3">Advance &#92;</option>
+            <option value="3">Advanced</option>
           </select>
         </div>
 
@@ -118,7 +118,7 @@ const QuestionCard = () => {
             <>
               <div className="my-8 mb-20 text-2xl flex justify-center items-center gap-5">
                 <BlockMath>{"Lim(" + ax + ")  "}</BlockMath>
-                approches to
+                approaches to
                 <BlockMath>{apr}</BlockMath>
               </div>
             </>

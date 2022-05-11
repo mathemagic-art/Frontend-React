@@ -16,11 +16,20 @@ const LimitCalc = () => {
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [red, setRed] = useState(false);
 
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    const re = /[@$#%!~`&{}"':;?><.,\\]/g;
+    setRed(false);
+    if (re.test(value)) {
+      console.log("found errr");
+      setRed(true);
+    } else {
+      setData((values) => ({ ...values, [name]: value }));
+    }
+    event.preventDefault();
   };
 
   console.log(data);
@@ -37,23 +46,29 @@ const LimitCalc = () => {
 
   const handleReset = (event) => {
     event.preventDefault();
-    setData({argument_1:"", argument_2:"x", argument_3:"x", argument_4: "oo"});
+    setData({
+      argument_1: "",
+      argument_2: "x",
+      argument_3: "x",
+      argument_4: "oo",
+    });
     setAnswer("");
     setSubmitted(false);
-  }
+  };
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
   const handleSubmit = (event) => {
-    axios.post("limit-calculator/", data).then((res)=>{setAnswer(res.data)})
-    console.log(data)
-    console.log(answer)
+    axios.post("limit-calculator/", data).then((res) => {
+      setAnswer(res.data);
+    });
+    console.log(data);
+    console.log(answer);
     setSubmitted(true);
-    event.preventDefault()
-    
-  }
+    event.preventDefault();
+  };
   return (
     <>
       <Navbar toggle={toggle} />
@@ -81,7 +96,11 @@ const LimitCalc = () => {
               >
                 <input
                   required
-                  className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-xl text-xl"
+                  className={
+                    red
+                      ? "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-300"
+                      : "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                  }
                   type="text"
                   id="function"
                   name="argument_1"
@@ -102,7 +121,11 @@ const LimitCalc = () => {
                 name="argument_2"
                 value={data.argument_2}
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2 text-black text-xl dark:border-primary rounded-[8px] mb-[40px]"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
               />
 
               <label
@@ -115,7 +138,7 @@ const LimitCalc = () => {
                 value={data.argument_3}
                 name="argument_3"
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-3 border-2 dark:text-black text-text text-[18px] dark:border-primary rounded-[8px] mb-[40px] "
+                className="w-[460px] h-[48px] p-3 border-2 dark:text-black text-text text-lg dark:border-primary rounded-xl mb-10"
               >
                 <option value="+-">Two-sided</option>
                 <option value="-">Left (-)</option>
@@ -134,7 +157,11 @@ const LimitCalc = () => {
                 value={data.argument_4}
                 name="argument_4"
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2  text-black dark:border-primary rounded-xl mb-[40px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
                 defaultValue="oo"
               />
             </div>
@@ -155,11 +182,18 @@ const LimitCalc = () => {
           </div>
         </form>
         <div className=" w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white">
-        {!submitted ? (
+          {!submitted ? (
             <div className="flex flex-col ml-[300px]">
               <div className="flex flex-col leading-9">
-                <p className="mt-[98px] pb-[32px] font-semibold text-[30px] dark:text-white text-tx">Why do we need to learn Limits?</p>
-                <p className="mr-[10px] tracking-[1%] font-normal text-[25px]">In Calculus, a limit is the value that a function (or sequence) approaches as the input approaches some value. Limits are essential to calculus and mathematical analysis, and are used to define continuity, derivatives, and integrals. </p>
+                <p className="mt-[98px] pb-[32px] font-semibold text-[30px] dark:text-white text-tx">
+                  Why do we need to learn Limits?
+                </p>
+                <p className="mr-[10px] tracking-[1%] font-normal text-[25px]">
+                  In Calculus, a limit is the value that a function (or
+                  sequence) approaches as the input approaches some value.
+                  Limits are essential to calculus and mathematical analysis,
+                  and are used to define continuity, derivatives, and integrals.{" "}
+                </p>
               </div>
               <img src={images.limit} className=" mt-5" />
             </div>
@@ -167,10 +201,10 @@ const LimitCalc = () => {
             <div className="flex flex-col ml-[300px]">
               <div className="flex mt-[98px]">
                 <p className="mb-10 flex text-tx dark:text-white font-semibold text-2xl">
-                  The solution: 
+                  The solution:
                 </p>
                 <div className="ml-[40px] pt-6 -mt-2 mr-auto pr-[30px] pb-6 border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-dark flex items-center">
-                  {answer !== "" ? ("Answer = " + answer) : ""}
+                  {answer !== "" ? "Answer = " + answer : ""}
                 </div>
               </div>
               <img src={images.limit} className="mt-5" />
