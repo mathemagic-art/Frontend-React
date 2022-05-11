@@ -11,7 +11,7 @@ const FunctionsMenu = ({ isOpen }) => {
     }
   }, [isOpen]);
   const onStyle =
-    "w-[30rem] backdrop-blur-sm h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 mt-12 z-20";
+    "w-[30rem] backdrop-blur-sm h-full dark:bg-dark bg-slate-300 text-black font-primary dark:bg-opacity-60 bg-opacity-60 absolute left-0 mt-12 z-40";
   const offStyle =
     "-ml-[100%] w-[30rem] h-full dark:bg-black bg-slate-300 text-black font-primary bg-opacity-60 absolute left-0 top-[0] z-20";
   const closeOpenMenus = (e) => {

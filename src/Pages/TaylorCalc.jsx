@@ -70,7 +70,7 @@ const TaylorCalc = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post("https://api-mathemagics.herokuapp.com//taylor-series/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/taylor-series/", data).then((res) => {
       console.log("RES: " + res.data);
 
       const data1 = res.data[0];

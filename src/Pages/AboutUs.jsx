@@ -4,7 +4,8 @@ import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { ReactComponent as Logo1 } from "../Files/svgs/Logo1.svg";
 import { ReactComponent as Quotemark } from "../Files/svgs/Quotemark.svg";
 import {ReactComponent as Triangle } from "../Files/svgs/Triangle.svg";
-import {ReactComponent as Techno } from "../Files/svgs/Techno.svg";
+import {ReactComponent as Technos1 } from "../Files/svgs/technos1.svg";
+import {ReactComponent as Technos2 } from "../Files/svgs/technos2.svg";
 import {ReactComponent as Cube } from "../Files/svgs/Cube.svg";
 import { images } from "../constants";
 
@@ -28,10 +29,10 @@ const AboutUs = () => {
         <Triangle className="-mt-40" />
         <Quotemark className="place-self-start ml-60 mt-5 fill-black dark:fill-white" />
         <h2 className="text-center fon-inter ml-96 mr-96 mt-5 italic text-3xl">
-          MatheMagic offers a wealth of smart calculators from various domains
+          MatheMagics offers a wealth of smart calculators from various domains
           of Mathematics. The stated goal of the site is to make scientific
           content universally accessible by expanding the searchable data space
-          onto scientific notations, equations, and formulas. MatheMagic, makes
+          onto scientific notations, equations, and formulas. MatheMagics, makes
           math simpler by doing magic.
         </h2>
         <Quotemark className="rotate-180 place-self-end mr-60 self-end justify-self-end ml-auto fill-black dark:fill-white" />
@@ -218,7 +219,11 @@ const AboutUs = () => {
         </div>
       </div>
       <h2 className="text-center font-inter font-bold mt-[162px] text-[40px] dark:text-white text-tx mb-[47px]">Technologies</h2>
-      <Techno className="flex place-self-center mb-[107px] tablet:w-[800px] " />
+      <div className="flex flex-row justify-center mb-20">
+        <Technos1 />
+        <Technos2 className="mx-7 dark:fill-white fill-black" />
+      </div>
+      
     </div>
   );
 };
