@@ -271,7 +271,7 @@ const TrapezoidCalc = () => {
                     // fillcolor: "6F46F3",
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "6F46F3" },
+                    marker: { color: "C595E9" },
                   },
                   {
                     x: xValues,
@@ -279,17 +279,20 @@ const TrapezoidCalc = () => {
                     name: expression,
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "blue" },
+                    marker: { color: "6F46F3" },
                   },
                   {
                     type: "bar",
                     width: 0,
+                    name: "slices",
                     x: xValuesNterms,
                     y: yValuesNterms,
-                    marker: { color: "blue" },
+                    marker: { color: "6F46F3" },
                   },
                 ]}
                 layout={{
+                  plot_bgcolor: "#F1F5FF", // f(x)
+                  paper_bgcolor: "#F1F5FF", //B
                   width: 720,
                   height: 540,
                   title: "Taylor Series Calculator",

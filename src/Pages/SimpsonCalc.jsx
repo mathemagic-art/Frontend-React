@@ -193,8 +193,8 @@ const SimpsonCalc = () => {
           </div>
         </form>
         <div className="w-1/2 mt-12 mr-20 flex flex-col text-tx dark:text-white justify-center">
-          <p className="mt-[40px] ml-[300px] font-normal text-2xl flex">
-            According to Simpson's 1/3 Rule's:
+          <p className="mt-[40px] ml-[300px] font-bold   text-2xl flex">
+            According to Simpson's Rule's:
           </p>
           <div className="flex mt-10 ml-[300px] pt-10  flex-row font-normal text-2xl tracking-wide">
             {!submitted ? (
@@ -224,7 +224,7 @@ const SimpsonCalc = () => {
                     fill: "tozeroy",
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "6F46F3" },
+                    marker: { color: "C595E9" },
                   },
                   {
                     x: xValues,
@@ -232,13 +232,15 @@ const SimpsonCalc = () => {
                     name: expression,
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "blue" },
+                    marker: { color: "6F46F3" },
                   },
                 ]}
                 layout={{
+                  plot_bgcolor: "#F1F5FF", // f(x)
+                  paper_bgcolor: "#F1F5FF", //B
                   width: 720,
                   height: 540,
-                  title: "Simpsons Rule Calculator",
+                  title: "Simpsons Rule ",
                 }}
               />
             ) : (

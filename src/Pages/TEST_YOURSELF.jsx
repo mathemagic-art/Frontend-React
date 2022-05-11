@@ -20,7 +20,7 @@ const Test_Yourself = () => {
         <div className="pl-[12%] w-full m-auto grid grid-cols-3 gap-y-[10rem] py-10 flex-wrap grid-flow-col">
           <div className="bg-white shadow-lg dark:bg-white rounded-[26px] h-[25rem] w-[19.3rem]">
             <img src={images.diffpic}/>
-            <p className="h-[87%] -mt-[365px] w-full"></p>
+            <p className="h-[87%] -mt-[360px] w-full"></p>
             <Link
               to={"/testyourself/difftest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[3.67rem]"
@@ -30,7 +30,7 @@ const Test_Yourself = () => {
           </div>
           <div className="bg-white shadow-lg dark:bg-white rounded-[26px] h-[25rem] w-[19.3rem] ">
           <img src={images.integpic} className="rounded-xl"/>
-            <p className="h-[87%] -mt-[365px]"></p>
+            <p className="h-[87%] -mt-[360px]"></p>
             <Link
               to={"/testyourself/integtest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[5rem]"

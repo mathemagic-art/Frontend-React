@@ -272,7 +272,8 @@ const TaylorCalc = () => {
                     name: expression,
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "red" },
+                    marker: { color: "#C595E9" },
+                    // C595E9 main f(x)
                   },
                   {
                     x: xValues2,
@@ -281,6 +282,7 @@ const TaylorCalc = () => {
                     type: "scatter",
                     mode: "lines",
                     marker: { color: "6F46F3" },
+                    // 6F46F3 new f(x)
                   },
                   // { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
                 ]}
@@ -289,7 +291,7 @@ const TaylorCalc = () => {
                   paper_bgcolor: "#F1F5FF", //B
                   width: 720,
                   height: 540,
-                  title: "Taylor Series Calculator",
+                  title: "Taylor Series ",
                 }}
               />
             ) : (

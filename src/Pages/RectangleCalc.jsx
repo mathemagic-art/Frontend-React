@@ -64,7 +64,7 @@ const RectangleCalc = () => {
 
   const handleSubmit = (event) => {
     console.log(data);
-    axios.post("https://api-mathemagics.herokuapp.com//midpoint-method/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/midpoint-method/", data).then((res) => {
       setAnswer(res.data);
     });
     console.log(answer);
@@ -231,7 +231,7 @@ const RectangleCalc = () => {
           {!submitted ? (
             <div className="flex flex-col ml-[300px]  text-tx dark:text-white">
               <p className="mt-[98px] font-semibold text-2xl">
-                According to Rectangle Rule's:
+                According to Midpoint Rule's:
               </p>
               <Rectangle className="fill-tx dark:fill-white mt-10" />
               <img src={images.rectangle} className="mt-[60px]" />
@@ -239,7 +239,7 @@ const RectangleCalc = () => {
           ) : (
             <div>
               <p className="mt-[98px] ml-[300px] font-semibold text-2xl flex mb-10">
-                According to Rectangle Rule's:
+                According to Midpoint Rule's:
               </p>
               <Rectangle className="fill-tx dark:fill-white mt-10 ml-[300px]" />
 
@@ -261,22 +261,26 @@ const RectangleCalc = () => {
                   {
                     x: xValues,
                     y: yValues,
+                    name: expression.replaceAll("**", "^"),
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "red" },
+                    marker: { color: "C595E9" },
                   },
                   {
                     type: "bar",
                     x: xValuesNterms,
                     y: yValuesNterms,
-                    marker: { color: "blue" },
+                    name: "Area",
+                    marker: { color: "6F46F3" },
                     width: nRange,
                   },
                 ]}
                 layout={{
+                  plot_bgcolor: "#F1F5FF", // f(x)
+                  paper_bgcolor: "#F1F5FF", //B
                   width: 720,
                   height: 540,
-                  title: "Simpsons Rule Calculator",
+                  title: "Midpoint Rule",
                 }}
               />
             ) : (

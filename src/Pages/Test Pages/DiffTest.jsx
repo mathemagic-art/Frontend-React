@@ -121,7 +121,7 @@ const DiffTest = () => {
               <input
                 type="text"
                 placeholder="Enter Your Solution.."
-                className="w-full  h-16 px-2 rounded-l-lg border-r-2 border-border"
+                className="w-full  h-16 px-2 rounded-l-lg border-r-2 text-black border-border"
                 onChange={handleInput}
                 name="argument_1"
               />
