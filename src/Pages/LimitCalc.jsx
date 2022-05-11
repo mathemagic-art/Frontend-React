@@ -21,7 +21,7 @@ const LimitCalc = () => {
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    const re = /[@$#%!~`&{}"':;?><.,\\]|[A-Z]/g;
+    const re = /[@$#%!~`&{}"':;?><,\\]|[A-Z]/g;
     setRed(false);
     if (re.test(value)) {
       console.log("found errr");
