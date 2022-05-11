@@ -261,9 +261,15 @@ const IntegralCalc = () => {
               <p className="mt-[98px] mb-10 flex text-tx dark:text-white font-semibold text-2xl">
                 The area under the curve equals to:
               </p>
-              <div className="py-10 border-2 font-normal rounded-xl text-xl  px-3 border-double border-green-600 h-10 bg-white text-black flex justify-center items-center">
-                {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
-              </div>
+                {data.argument_1 === "definite" ? (
+                  <div className="py-10 border-2 font-normal rounded-xl text-xl  px-3 border-double border-green-600 h-10 bg-white text-black flex justify-center items-center">
+                    {answer !== "" ? <BlockMath>{ax}</BlockMath> : ""}
+                  </div>
+                ) : (
+                  <div className="py-10 border-2 font-normal rounded-xl text-xl  px-3 border-double border-green-600 h-10 bg-white text-black flex justify-center items-center">
+                    {answer !== "" ? <BlockMath>{ax + " + C"}</BlockMath> : ""}
+                  </div>
+                )}
               <img
                 src={images.integral_org}
                 className="w-[500px] h-[400px] mt-5"

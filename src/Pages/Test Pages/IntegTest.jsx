@@ -116,7 +116,7 @@ const IntegTest = () => {
             ) : (
               ""
             )}
-            <div className="flex w-2/4 m-auto justify-center items-center border-2 pr-4 rounded-lg border-border">
+            <div className="flex w-2/4 m-auto justify-center items-center border-2 text-black pr-4 rounded-lg border-border">
               <input
                 type="text"
                 placeholder="Enter Your Solution.."

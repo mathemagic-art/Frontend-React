@@ -213,7 +213,7 @@ const NewtonMethod = () => {
                       name: "Area",
                       type: "scatter",
                       mode: "lines",
-                      marker: { color: "red" },
+                      marker: { color: "C595E9" },
                     },
                     {
                       x: xValues2,
@@ -221,7 +221,7 @@ const NewtonMethod = () => {
                       name: "initial guess",
                       type: "scatter",
                       mode: "lines",
-                      marker: { color: "blue" },
+                      marker: { color: "6F46F3" },
                     },
                     {
                       name: "final guess",
@@ -229,13 +229,15 @@ const NewtonMethod = () => {
                       y: yValues3,
                       type: "scatter",
                       mode: "lines",
-                      marker: { color: "green" },
+                      marker: { color: "#17AAF3" },
                     },
                   ]}
                   layout={{
+                    plot_bgcolor: "#F1F5FF", // f(x)
+                    paper_bgcolor: "#F1F5FF", //B
                     width: 720,
                     height: 540,
-                    title: "Simpsons Rule Calculator",
+                    title: "Newton Method",
                   }}
                 />
               </div>
