@@ -35,7 +35,7 @@ const DiffTest = () => {
     const value = e.target.value;
     console.log(value);
     setData({ argument_1: value });
-    axios.post("/test-differentiation/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/test-differentiation/", data).then((res) => {
       setQuestion({ ...res.data });
       console.log(res.data);
     });

@@ -34,7 +34,7 @@ const IntegTest = () => {
     const value = e.target.value;
     console.log(value);
     setData({ argument_1: value });
-    axios.post("/test-indefinite-integral", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/test-indefinite-integral", data).then((res) => {
       setQuestion({ ...res.data });
       console.log(res.data);
     });
