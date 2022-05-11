@@ -22,7 +22,7 @@ const Test_Yourself = () => {
             <img src={images.diffpic}/>
             <p className="h-[87%] -mt-[365px] w-full"></p>
             <Link
-              to={"/testyourself/difftest"}
+              to={"https://api-mathemagics.herokuapp.com/testyourself/difftest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[3.67rem]"
             >
               DIFFERENTIATION
@@ -32,7 +32,7 @@ const Test_Yourself = () => {
           <img src={images.integpic} className="rounded-xl"/>
             <p className="h-[87%] -mt-[365px]"></p>
             <Link
-              to={"/testyourself/integtest"}
+              to={"https://api-mathemagics.herokuapp.com/testyourself/integtest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[5rem]"
             >
               INTEGRATION
@@ -42,7 +42,7 @@ const Test_Yourself = () => {
           <img src={images.limitpic}/>
             <p className="h-[87%] -mt-[370px]"></p>
             <Link
-              to={"/testyourself/limittest"}
+              to={"https://api-mathemagics.herokuapp.com/testyourself/limittest"}
               className="w-full rounded-b-xl bg-primary text-2xl py-6 px-[7.86rem]"
             >
               LIMIT

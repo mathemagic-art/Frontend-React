@@ -66,7 +66,7 @@ const QuestionCard = () => {
     const value = e.target.value;
     console.log(question[2]);
     const ans = question[2];
-    setUanswer({ argument_1: value, argument_2: ans });
+    setUanswer({ argument_1: value.replaceAll("**","^"), argument_2: ans });
   };
 
   const handleReset = (event) => {

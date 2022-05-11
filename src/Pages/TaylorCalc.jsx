@@ -33,7 +33,7 @@ const TaylorCalc = () => {
     setRed(false);
     const name = event.target.name;
     const value = event.target.value;
-    const re = /[@$#%!~`&{}"':;?><.,\\]|[A-Z]/g;
+    const re = /[@$#%!~`&{}"':;?><,\\]|[A-Z]/g;
 
     if (re.test(value)) {
       console.log("found errr");
