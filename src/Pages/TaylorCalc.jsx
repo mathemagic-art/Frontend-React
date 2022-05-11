@@ -9,6 +9,7 @@ import * as math from "mathjs";
 import { BlockMath } from "react-katex";
 
 const TaylorCalc = () => {
+  const [red, setRed] = useState(false);
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -16,8 +17,12 @@ const TaylorCalc = () => {
     argument_4: "",
   });
   const [answer, setAnswer] = useState({
-    argument_1: "",
-    argument_2: "",
+    argument_1: "", //latex form
+    argument_2: "", //expression form
+    argument_3: "", //x left boundary
+    argument_4: "", //x right boundary
+    argument_5: "", //y top boundary
+    argument_6: "", //y bottom boundary
   });
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -25,9 +30,18 @@ const TaylorCalc = () => {
 
   const handleInput = (event) => {
     event.preventDefault();
+    setRed(false);
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    const re = /[@$#%!~`&{}"':;?><.,\\]/g;
+
+    if (re.test(value)) {
+      console.log("found errr");
+      setRed(true);
+    } else {
+      setData((values) => ({ ...values, [name]: value }));
+      console.log("Recieved event: " + data);
+    }
   };
 
   const handleReset = (event) => {
@@ -47,19 +61,24 @@ const TaylorCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("taylor-series/", data).then((res) => {
-      console.log(res.data);
+    event.preventDefault();
+
+    axios.post("/taylor-series/", data).then((res) => {
+      console.log("RES: " + res.data);
+
       const data1 = res.data[0];
-      const data2 = res.data[1];
-      console.log(data1);
-      console.log(data2);
-      setAnswer({ argument_1: data1, argument_2: data2 });
-      event.preventDefault();
+      const data2 = res.data[1].replaceAll("**", "^");
+      setAnswer({
+        argument_1: data1,
+        argument_2: data2,
+        argument_3: res.data[2],
+        argument_4: res.data[3],
+        argument_5: res.data[4],
+        argument_6: res.data[5],
+      });
     });
     setSubmitted(true);
     setExp(data.argument_1);
-    console.log(answer);
-    event.preventDefault();
   };
 
   let ax = "";
@@ -69,14 +88,18 @@ const TaylorCalc = () => {
 
   const expression2 = answer.argument_2;
   const expr2 = math.compile(expression2);
-  const xValues2 = math.range(-7.14, 7.14, 0.1).toArray();
+  const xValues2 = math
+    .range(answer.argument_3, answer.argument_4, 0.1)
+    .toArray();
   const yValues2 = xValues2.map(function (x) {
     return expr2.evaluate({ x: x });
   });
 
   const expression = exp;
   const expr = math.compile(expression);
-  const xValues = math.range(-7.14, 7.14, 0.1).toArray();
+  const xValues = math
+    .range(answer.argument_3, answer.argument_4, 0.1)
+    .toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
@@ -102,26 +125,46 @@ const TaylorCalc = () => {
               >
                 Enter a function f(x)
               </label>
-              <div
-                className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] "
-                id="searchbox"
-              >
-                <input
-                  required
-                  className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl "
-                  type="text"
-                  id="function"
-                  name="argument_1"
-                  value={data.argument_1}
-                  onChange={handleInput}
-                />{" "}
-                <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
-                  <Fx className="dark:fill-white fill-tx w-[25px]" />
-                </button>
-              </div>
+              {red ? (
+                <div
+                  className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] "
+                  id="searchbox"
+                >
+                  <input
+                    required
+                    className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-500"
+                    type="text"
+                    id="function"
+                    name="argument_1"
+                    value={data.argument_1}
+                    onChange={handleInput}
+                  />{" "}
+                  <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
+                    <Fx className="dark:fill-white fill-tx w-[25px]" />
+                  </button>
+                </div>
+              ) : (
+                <div
+                  className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] "
+                  id="searchbox"
+                >
+                  <input
+                    required
+                    className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl "
+                    type="text"
+                    id="function"
+                    name="argument_1"
+                    value={data.argument_1}
+                    onChange={handleInput}
+                  />{" "}
+                  <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
+                    <Fx className="dark:fill-white fill-tx w-[25px]" />
+                  </button>
+                </div>
+              )}
               <label
                 htmlFor="point"
-                className="ml-2 dark:text-bright text-text text-[16px] "
+                className="ml-2 dark:te-7.14, 7.14xt-bright text-text text-[16px] "
               >
                 Respect to
               </label>
@@ -130,6 +173,7 @@ const TaylorCalc = () => {
                 type="text"
                 // id="figure"
                 name="argument_2"
+                value={data.argument_2}
                 onChange={handleInput}
                 className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
               />
@@ -154,6 +198,7 @@ const TaylorCalc = () => {
               >
                 Centered at
               </label>
+
               <input
                 optional
                 type="text"
