@@ -85,7 +85,7 @@ const IntegralCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("universal-integral/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/universal-integral/", data).then((res) => {
       setAnswer(res.data);
     });
     console.log(data);
@@ -150,8 +150,8 @@ const IntegralCalc = () => {
                 onChange={handleInput}
                 className={
                   red
-                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
-                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                    ? "w-[460px] h-[48px] p-2 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-2 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
                 }
               >
                 <option value="indefinite">Indefinite Integral</option>

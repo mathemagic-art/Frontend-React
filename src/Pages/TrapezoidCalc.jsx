@@ -62,7 +62,7 @@ const TrapezoidCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("trapezoid-method/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/trapezoid-method/", data).then((res) => {
       setAnswer(res.data);
     });
     setSubmitted(true);

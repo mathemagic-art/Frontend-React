@@ -23,7 +23,7 @@ const AboutUs = () => {
     <div className="flex flex-col w-full bg-white text-head dark:text-white dark:bg-dark">
       <Navbar />
       <FunctionsMenu />
-      <div className="flex flex-col">
+      <div className="flex flex-col flex-wrap">
         <Logo1 className="m-auto mt-[58px] h-[134px] w-[120px] " />
         <Triangle className="-mt-40" />
         <Quotemark className="place-self-start ml-60 mt-5 fill-black dark:fill-white" />
@@ -36,8 +36,8 @@ const AboutUs = () => {
         </h2>
         <Quotemark className="rotate-180 place-self-end mr-60 self-end justify-self-end ml-auto fill-black dark:fill-white" />
         <Cube className="ml-[260px]" />
-        <div className="flex place-self-end ml-20">
-          <div className="flex flex-col mb-[150px] pl-[160px] -mt-60 w-[459px] place-self-end">
+        <div className="flex place-self-end tablet:place-self-center ml-20 tablet:mb-[200px] tablet:flex-col">
+          <div className="flex flex-col mb-[150px] pl-[160px] -mt-60 w-[459px] place-self-end tablet:place-self-center tablet:pl-[0] tablet:mt-[100px]">
             <h3 className="font-inter mb-[10px] font-bold w-[500px] h-[24px] text-[24px]">Dr. Mukhammadmuso Abduzhabbarov</h3>
             <h4 className="mb-[22px] w-[500px] h-[28px] text-[20px] ">PhD in Mathematics</h4>
             <p className="mb-[10px] w-[500px] h-[28px] text-[20px]">Product Owner</p>
@@ -45,14 +45,14 @@ const AboutUs = () => {
           </div>
           <img src={images.Muso} alt="Professor" className="place-self-end ml-[164px] mr-32 mb-[100px] w-[300px] h-[300px]"/>
         </div>
-        <div>
+        <div className="tablet:mb-[200px]">
           <h3 className="text-center mb-[30px] text-[20px] font-bold font-inter" >Behind the Magic</h3>
           <h1 className="text-center font-inter text-bold text-6xl mb-[44px] ">
             Meet our TEAM
           </h1>
           <p className="text-center font-normal font-inter text-[20px] mb-[80x]" >Problem solving oriented minds representing an interdisciplinar blend of skills </p>
         </div>
-        <div className="flex flex-row ml-[230px] mr-[280px] justify-around items-center gap-[85px] mt-[100px]">
+        <div className="flex flex-row ml-[230px] mr-[280px] justify-around items-center gap-[85px] mt-[100px] flex-wrap">
           {/* First Column */}
           <div className="flex flex-col -mt-[230px]"> 
             <figure className={style.figure}>
@@ -157,7 +157,7 @@ const AboutUs = () => {
                 <h4 className={style.position}>Full Stack Developer</h4>
               </div>
             </figure>
-            <figure className={style.figure}>
+            <figure className="flex mb-[73px] tablet:mb-[170px]">
               <img src={images.Marzia} />
               <div className={style.img_content}>
                 <h2 className={style.name}>Marzia Taban Jafari</h2>
@@ -218,7 +218,7 @@ const AboutUs = () => {
         </div>
       </div>
       <h2 className="text-center font-inter font-bold mt-[162px] text-[40px] dark:text-white text-tx mb-[47px]">Technologies</h2>
-      <Techno className="flex place-self-center mb-[107px] " />
+      <Techno className="flex place-self-center mb-[107px] tablet:w-[800px] " />
     </div>
   );
 };

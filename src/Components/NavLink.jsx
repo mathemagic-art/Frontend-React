@@ -5,7 +5,7 @@ const NavLink = ({ text }) => {
   return (
     <>
       <Link
-        to={"/" + text.replace(" ", "")}
+        to={"/" + text.replace(" ", "").toLowerCase()}
         className="font-bold text-head dark:text-white"
       >
         {text}

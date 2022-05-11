@@ -61,7 +61,7 @@ const LimitCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("limit-calculator/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/limit-calculator/", data).then((res) => {
       setAnswer(res.data);
     });
     console.log(data);

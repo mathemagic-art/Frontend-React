@@ -51,7 +51,7 @@ const NewtonMethod = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("newtons-method/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/newtons-method/", data).then((res) => {
       setAnswer(res.data);
     });
 
