@@ -70,22 +70,29 @@ const TaylorCalc = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post("https://api-mathemagics.herokuapp.com/taylor-series/", data).then((res) => {
-      console.log("RES: " + res.data);
+    axios
+      .post("https://api-mathemagics.herokuapp.com/taylor-series/", data)
+      .then((res) => {
+        console.log("RES: " + res.data);
 
-      const data1 = res.data[0];
-      const data2 = res.data[1].replaceAll("**", "^");
-      setAnswer({
-        argument_1: data1,
-        argument_2: data2,
-        argument_3: res.data[2],
-        argument_4: res.data[3],
-        argument_5: res.data[4],
-        argument_6: res.data[5],
+        const data1 = res.data[0];
+        const data2 = res.data[1].replaceAll("**", "^");
+        if (res.data == "Error! Invalid input!") {
+          setSubmitted(false);
+          alert("Wrong input!");
+        } else {
+          setAnswer({
+            argument_1: data1,
+            argument_2: data2,
+            argument_3: res.data[2],
+            argument_4: res.data[3],
+            argument_5: res.data[4],
+            argument_6: res.data[5],
+          });
+          setSubmitted(true);
+          setExp(data.argument_1);
+        }
       });
-    });
-    setSubmitted(true);
-    setExp(data.argument_1);
   };
 
   let ax = "";
@@ -240,8 +247,9 @@ const TaylorCalc = () => {
               </p>
               <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
               <p className="mt-[98px] text-[28px] font-semibold pb-[62px] dark:text-white text-tx flex">
-                According to Maclorian's Series
+                According to Maclaurin's Series
               </p>
+              Maclaurin
               <Taylor className="fill-tx dark:fill-white ml-10 -mt-5" />
             </div>
           ) : (
