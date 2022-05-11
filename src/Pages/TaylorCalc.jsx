@@ -125,43 +125,29 @@ const TaylorCalc = () => {
               >
                 Enter a function f(x)
               </label>
-              {red ? (
-                <div
-                  className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] "
-                  id="searchbox"
-                >
-                  <input
-                    required
-                    className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-500"
-                    type="text"
-                    id="function"
-                    name="argument_1"
-                    value={data.argument_1}
-                    onChange={handleInput}
-                  />{" "}
-                  <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
-                    <Fx className="dark:fill-white fill-tx w-[25px]" />
-                  </button>
-                </div>
-              ) : (
-                <div
-                  className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] "
-                  id="searchbox"
-                >
-                  <input
-                    required
-                    className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl "
-                    type="text"
-                    id="function"
-                    name="argument_1"
-                    value={data.argument_1}
-                    onChange={handleInput}
-                  />{" "}
-                  <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
-                    <Fx className="dark:fill-white fill-tx w-[25px]" />
-                  </button>
-                </div>
-              )}
+
+              <div
+                className="flex rounded-l-[8px] dark:text-black text-black mb-[40px] "
+                id="searchbox"
+              >
+                <input
+                  required
+                  className={
+                    red
+                      ? "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-500"
+                      : "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl "
+                  }
+                  type="text"
+                  id="function"
+                  name="argument_1"
+                  value={data.argument_1}
+                  onChange={handleInput}
+                />{" "}
+                <button className="w-[67px] h-[48px] px-4 border-2 dark:border-primary rounded-r-[8px] ">
+                  <Fx className="dark:fill-white fill-tx w-[25px]" />
+                </button>
+              </div>
+
               <label
                 htmlFor="point"
                 className="ml-2 dark:te-7.14, 7.14xt-bright text-text text-[16px] "
@@ -175,7 +161,11 @@ const TaylorCalc = () => {
                 name="argument_2"
                 value={data.argument_2}
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-500"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
+                }
               />
               <label
                 htmlFor="order"
@@ -190,7 +180,11 @@ const TaylorCalc = () => {
                 value={data.argument_3}
                 name="argument_3"
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2  text-black dark:border-primary rounded-[8px] mb-[40px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-500"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
+                }
               />
               <label
                 htmlFor="error"
@@ -206,7 +200,11 @@ const TaylorCalc = () => {
                 value={data.argument_4}
                 name="argument_4"
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2  text-black dark:border-primary rounded-[8px] mb-[40px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-500"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
+                }
               />
             </div>
             <div className=" flex justify-evenly">
