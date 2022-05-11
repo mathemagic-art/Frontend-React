@@ -18,7 +18,7 @@ const NewtonMethod = () => {
     argument_3: "",
   });
 
-  const [answer, setAnswer] = useState([]);
+  const [answer, setAnswer] = useState(["0", "", ""]);
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [exp, setExp] = useState("");
@@ -27,7 +27,7 @@ const NewtonMethod = () => {
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    const re = /[@$#%!~`&{}"':;?><.,\\]/g;
+    const re = /[@$#%!~`&{}"':;?><.,\\]|[A-Z]/g;
     setRed(false);
     if (re.test(value)) {
       console.log("found errr");
@@ -37,12 +37,11 @@ const NewtonMethod = () => {
     }
     event.preventDefault();
   };
-
   let variable = "f(" + data.argument_2 + ")";
-
   const handleReset = (event) => {
+    event.preventDefault();
     setData({ argument_1: "", argument_2: "x", argument_3: "" });
-    setAnswer("");
+    setAnswer(["0", "", ""]);
     setSubmitted(false);
   };
 
@@ -51,13 +50,13 @@ const NewtonMethod = () => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     axios.post("newtons-method/", data).then((res) => {
       setAnswer(res.data);
-      console.log(res.data);
     });
+
     setSubmitted(true);
     setExp(data.argument_1);
-    event.preventDefault();
   };
   console.log(answer);
   const expression = exp;
@@ -69,7 +68,7 @@ const NewtonMethod = () => {
     return expr.evaluate({ x: x });
   });
 
-  const expression2 = submitted && answer[1];
+  const expression2 = answer[1];
   console.log(answer[1]);
   const expr2 = math.compile(expression2.replaceAll("**", "^"));
   const xValues2 = math
@@ -79,7 +78,7 @@ const NewtonMethod = () => {
     return expr2.evaluate({ x: x });
   });
 
-  const expression3 = submitted && answer[2];
+  const expression3 = answer[2];
   console.log(answer[2]);
   const expr3 = math.compile(expression3.replaceAll("**", "^"));
   const xValues3 = math
@@ -117,7 +116,7 @@ const NewtonMethod = () => {
                   required
                   className={
                     red
-                      ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
+                      ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
                       : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
                   }
                   type="text"
@@ -142,8 +141,8 @@ const NewtonMethod = () => {
                 onChange={handleInput}
                 className={
                   red
-                    ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
-                    : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                    ? "w-full p-4 border-2  text-black dark:border-primary rounded-xl mb-10 text-xl bg-red-300"
+                    : "w-full p-4 border-2  text-black dark:border-primary rounded-xl mb-10 text-xl"
                 }
               />
 
@@ -162,8 +161,8 @@ const NewtonMethod = () => {
                 onChange={handleInput}
                 className={
                   red
-                    ? "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl bg-red-300"
-                    : "w-full p-4 border-2 dark:border-primary rounded-l-xl text-xl"
+                    ? "w-full p-4 border-2  text-black dark:border-primary rounded-xl mb-10 text-xl bg-red-300"
+                    : "w-full p-4 border-2  text-black dark:border-primary rounded-xl mb-10 text-xl"
                 }
               />
             </div>
@@ -200,9 +199,9 @@ const NewtonMethod = () => {
                     : variable + " = " + data.argument_1}{" "}
                   equals to{" "}
                 </p>
-                <div className="ml-3 pt-4 pb-14 border-2 font-normal rounded-xl text-3xl mt-5 px-3 border-double border-green-600 h-10 dark:text-white dark:bg-black bg-white text-tx">
+                <div className="ml-3 pt-4 pb-14 border-2 mt-[46px] font-normal rounded-xl text-3xl px-3 border-double border-green-600 h-10 dark:text-black bg-white text-tx">
                   {data.argument_2}=
-                  {answer[0] !== "" ? answer[0] : "_____________"}{" "}
+                  {answer[0] !== "" ? answer[0] : "_____________"}
                 </div>
                 <Plot
                   className="mt-10 mb-10"
@@ -218,11 +217,13 @@ const NewtonMethod = () => {
                     {
                       x: xValues2,
                       y: yValues2,
+                      name: "initial guess",
                       type: "scatter",
                       mode: "lines",
                       marker: { color: "blue" },
                     },
                     {
+                      name: "final guess",
                       x: xValues3,
                       y: yValues3,
                       type: "scatter",

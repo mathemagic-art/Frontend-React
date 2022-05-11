@@ -33,7 +33,7 @@ const TaylorCalc = () => {
     setRed(false);
     const name = event.target.name;
     const value = event.target.value;
-    const re = /[@$#%!~`&{}"':;?><.,\\]/g;
+    const re = /[@$#%!~`&{}"':;?><.,\\]|[A-Z]/g;
 
     if (re.test(value)) {
       console.log("found errr");
@@ -141,7 +141,7 @@ const TaylorCalc = () => {
                   required
                   className={
                     red
-                      ? "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-500"
+                      ? "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-300"
                       : "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl "
                   }
                   type="text"
@@ -170,7 +170,7 @@ const TaylorCalc = () => {
                 onChange={handleInput}
                 className={
                   red
-                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-500"
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-300"
                     : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
                 }
               />
@@ -189,7 +189,7 @@ const TaylorCalc = () => {
                 onChange={handleInput}
                 className={
                   red
-                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-500"
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-300"
                     : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
                 }
               />
@@ -209,7 +209,7 @@ const TaylorCalc = () => {
                 onChange={handleInput}
                 className={
                   red
-                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-500"
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl bg-red-300"
                     : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[40px] text-xl"
                 }
               />
