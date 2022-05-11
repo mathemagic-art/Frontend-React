@@ -90,7 +90,7 @@ const ContactUs = () => {
           onChange={handleChange}
         />
         <button
-          className=" py-2 bg-primary w-[8rem] rounded-lg text-white place-self-end hover:bg-white hover:text-dark"
+          className=" py-2 bg-primary border-2 border-primary w-[8rem] rounded-lg text-white place-self-end hover:bg-white hover:text-dark"
           onClick={cleanUp}
         >
           Cancel
