@@ -69,7 +69,7 @@ const IntegTest = () => {
     e.preventDefault();
     setShow(false);
     setAnswer("");
-    axios.post("/test-limit", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/test-indefinite-integral/", data).then((res) => {
       setQuestion({ ...res.data });
       console.log(res.data);
     });

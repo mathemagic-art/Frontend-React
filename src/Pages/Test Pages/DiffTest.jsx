@@ -57,7 +57,7 @@ const DiffTest = () => {
     console.log(uanswer);
     e.preventDefault();
 
-    axios.post("/compare", uanswer).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/compare", uanswer).then((res) => {
       const ans = question[1];
       console.log(question[1]);
 
@@ -70,7 +70,7 @@ const DiffTest = () => {
     e.preventDefault();
     setShow(false);
     setAnswer("");
-    axios.post("https://api-mathemagics.herokuapp.com/test-limit", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/test-differentiation/", data).then((res) => {
       setQuestion({ ...res.data });
       console.log(res.data);
     });
