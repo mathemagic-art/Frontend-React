@@ -104,4 +104,4 @@ Please strictly follow the guidelines on the commit message so we will have a fu
 
 stay sharp and motivated and enjoy coding with us 😇 ✊‍
 
-### MathMagic Frontend Team Forever 🤘
+### MathMagics Frontend Team Forever 🤘
