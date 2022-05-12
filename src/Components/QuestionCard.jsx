@@ -75,6 +75,7 @@ const QuestionCard = () => {
     });
     setUanswer({ argument_1: "", argument_2: "" });
     setAnswer({ argument_1: "", argument_2: "" });
+    showAnswer(false);
   };
 
   const handleSubmit = (e) => {

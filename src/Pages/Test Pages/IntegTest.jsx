@@ -80,6 +80,7 @@ const IntegTest = () => {
     event.preventDefault();
     setQuestion({ argument_1: "", argument_2: "", argument_3: "" });
     setShowq(false);
+    showAnswer(false);
 
     setUanswer({ argument_1: "", argument_2: "" });
     setAnswer({ argument_1: "", argument_2: "" });

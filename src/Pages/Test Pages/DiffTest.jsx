@@ -82,6 +82,7 @@ const DiffTest = () => {
     setShowq(false);
     setUanswer({ argument_1: "", argument_2: "" });
     setAnswer({ argument_1: "", argument_2: "" });
+    showAnswer(false);
   };
   return (
     <div className=" h-full w-full bg-white dark:bg-dark dark:text-white text-dark">
