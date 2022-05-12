@@ -27,7 +27,7 @@ This app is build with Reactjs which is a JavaScript library for building user i
     $ npm -v
 ```
 
-- Important: you must have the latest updates of these tools if not please update to the latest versions
+- Important: you must have the latest updates of these tools to run the app. if not please update to the latest versions
 
 - Use Git to clone the repository in a location on your machine 🍎
 
