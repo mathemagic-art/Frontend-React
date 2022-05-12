@@ -93,14 +93,14 @@ command again. This will hopefully work.
 
 ### Git commit message guidelines 🔔
 
-- Use the following keywords in each case for better readability 🐒
+Use the following keywords in each case for better readability 🐒
 
 - "added: if you have created a new component or layout or page write the name here"
 - "updated: if you have added or removed features to a component write the name of comp"
 - "fixed: if you have fixed a bug, write the name of comp and bug type here"
 - "deleted: if you have deleted any comp or feature or page write the name here"
 
-* please strictly follow the guidelines on the commit message so we will have a fun collaboration" \_ Nazari
+Please strictly follow the guidelines on the commit message so we will have a fun collaboration" \_ Nazari
 
 stay sharp and motivated and enjoy coding with us 😇 ✊‍
 
