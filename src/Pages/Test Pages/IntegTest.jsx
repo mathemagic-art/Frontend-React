@@ -56,7 +56,7 @@ const IntegTest = () => {
     console.log(uanswer);
     e.preventDefault();
 
-    axios.post("/compare", uanswer).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/compare", uanswer).then((res) => {
       const ans = question[1];
       console.log(question[1]);
 
