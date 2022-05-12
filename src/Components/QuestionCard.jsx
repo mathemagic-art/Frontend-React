@@ -36,12 +36,6 @@ const QuestionCard = () => {
     const value = e.target.value;
     console.log(value);
     setData({ argument_1: value });
-    console.log(data);
-    axios.post("/test-limit", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log("Fraction: " + res.data);
-    });
-    setShowq(true);
   };
 
   if (question[0]) {
@@ -54,10 +48,12 @@ const QuestionCard = () => {
     e.preventDefault();
     setShow(false);
     setAnswer("");
-    axios.post("https://api-mathemagics.herokuapp.com/test-limit", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log(res.data);
-    });
+    axios
+      .post("https://api-mathemagics.herokuapp.com/test-limit", data)
+      .then((res) => {
+        setQuestion({ ...res.data });
+        console.log(res.data);
+      });
     setShowq(true);
   };
 
@@ -66,11 +62,16 @@ const QuestionCard = () => {
     const value = e.target.value;
     console.log(question[2]);
     const ans = question[2];
-    setUanswer({ argument_1: value.replaceAll("**","^"), argument_2: ans });
+    setUanswer({ argument_1: value.replaceAll("**", "^"), argument_2: ans });
   };
 
   const handleReset = (event) => {
-    window.location.reload();
+    event.preventDefault();
+    setShowq(false);
+    setQuestion({ argument_1: "", argument_2: "", argument_3: "" });
+    setUanswer({ argument_1: "", argument_2: "" });
+    setData({ argument_1: "" });
+    setAnswer({ argument_1: "", argument_2: "" });
   };
 
   const handleSubmit = (e) => {
@@ -78,14 +79,16 @@ const QuestionCard = () => {
     console.log(uanswer);
     e.preventDefault();
 
-    axios.post("/compare", uanswer).then((res) => {
-      const ans = question[2];
-      console.log(question[2]);
+    axios
+      .post("https://api-mathemagics.herokuapp.com/compare", uanswer)
+      .then((res) => {
+        const ans = question[2];
+        console.log(question[2]);
 
-      console.log(res.data);
-      setAnswer({ argument_1: res.data, argument_2: ans });
-      console.log(answer);
-    });
+        console.log(res.data);
+        setAnswer({ argument_1: res.data, argument_2: ans });
+        console.log(answer);
+      });
   };
   const showAnswer = () => {
     setShow(!show);
@@ -111,6 +114,12 @@ const QuestionCard = () => {
             <option value="2">Intermediate</option>
             <option value="3">Advanced</option>
           </select>
+          <button
+            className="px-4 py-2  bg-blue-400 text-white rounded-md text-lg font-primary hover:bg-white hover:shadow-md hover:text-dark  duration-300"
+            onClick={nextQuestion}
+          >
+            Request Question
+          </button>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -163,7 +172,7 @@ const QuestionCard = () => {
           </button>
           {show ? (
             <p className="text-center py-10 text-2xl text-text">
-              {answer.argument_2}
+              <BlockMath>{answer.argument_2}</BlockMath>
             </p>
           ) : (
             ""
