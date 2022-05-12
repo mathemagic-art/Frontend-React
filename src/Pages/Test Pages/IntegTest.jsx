@@ -32,7 +32,6 @@ const IntegTest = () => {
     setShow(false);
     setAnswer("");
     const value = e.target.value;
-    console.log(value);
     setData({ argument_1: value });
   };
 
@@ -42,25 +41,22 @@ const IntegTest = () => {
   const handleInput = (e) => {
     e.preventDefault();
     const value = e.target.value;
-    console.log(question[1]);
     const ans = question[1];
     setUanswer({ argument_1: value, argument_2: ans });
   };
 
   const handleSubmit = (e) => {
-    console.log("handle");
-    console.log(uanswer);
     e.preventDefault();
-
+    if (uanswer.argument_1 == "" || question.argument_1 == "") {
+      return;
+    }
     axios
       .post("https://api-mathemagics.herokuapp.com/compare", uanswer)
       .then((res) => {
         const ans = question[1];
         console.log(question[1]);
 
-        console.log(res.data);
         setAnswer({ argument_1: res.data, argument_2: ans });
-        console.log(answer);
       });
   };
   const nextQuestion = (e) => {
@@ -74,7 +70,6 @@ const IntegTest = () => {
       )
       .then((res) => {
         setQuestion({ ...res.data });
-        console.log(res.data);
       });
     setShowq(true);
   };
@@ -87,7 +82,6 @@ const IntegTest = () => {
     setShowq(false);
 
     setUanswer({ argument_1: "", argument_2: "" });
-    setData({ argument_1: "" });
     setAnswer({ argument_1: "", argument_2: "" });
   };
   return (

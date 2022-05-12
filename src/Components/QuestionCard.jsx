@@ -68,16 +68,20 @@ const QuestionCard = () => {
   const handleReset = (event) => {
     event.preventDefault();
     setShowq(false);
-    setQuestion({ argument_1: "", argument_2: "", argument_3: "" });
+    setQuestion({
+      argument_1: "",
+      argument_2: "",
+      argument_3: "",
+    });
     setUanswer({ argument_1: "", argument_2: "" });
-    setData({ argument_1: "" });
     setAnswer({ argument_1: "", argument_2: "" });
   };
 
   const handleSubmit = (e) => {
-    console.log("handle");
-    console.log(uanswer);
     e.preventDefault();
+    if (uanswer.argument_1 == "" || question.argument_1 == "") {
+      return;
+    }
 
     axios
       .post("https://api-mathemagics.herokuapp.com/compare", uanswer)

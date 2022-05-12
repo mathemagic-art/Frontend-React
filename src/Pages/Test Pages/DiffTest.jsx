@@ -46,10 +46,10 @@ const DiffTest = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log("handle");
-    console.log(uanswer);
     e.preventDefault();
-
+    if (uanswer.argument_1 == "" || question.argument_1 == "") {
+      return;
+    }
     axios
       .post("https://api-mathemagics.herokuapp.com/compare", uanswer)
       .then((res) => {
@@ -81,7 +81,6 @@ const DiffTest = () => {
     setQuestion({ argument_1: "", argument_2: "", argument_3: "" });
     setShowq(false);
     setUanswer({ argument_1: "", argument_2: "" });
-    setData({ argument_1: "" });
     setAnswer({ argument_1: "", argument_2: "" });
   };
   return (
