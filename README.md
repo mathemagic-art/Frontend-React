@@ -20,7 +20,7 @@ This app is build with Reactjs which is a JavaScript library for building user i
 - You can check if you have these tools installed by going to your terminal and running the following commands:
 
 ```bash
-      $ node -v
+    $ node -v
 ```
 
 ```bash
