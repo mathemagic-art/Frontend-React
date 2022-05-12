@@ -90,7 +90,10 @@ const AboutUs = () => {
                 <h4 className={style.position}> Product Manager</h4>
                 <h4 className={style.position}>Backend Developer</h4>
                 <h4 className={style.position}>Math Algorithms Developer</h4>
-                <Social GitHub="https://github.com/oneku16" />
+                <Social
+                  GitHub="https://github.com/oneku16"
+                  linkedIn="https://www.linkedin.com/in/elnazar-ulanbek-uulu-211591237"
+                />
               </div>
             </figure>
 
@@ -102,7 +105,10 @@ const AboutUs = () => {
                   {" "}
                   Lead Math Algorithms Developer
                 </h4>
-                <Social GitHub="https://github.com/sharukhhhan" />
+                <Social
+                  GitHub="https://github.com/sharukhhhan"
+                  linkedIn="https://www.linkedin.com/in/shokhrukh-davlatmamadov-b5664623a/"
+                />
               </div>
             </figure>
 
@@ -182,7 +188,10 @@ const AboutUs = () => {
               <div className={style.img_content}>
                 <h2 className={style.name}>Jasurbek Sadiev</h2>
                 <h4 className={style.position}> Full Stack Developer</h4>
-                <Social GitHub="https://github.com/JasurSadiev" />
+                <Social
+                  GitHub="https://github.com/JasurSadiev"
+                  linkedIn="https://www.linkedin.com/in/jasurbek-sadiev-7104321b2/"
+                />
               </div>
             </figure>
             <figure className={style.figure}>
@@ -191,7 +200,7 @@ const AboutUs = () => {
                 <h2 className={style.name}>Aizada Berdibekova</h2>
                 <h4 className={style.position}> Backend Developer</h4>
                 <Social
-                  linkedIn="https://github.com/aizadaally"
+                  linkedIn="https://www.linkedin.com/in/aizada-berdibekova-a33b5514b/"
                   GitHub="https://github.com/aizadaally"
                 />
               </div>
