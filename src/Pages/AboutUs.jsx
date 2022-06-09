@@ -113,16 +113,6 @@ const AboutUs = () => {
             </figure>
 
             <figure className={style.figure}>
-              <img src={images.Munis} />
-              <div className={style.img_content}>
-                <h2 className={style.name}>Munis Saidrahmonov</h2>
-                <h4 className={style.position}>UX/UI Designer</h4>
-                <h4 className={style.position}>Math Algorithms Developer</h4>
-                <Social GitHub="https://github.com/internic" />
-              </div>
-            </figure>
-
-            <figure className={style.figure}>
               <img src={images.Zakir} />
               <div className={style.img_content}>
                 <h2 className={style.name}>Zakir Hussain Muradi</h2>

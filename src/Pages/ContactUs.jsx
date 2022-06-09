@@ -13,7 +13,7 @@ const ContactUs = () => {
   });
   const onSubmit = (e) => {
     e.preventDefault();
-    send("service_hawx44n", "template_ttgta2q", toSend, "Vp2nB-WOSzwvwq9du")
+    send("service_hawx44n", "template_dyu1o6v", toSend, "Vp2nB-WOSzwvwq9du")
       .then((response) => {
         console.log("SUCCESS!", response.status, response.text);
       })
