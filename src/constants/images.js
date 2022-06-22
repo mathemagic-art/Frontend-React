@@ -21,7 +21,13 @@ import Jasurbek from "../Files/pngs/Jasurbek.png"
 import graphnw from "../Files/pngs/graphnw.png"
 import graphtrap from "../Files/pngs/trapezoidgraph.png"
 import rectangle from "../Files/pngs/rectanglegraph.png"
-
+import integral_org from "../Files/pngs/integral_org.png"
+import limit from "../Files/pngs/limit.png"
+import limit2 from "../Files/pngs/limit2.png"
+import diff from "../Files/pngs/diff.png"
+import diffpic from "../Files/pngs/diffpic.png"
+import integpic from "../Files/pngs/integpic.png"
+import limitpic from "../Files/pngs/limitpic.png"
 
 
 export default {
@@ -47,7 +53,14 @@ export default {
     Muso,
     graphnw,
     graphtrap,
-    rectangle,   
+    rectangle,
+    integral_org,
+    limit,
+    limit2,
+    diff, 
+    diffpic,
+    integpic,
+    limitpic,  
 };
 
 

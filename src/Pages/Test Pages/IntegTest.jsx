@@ -32,54 +32,58 @@ const IntegTest = () => {
     setShow(false);
     setAnswer("");
     const value = e.target.value;
-    console.log(value);
     setData({ argument_1: value });
-    axios.post("/test-indefinite-integral", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log(res.data);
-    });
-    setShowq(true);
   };
+
   if (question[0]) {
     ax = question[0].replace(/\\/g, "\\");
   }
   const handleInput = (e) => {
     e.preventDefault();
     const value = e.target.value;
-    console.log(question[1]);
     const ans = question[1];
     setUanswer({ argument_1: value, argument_2: ans });
   };
 
   const handleSubmit = (e) => {
-    console.log("handle");
-    console.log(uanswer);
     e.preventDefault();
+    if (uanswer.argument_1 == "" || question.argument_1 == "") {
+      return;
+    }
+    axios
+      .post("https://api-mathemagics.herokuapp.com/compare", uanswer)
+      .then((res) => {
+        const ans = question[1];
+        console.log(question[1]);
 
-    axios.post("/compare", uanswer).then((res) => {
-      const ans = question[1];
-      console.log(question[1]);
-
-      console.log(res.data);
-      setAnswer({ argument_1: res.data, argument_2: ans });
-      console.log(answer);
-    });
+        setAnswer({ argument_1: res.data, argument_2: ans });
+      });
   };
   const nextQuestion = (e) => {
     e.preventDefault();
     setShow(false);
     setAnswer("");
-    axios.post("/test-limit", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log(res.data);
-    });
+    axios
+      .post(
+        "https://api-mathemagics.herokuapp.com/test-indefinite-integral",
+        data
+      )
+      .then((res) => {
+        setQuestion({ ...res.data });
+      });
     setShowq(true);
   };
   const showAnswer = () => {
     setShow(!show);
   };
   const handleReset = (event) => {
-    window.location.reload();
+    event.preventDefault();
+    setQuestion({ argument_1: "", argument_2: "", argument_3: "" });
+    setShowq(false);
+    showAnswer(false);
+
+    setUanswer({ argument_1: "", argument_2: "" });
+    setAnswer({ argument_1: "", argument_2: "" });
   };
   return (
     <div className=" h-full w-full bg-white dark:bg-dark dark:text-white text-dark">
@@ -100,10 +104,16 @@ const IntegTest = () => {
               onChange={handleSelect}
             >
               <option>Select Your Level</option>
-              <option value="1">Begginer</option>
+              <option value="1">Beginer</option>
               <option value="2">Intermediate</option>
-              <option value="3">Advance</option>
+              <option value="3">Advanced</option>
             </select>
+            <button
+              className="px-4 py-2  bg-blue-400 text-white rounded-md text-lg font-primary hover:bg-white hover:shadow-md hover:text-dark  duration-300"
+              onClick={nextQuestion}
+            >
+              Request Question
+            </button>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -116,13 +126,14 @@ const IntegTest = () => {
             ) : (
               ""
             )}
-            <div className="flex w-2/4 m-auto justify-center items-center border-2 pr-4 rounded-lg border-border">
+            <div className="flex w-2/4 m-auto justify-center items-center border-2 text-black pr-4 rounded-lg border-border">
               <input
                 type="text"
                 placeholder="Enter Your Solution.."
                 className="w-full  h-16 px-2 rounded-l-lg border-r-2 border-border"
                 onChange={handleInput}
                 name="argument_1"
+                value={uanswer.argument_1}
               />
               <Fx className="fill-black dark:fill-white ml-4" />
             </div>
@@ -153,7 +164,7 @@ const IntegTest = () => {
             </button>
             {show ? (
               <p className="text-center py-10 text-2xl text-text">
-                {answer.argument_2}
+                <BlockMath>{answer.argument_2}</BlockMath>
               </p>
             ) : (
               ""

@@ -25,16 +25,16 @@ const App = () => {
       <Route exact path="/" element={<Home />}></Route>
       <Route path="/testyourself" element={<TEST_YOURSELF />}></Route>
       <Route path="/newton" element={<NewtonMethod />}></Route>
-      <Route path="/diff" element={<DiffCalculator />}></Route>
+      <Route path="/derivative" element={<DiffCalculator />}></Route>
       <Route path="/limit" element={<LimitCalc />}></Route>
       <Route path="/taylor" element={<TaylorCalc />}></Route>
       <Route path="/simpson" element={<SimpsonCalc />}></Route>
       <Route path="/trapezoid" element={<TrapezoidCalc />}></Route>
-      <Route path="/rectangle" element={<RectangleCalc />}></Route>
+      <Route path="/midpoint" element={<RectangleCalc />}></Route>
       <Route path="/integral" element={<IntegralCalc />}></Route>
       <Route path="/cheatsheets" element={<CHEATSHEETS />}></Route>
-      <Route path="/AboutUs" element={<AboutUs />}></Route>
-      <Route path="/CONTACTUS" element={<ContactUs />}></Route>
+      <Route path="/aboutus" element={<AboutUs />}></Route>
+      <Route path="/contactus" element={<ContactUs />}></Route>
       <Route path="/testyourself/limittest" element={<LimitTest />}></Route>
       <Route path="/testyourself/integtest" element={<IntegTest />}></Route>
       <Route path="/testyourself/difftest" element={<DiffTest />}></Route>

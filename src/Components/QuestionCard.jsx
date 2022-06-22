@@ -9,8 +9,13 @@ import 'katex/dist/katex.min.css';
 
 
 const QuestionCard = () => {
+<<<<<<< HEAD
   let ax = ''
 
+=======
+  let ax = "";
+  let apr = "";
+>>>>>>> master
   const [data, setData] = useState({
     argument_1: "1",
   });
@@ -41,15 +46,14 @@ const QuestionCard = () => {
     const value = e.target.value;
     console.log(value);
     setData({ argument_1: value });
-    console.log(data);
-    axios.post("/test-limit", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log("Fraction: " + res.data);
-    });
-    setShowq(true);
   };
   if (question[0]) {
+<<<<<<< HEAD
     ax = question[0].replace(/\\/g, "\\")
+=======
+    ax = question[0].replace(/\\/g, "\\");
+    apr = question[1].replace(/\\/g, "\\");
+>>>>>>> master
   }
   console.log(typeof(ax))
   
@@ -58,10 +62,12 @@ const QuestionCard = () => {
     e.preventDefault();
     setShow(false);
     setAnswer("");
-    axios.post("/test-limit", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log(res.data);
-    });
+    axios
+      .post("https://api-mathemagics.herokuapp.com/test-limit", data)
+      .then((res) => {
+        setQuestion({ ...res.data });
+        console.log(res.data);
+      });
     setShowq(true);
   };
 
@@ -70,26 +76,38 @@ const QuestionCard = () => {
     const value = e.target.value;
     console.log(question[2]);
     const ans = question[2];
-    setUanswer({ argument_1: value, argument_2: ans });
+    setUanswer({ argument_1: value.replaceAll("**", "^"), argument_2: ans });
   };
 
   const handleReset = (event) => {
-    window.location.reload();
+    event.preventDefault();
+    setShowq(false);
+    setQuestion({
+      argument_1: "",
+      argument_2: "",
+      argument_3: "",
+    });
+    setUanswer({ argument_1: "", argument_2: "" });
+    setAnswer({ argument_1: "", argument_2: "" });
+    showAnswer(false);
   };
 
   const handleSubmit = (e) => {
-    console.log("handle");
-    console.log(uanswer);
     e.preventDefault();
+    if (uanswer.argument_1 == "" || question.argument_1 == "") {
+      return;
+    }
 
-    axios.post("/compare", uanswer).then((res) => {
-      const ans = question[2];
-      console.log(question[2]);
+    axios
+      .post("https://api-mathemagics.herokuapp.com/compare", uanswer)
+      .then((res) => {
+        const ans = question[2];
+        console.log(question[2]);
 
-      console.log(res.data);
-      setAnswer({ argument_1: res.data, argument_2: ans });
-      console.log(answer);
-    });
+        console.log(res.data);
+        setAnswer({ argument_1: res.data, argument_2: ans });
+        console.log(answer);
+      });
   };
   const showAnswer = () => {
     setShow(!show);
@@ -112,18 +130,32 @@ const QuestionCard = () => {
             onChange={handleSelect}
           >
             <option>Select Your Level</option>
-            <option value="1">Begginer</option>
+            <option value="1">Beginner</option>
             <option value="2">Intermediate</option>
-            <option value="3">Advance &#92;</option>
+            <option value="3">Advanced</option>
           </select>
+          <button
+            className="px-4 py-2  bg-blue-400 text-white rounded-md text-lg font-primary hover:bg-white hover:shadow-md hover:text-dark  duration-300"
+            onClick={nextQuestion}
+          >
+            Request Question
+          </button>
         </div>
         
         <form onSubmit={handleSubmit}>
           {showq ? (
             <>
+<<<<<<< HEAD
             <div className="my-8 mb-20">
             <BlockMath>{ax}</BlockMath>
             </div>
+=======
+              <div className="my-8 mb-20 text-2xl flex justify-center items-center gap-5">
+                <BlockMath>{"Lim(" + ax + ")  "}</BlockMath>
+                approaches to
+                <BlockMath>{apr}</BlockMath>
+              </div>
+>>>>>>> master
             </>
           ) : (
             ""
@@ -166,7 +198,7 @@ const QuestionCard = () => {
           </button>
           {show ? (
             <p className="text-center py-10 text-2xl text-text">
-              {answer.argument_2}
+              <BlockMath>{answer.argument_2}</BlockMath>
             </p>
           ) : (
             ""

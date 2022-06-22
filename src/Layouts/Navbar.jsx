@@ -25,8 +25,13 @@ const Navbar = () => {
         <NavLink text={"CHEATSHEETS"} onClick={toggle} isOpen={isOpen} />
         <Link to="/">
           <h1 className="text-4xl tablet:text-2xl dark:text-white text-head font-bold text-center flex flex-row">
-            
-            MATHEMA<Logo1 className="dark:stroke-primary tx  w-[40px] h-[50px] " onClick={toggle} isOpen={isOpen} />ICS
+            MATHEMA
+            <Logo1
+              className="dark:stroke-primary tx  w-[40px] h-[50px] "
+              onClick={toggle}
+              isOpen={isOpen}
+            />
+            ICS
           </h1>
         </Link>
         <NavLink

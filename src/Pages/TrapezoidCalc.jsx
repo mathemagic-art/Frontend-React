@@ -11,6 +11,10 @@ import { images } from "../constants";
 import { ReactComponent as Trapezoideq } from "../Files/svgs/Trapezoideq.svg";
 
 const TrapezoidCalc = () => {
+  const [lower, setLower] = useState("");
+  const [upper, setUp] = useState("");
+  const [interval, setInterval] = useState("");
+
   const [data, setData] = useState({
     argument_1: "",
     argument_2: "x",
@@ -22,11 +26,20 @@ const TrapezoidCalc = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [exp, setExp] = useState("");
+  const [red, setRed] = useState(false);
 
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    const re = /[@$#%!~`&{}"':;?><,\\]|[A-Z]/g;
+    setRed(false);
+    if (re.test(value)) {
+      console.log("found errr");
+      setRed(true);
+    } else {
+      setData((values) => ({ ...values, [name]: value }));
+    }
+    event.preventDefault();
   };
 
   const handleReset = (event) => {
@@ -49,28 +62,28 @@ const TrapezoidCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("trapezoid-method/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/trapezoid-method/", data).then((res) => {
       setAnswer(res.data);
     });
     setSubmitted(true);
     setExp(data.argument_1);
     event.preventDefault();
+    setLower(data.argument_3);
+    setUp(data.argument_4);
+    setInterval(data.argument_5);
   };
 
   const expression = exp;
-  const nRange = (data.argument_4 - data.argument_3) / data.argument_5;
+  const nRange = (upper - lower) / interval;
   const expr = math.compile(expression.replaceAll("**", "^"));
-
-  const xValues = math
-    .range(data.argument_3, Number(data.argument_4) + 0.01, 0.0099)
-    .toArray();
+  const xValues = math.range(lower, Number(upper) + 0.01, 0.0099).toArray();
   const yValues = xValues.map(function (x) {
     return expr.evaluate({ x: x });
   });
 
   // roof
   const xValuesNterms = math
-    .range(data.argument_3, Number(data.argument_4) + 0.01, nRange)
+    .range(lower, Number(upper) + 0.01, nRange)
     .toArray();
   const yValuesNterms = xValuesNterms.map(function (x) {
     return expr.evaluate({ x: x });
@@ -102,7 +115,11 @@ const TrapezoidCalc = () => {
               >
                 <input
                   required
-                  className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                  className={
+                    red
+                      ? "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-300"
+                      : "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                  }
                   type="text"
                   id="function"
                   name="argument_1"
@@ -126,7 +143,11 @@ const TrapezoidCalc = () => {
                 value={data.argument_5}
                 name="argument_5"
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
               />
               <div>
                 <div>
@@ -143,7 +164,11 @@ const TrapezoidCalc = () => {
                     name="argument_2"
                     value={data.argument_2}
                     onChange={handleInput}
-                    className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                    className={
+                      red
+                        ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                        : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                    }
                   />
                 </div>
                 <div className="flex flex-col">
@@ -160,7 +185,11 @@ const TrapezoidCalc = () => {
                     name="argument_3"
                     value={data.argument_3}
                     onChange={handleInput}
-                    className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                    className={
+                      red
+                        ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                        : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                    }
                   />
                 </div>
                 <div>
@@ -177,7 +206,11 @@ const TrapezoidCalc = () => {
                     value={data.argument_4}
                     name="argument_4"
                     onChange={handleInput}
-                    className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                    className={
+                      red
+                        ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                        : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                    }
                   />
                 </div>
               </div>
@@ -209,7 +242,7 @@ const TrapezoidCalc = () => {
             </div>
           ) : (
             <div className="flex flex-col mt-[98px] ml-[300px]">
-              <p className="font-semibold text-2xl flex mb-10">
+              <p className="font-semibold text-2xl fill-tx dark:fill-white flex mb-10">
                 According to Trapezoidal Rule
               </p>
               <Trapezoideq className="fill-tx dark:fill-white -ml-[230px] w-[800px] h-[300px]" />
@@ -238,7 +271,7 @@ const TrapezoidCalc = () => {
                     // fillcolor: "6F46F3",
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "6F46F3" },
+                    marker: { color: "C595E9" },
                   },
                   {
                     x: xValues,
@@ -246,13 +279,15 @@ const TrapezoidCalc = () => {
                     name: expression,
                     type: "scatter",
                     mode: "lines",
-                    marker: { color: "blue" },
+                    marker: { color: "6F46F3" },
                   },
                   {
                     type: "bar",
                     width: 0,
+                    name: "slices",
                     x: xValuesNterms,
                     y: yValuesNterms,
+<<<<<<< HEAD
                     marker: { color: "blue" },  
                     color: "#e7e5f7",
                   },
@@ -262,6 +297,14 @@ const TrapezoidCalc = () => {
                   plot_bgcolor:"#F1F5FF", // f(x) 
                   paper_bgcolor:"#F1F5FF", //B
             
+=======
+                    marker: { color: "6F46F3" },
+                  },
+                ]}
+                layout={{
+                  plot_bgcolor: "#F1F5FF", // f(x)
+                  paper_bgcolor: "#F1F5FF", //B
+>>>>>>> master
                   width: 720,
                   height: 540,
                   title: "Trapezoid Rule",

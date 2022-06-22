@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { ReactComponent as Fx } from "../Files/svgs/fx.svg";
-import { ReactComponent as Newton } from "../Files/svgs/newtonwhite.svg";
-import { ReactComponent as X2 } from "../Files/svgs/xSquare.svg";
 import FunctionsMenu from "../Layouts/FunctionsMenu";
 import { BlockMath } from "react-katex";
 import Navbar from "../Layouts/Navbar";
+import { React as Integral } from "../Files/pngs/integral.svg";
+import { images } from "../constants";
 
 const IntegralCalc = () => {
   let ax = "";
@@ -18,11 +18,22 @@ const IntegralCalc = () => {
   });
   const [answer, setAnswer] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [exp, setExp] = useState("");
+  const [red, setRed] = useState(false);
 
   const handleInput = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setData((values) => ({ ...values, [name]: value }));
+    const re = /[@$#%!~`&{}"':;?><,\\]|[A-Z]/g;
+    setRed(false);
+    if (re.test(value)) {
+      console.log("found errr");
+      setRed(true);
+    } else {
+      setData((values) => ({ ...values, [name]: value }));
+    }
+    event.preventDefault();
   };
 
   console.log(data);
@@ -37,6 +48,7 @@ const IntegralCalc = () => {
       argument_5: "1",
     });
     setAnswer("");
+    setSubmitted(false);
   };
   if (answer) {
     ax = answer.replace(/\\/g, "\\");
@@ -73,12 +85,13 @@ const IntegralCalc = () => {
   };
 
   const handleSubmit = (event) => {
-    axios.post("universal-integral/", data).then((res) => {
+    axios.post("https://api-mathemagics.herokuapp.com/universal-integral/", data).then((res) => {
       setAnswer(res.data);
     });
     console.log(data);
     console.log(answer);
     event.preventDefault();
+    setSubmitted(true);
   };
   return (
     <>
@@ -107,7 +120,11 @@ const IntegralCalc = () => {
             >
               <input
                 required
-                className="w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                className={
+                  red
+                    ? "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl bg-red-300"
+                    : "w-[393px] h-[48px] p-4 border-2  dark:border-primary rounded-l-[8px] text-xl"
+                }
                 type="text"
                 id="function"
                 name="argument_2"
@@ -131,7 +148,11 @@ const IntegralCalc = () => {
                 defaultValue="type1"
                 value={data.argument_1}
                 onChange={handleInput}
-                className="w-[460px] h-[48px] p-2 border-2 text-text  dark:border-primary rounded-[8px] mb-[30px] text-lg"
+                className={
+                  red
+                    ? "w-[460px] h-[48px] p-2 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                    : "w-[460px] h-[48px] p-2 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                }
               >
                 <option value="indefinite">Indefinite Integral</option>
                 <option value="definite">Definite Integral</option>
@@ -170,7 +191,11 @@ const IntegralCalc = () => {
                       value={data.argument_4}
                       name="argument_4"
                       onChange={handleInput}
-                      className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                      className={
+                        red
+                          ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                          : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                      }
                       defaultValue="oo"
                     />
 
@@ -186,7 +211,11 @@ const IntegralCalc = () => {
                       value={data.argument_5}
                       name="argument_5"
                       onChange={handleInput}
-                      className="w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl"
+                      className={
+                        red
+                          ? "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl bg-red-300"
+                          : "w-[460px] h-[48px] p-4 border-2 text-black  dark:border-primary rounded-[8px] mb-[30px] text-xl "
+                      }
                       defaultValue="oo"
                     />
                   </div>
@@ -210,19 +239,43 @@ const IntegralCalc = () => {
           </div>
         </form>
         <div className={style_for_content_div}>
-          <p className="mt-[98px] ml-[300px] font-normal text-2xl flex">
-            Based on Integral Rule's:
-            <Newton className="fill-tx dark:fill-white ml-10 -mt-5" />
-          </p>
-          <div className="flex ml-[300px] pt-10 h-full w-full flex-row font-normal text-2xl tracking-wide items-start ">
-            <p className="mt-12">
-              The answer for{" "}
-              {!data.argument_2 ? "f(x)" : "f(x) = " + data.argument_2} is:{" "}
-            </p>
-            <div className="ml-3 py-16 border-2 font-normal rounded-xl text-3xl  px-3 border-double border-green-600 h-10 bg-white text-black flex justify-center items-center">
-              {answer !== "" ? <BlockMath>{ax}</BlockMath> : "_____________"}
+          {!submitted ? (
+            <div className="flex flex-col ml-[300px]">
+              <div className="flex flex-col leading-9">
+                <p className="mt-[98px] pb-[32px] font-semibold text-[30px] dark:text-white text-tx">
+                  Why do we need to learn Integration?
+                </p>
+                <p className="mr-[10px] tracking-[1%] text-[25px]">
+                  An integral is calculated to find the functions which will
+                  describe the area, displacement, volume, that occurs due to a
+                  collection of small data, which cannot be measured singularly.{" "}
+                </p>
+              </div>
+              <img
+                src={images.integral_org}
+                className="w-[500px] h-[400px] mt-5"
+              />
             </div>
-          </div>
+          ) : (
+            <div className="flex flex-col ml-[300px]">
+              <p className="mt-[98px] mb-10 flex text-tx dark:text-white font-semibold text-2xl">
+                The area under the curve equals to:
+              </p>
+                {data.argument_1 === "definite" ? (
+                  <div className="py-10 border-2 font-normal rounded-xl text-xl  px-3 border-double border-green-600 h-10 bg-white text-black flex justify-center items-center">
+                    {answer !== "" ? <BlockMath>{ax}</BlockMath> : ""}
+                  </div>
+                ) : (
+                  <div className="py-10 border-2 font-normal rounded-xl text-xl  px-3 border-double border-green-600 h-10 bg-white text-black flex justify-center items-center">
+                    {answer !== "" ? <BlockMath>{ax + " + C"}</BlockMath> : ""}
+                  </div>
+                )}
+              <img
+                src={images.integral_org}
+                className="w-[500px] h-[400px] mt-5"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -30,16 +30,9 @@ const DiffTest = () => {
   const handleSelect = (e) => {
     setShow(false);
     setAnswer("");
-    console.log("called");
     e.preventDefault();
     const value = e.target.value;
-    console.log(value);
     setData({ argument_1: value });
-    axios.post("/test-differentiation/", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log(res.data);
-    });
-    setShowq(true);
   };
   if (question[0]) {
     ax = question[0].replace(/\\/g, "\\");
@@ -53,34 +46,43 @@ const DiffTest = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log("handle");
-    console.log(uanswer);
     e.preventDefault();
+    if (uanswer.argument_1 == "" || question.argument_1 == "") {
+      return;
+    }
+    axios
+      .post("https://api-mathemagics.herokuapp.com/compare", uanswer)
+      .then((res) => {
+        const ans = question[1];
+        console.log(question[1]);
 
-    axios.post("/compare", uanswer).then((res) => {
-      const ans = question[1];
-      console.log(question[1]);
-
-      console.log(res.data);
-      setAnswer({ argument_1: res.data, argument_2: ans });
-      console.log(answer);
-    });
+        console.log(res.data);
+        setAnswer({ argument_1: res.data, argument_2: ans });
+        console.log(answer);
+      });
   };
   const nextQuestion = (e) => {
     e.preventDefault();
     setShow(false);
     setAnswer("");
-    axios.post("/test-limit", data).then((res) => {
-      setQuestion({ ...res.data });
-      console.log(res.data);
-    });
+    axios
+      .post("https://api-mathemagics.herokuapp.com/test-differentiation/", data)
+      .then((res) => {
+        setQuestion({ ...res.data });
+        console.log(res.data);
+      });
     setShowq(true);
   };
   const showAnswer = () => {
     setShow(!show);
   };
   const handleReset = (event) => {
-    window.location.reload();
+    event.preventDefault();
+    setQuestion({ argument_1: "", argument_2: "", argument_3: "" });
+    setShowq(false);
+    setUanswer({ argument_1: "", argument_2: "" });
+    setAnswer({ argument_1: "", argument_2: "" });
+    showAnswer(false);
   };
   return (
     <div className=" h-full w-full bg-white dark:bg-dark dark:text-white text-dark">
@@ -101,10 +103,16 @@ const DiffTest = () => {
               onChange={handleSelect}
             >
               <option>Select Your Level</option>
-              <option value="1">Begginer</option>
+              <option value="1">Beginner</option>
               <option value="2">Intermediate</option>
-              <option value="3">Advance</option>
+              <option value="3">Advanced</option>
             </select>
+            <button
+              className="px-4 py-2  bg-blue-400 text-white rounded-md text-lg font-primary hover:bg-white hover:shadow-md hover:text-dark  duration-300"
+              onClick={nextQuestion}
+            >
+              Request Question
+            </button>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -121,7 +129,7 @@ const DiffTest = () => {
               <input
                 type="text"
                 placeholder="Enter Your Solution.."
-                className="w-full  h-16 px-2 rounded-l-lg border-r-2 border-border"
+                className="w-full  h-16 px-2 rounded-l-lg border-r-2 text-black border-border"
                 onChange={handleInput}
                 name="argument_1"
               />
@@ -154,7 +162,7 @@ const DiffTest = () => {
             </button>
             {show ? (
               <p className="text-center py-10 text-2xl text-text">
-                {answer.argument_2}
+                <BlockMath>{answer.argument_2}</BlockMath>
               </p>
             ) : (
               ""
