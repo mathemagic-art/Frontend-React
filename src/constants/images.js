@@ -8,7 +8,7 @@ import Eldar from "../Files/pngs/Eldar.png"
 import Elnazar from "../Files/pngs/Elnazar.png"
 import Ilkhom from "../Files/pngs/Ilkhom.png"
 import Marzia from "../Files/pngs/Marzia.png"
-import Munis from "../Files/pngs/Munis.png"
+// import Munis from "../Files/pngs/Munis.png"
 import Rauf from "../Files/pngs/Rauf.png"
 import Shokhrukh from "../Files/pngs/Shokhrukh.png"
 import Tariq from "../Files/pngs/Tariq.png"
@@ -41,7 +41,7 @@ export default {
     Elnazar,
     Ilkhom,
     Marzia,
-    Munis,
+    // Munis,
     Rauf,
     Shokhrukh,
     Tariq,

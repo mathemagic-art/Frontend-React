@@ -82,12 +82,12 @@ const AboutUs = () => {
         </div>
         <div className="flex flex-row ml-[230px] mr-[280px] justify-around items-center gap-[85px] mt-[100px] flex-wrap">
           {/* First Column */}
-          <div className="flex flex-col -mt-[230px]">
+          <div className="flex flex-col -mt-[0px]">
             <figure className={style.figure}>
               <img src={images.Elnazar} />
               <div className={style.img_content}>
                 <h2 className={style.name}>Elnazar Ulanbek Uluu</h2>
-                <h4 className={style.position}> Product Manager</h4>
+                <h4 className={style.position}>Product Manager</h4>
                 <h4 className={style.position}>Backend Developer</h4>
                 <h4 className={style.position}>Math Algorithms Developer</h4>
                 <Social
@@ -109,6 +109,16 @@ const AboutUs = () => {
                   GitHub="https://github.com/sharukhhhan"
                   linkedIn="https://www.linkedin.com/in/shokhrukh-davlatmamadov-b5664623a/"
                 />
+              </div>
+            </figure>
+
+            <figure className={style.figure}>
+              <img src={images.Marzia} />
+              <div className={style.img_content}>
+                <h2 className={style.name}>Marzia Taban Jafari</h2>
+                <h4 className={style.position}>Frontend Developer</h4>
+                {/* <h4 className={style.position}>Math Algorithms Developer</h4> */}
+                <Social GitHub="https://github.com/marzia819" />
               </div>
             </figure>
 
@@ -211,18 +221,11 @@ const AboutUs = () => {
                 <Social GitHub="https://github.com/AlgoAIBoss" />
               </div>
             </figure>
-            <figure className="flex mb-[73px] tablet:mb-[170px]">
-              <img src={images.Marzia} />
-              <div className={style.img_content}>
-                <h2 className={style.name}>Marzia Taban Jafari</h2>
-                <h4 className={style.position}> Frontend Developer</h4>
-                <Social GitHub="https://github.com/marzia819" />
-              </div>
-            </figure>
+
           </div>
 
           {/* Third Column */}
-          <div className="flex flex-col -mt-[210px]">
+          <div className="flex flex-col -mt-[0px]">
             <figure className={style.figure}>
               <img src={images.Benazir} />
               <div className={style.img_content}>
